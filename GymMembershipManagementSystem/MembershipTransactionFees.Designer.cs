@@ -28,45 +28,119 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.panelContainer = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel1.SuspendLayout();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dataGridStudentFeeTotal = new System.Windows.Forms.DataGridView();
+            this.labelTotalMembershipFee = new System.Windows.Forms.Label();
+            this.refreshTimer = new System.Windows.Forms.Timer(this.components);
+            this.panelContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridStudentFeeTotal)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
+            // panelContainer
             // 
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1428, 1098);
-            this.panel1.TabIndex = 0;
+            this.panelContainer.Controls.Add(this.labelTotalMembershipFee);
+            this.panelContainer.Controls.Add(this.dataGridStudentFeeTotal);
+            this.panelContainer.Controls.Add(this.label2);
+            this.panelContainer.Controls.Add(this.panel2);
+            this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelContainer.Location = new System.Drawing.Point(0, 0);
+            this.panelContainer.Name = "panelContainer";
+            this.panelContainer.Size = new System.Drawing.Size(1428, 1102);
+            this.panelContainer.TabIndex = 0;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.DimGray;
-            this.panel2.Location = new System.Drawing.Point(3, 12);
+            this.panel2.Location = new System.Drawing.Point(3, 15);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(3, 1071);
+            this.panel2.Size = new System.Drawing.Size(3, 901);
             this.panel2.TabIndex = 13;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(500, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(316, 39);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Transaction History";
+            // 
+            // dataGridStudentFeeTotal
+            // 
+            this.dataGridStudentFeeTotal.AllowUserToAddRows = false;
+            this.dataGridStudentFeeTotal.AllowUserToDeleteRows = false;
+            this.dataGridStudentFeeTotal.AllowUserToResizeColumns = false;
+            this.dataGridStudentFeeTotal.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Gainsboro;
+            this.dataGridStudentFeeTotal.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridStudentFeeTotal.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridStudentFeeTotal.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridStudentFeeTotal.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridStudentFeeTotal.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGridStudentFeeTotal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridStudentFeeTotal.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridStudentFeeTotal.Location = new System.Drawing.Point(19, 126);
+            this.dataGridStudentFeeTotal.Margin = new System.Windows.Forms.Padding(10);
+            this.dataGridStudentFeeTotal.MultiSelect = false;
+            this.dataGridStudentFeeTotal.Name = "dataGridStudentFeeTotal";
+            this.dataGridStudentFeeTotal.ReadOnly = true;
+            this.dataGridStudentFeeTotal.RowHeadersVisible = false;
+            this.dataGridStudentFeeTotal.RowHeadersWidth = 51;
+            this.dataGridStudentFeeTotal.RowTemplate.Height = 80;
+            this.dataGridStudentFeeTotal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridStudentFeeTotal.Size = new System.Drawing.Size(551, 377);
+            this.dataGridStudentFeeTotal.TabIndex = 15;
+            // 
+            // labelTotalMembershipFee
+            // 
+            this.labelTotalMembershipFee.AutoSize = true;
+            this.labelTotalMembershipFee.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTotalMembershipFee.Location = new System.Drawing.Point(16, 89);
+            this.labelTotalMembershipFee.Name = "labelTotalMembershipFee";
+            this.labelTotalMembershipFee.Size = new System.Drawing.Size(122, 27);
+            this.labelTotalMembershipFee.TabIndex = 16;
+            this.labelTotalMembershipFee.Text = "labelTotal";
             // 
             // MembershipTransactionFees
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1428, 1098);
-            this.Controls.Add(this.panel1);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1428, 1102);
+            this.Controls.Add(this.panelContainer);
+            this.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MembershipTransactionFees";
             this.Text = "MembershipTransactionFees";
-            this.panel1.ResumeLayout(false);
+            this.panelContainer.ResumeLayout(false);
+            this.panelContainer.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridStudentFeeTotal)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelContainer;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridView dataGridStudentFeeTotal;
+        private System.Windows.Forms.Label labelTotalMembershipFee;
+        private System.Windows.Forms.Timer refreshTimer;
     }
 }

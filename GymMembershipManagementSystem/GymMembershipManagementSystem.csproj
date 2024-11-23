@@ -173,6 +173,12 @@
     <Compile Include="ViewStudentMember.Designer.cs">
       <DependentUpon>ViewStudentMember.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewWalkedInMembers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewWalkedInMembers.Designer.cs">
+      <DependentUpon>ViewWalkedInMembers.cs</DependentUpon>
+    </Compile>
     <Compile Include="WalkInMember.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -232,6 +238,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewStudentMember.resx">
       <DependentUpon>ViewStudentMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewWalkedInMembers.resx">
+      <DependentUpon>ViewWalkedInMembers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WalkInMember.resx">
       <DependentUpon>WalkInMember.cs</DependentUpon>

@@ -53,7 +53,7 @@
             this.panel3.BackColor = System.Drawing.Color.DimGray;
             this.panel3.Location = new System.Drawing.Point(3, 15);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(3, 748);
+            this.panel3.Size = new System.Drawing.Size(3, 901);
             this.panel3.TabIndex = 11;
             // 
             // label2

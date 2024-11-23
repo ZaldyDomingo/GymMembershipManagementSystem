@@ -59,8 +59,8 @@ namespace GymMembershipManagementSystem
             {
                 if (string.IsNullOrWhiteSpace(textBoxPassword.Text))
                 {
-                    textBoxPassword.UseSystemPasswordChar = false; // Unmask when empty
-                    textBoxPassword.Text = "Password"; // Restore placeholder
+                    textBoxPassword.UseSystemPasswordChar = false; 
+                    textBoxPassword.Text = "Password"; 
                     textBoxPassword.ForeColor = Color.Gray;
                 }
             };

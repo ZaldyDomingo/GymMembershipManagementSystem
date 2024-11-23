@@ -236,7 +236,7 @@
             this.pictureBoxMember.Location = new System.Drawing.Point(796, 154);
             this.pictureBoxMember.Name = "pictureBoxMember";
             this.pictureBoxMember.Size = new System.Drawing.Size(355, 312);
-            this.pictureBoxMember.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxMember.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxMember.TabIndex = 60;
             this.pictureBoxMember.TabStop = false;
             this.pictureBoxMember.WaitOnLoad = true;

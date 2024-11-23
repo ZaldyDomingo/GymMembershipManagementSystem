@@ -41,47 +41,6 @@ namespace GymMembershipManagementSystem
             string connectionString = "Data Source=LAPTOP-9VQCFDCQ\\SQLEXPRESS01;Initial Catalog=gymMembership;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
             sqlConnection = new SqlConnection(connectionString);
         }
-        //private void LoadRegularMembers()
-        //{
-        //    try
-        //    {
-        //        string query = "SELECT [FirstName], [LastName], [MobileNumber], [EmergencyContactPhone], [ProfileImage], [MembershipStartDate] FROM [dbo].[NewRegularMemberForm]";
-        //        DataTable dataTable = new DataTable();
-
-        //        SqlDataAdapter dataAdapter = new SqlDataAdapter(query, sqlConnection);
-        //        dataAdapter.Fill(dataTable);
-
-        //        // Add column for Remaining Days
-        //        dataTable.Columns.Add("RemainingDays", typeof(int));
-
-        //        foreach (DataRow row in dataTable.Rows)
-        //        {
-        //            DateTime membershipStartDate = Convert.ToDateTime(row["MembershipStartDate"]);
-        //            DateTime expirationDate = membershipStartDate.AddDays(31); // Assuming 31 days membership
-        //            int remainingDays = (expirationDate - DateTime.Now).Days;
-
-        //            if (remainingDays <= 0)
-        //            {
-        //                row.Delete(); // Remove expired members
-        //            }
-        //            else
-        //            {
-        //                row["RemainingDays"] = remainingDays;
-        //            }
-        //        }
-
-        //        dataTable.AcceptChanges();
-
-        //        // Bind to DataGridView
-        //        dataGridViewRegular.DataSource = dataTable;
-        //        dataGridViewRegular.Columns["MembershipStartDate"].Visible = false; // Hide membership start date
-        //        dataGridViewRegular.Columns["ProfileImage"].Visible = false; // Hide profile image
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show($"An error occurred while loading regular member data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
         private void LoadRegularMembers()
         {
             try

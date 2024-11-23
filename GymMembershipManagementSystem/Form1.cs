@@ -233,5 +233,36 @@ namespace GymMembershipManagementSystem
                 Application.Exit();
             }
         }
+
+        private void totalTransactionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (panelContainer.Controls.OfType<MembershipTransactionFees>().Any()) return;
+            panelContainer.Controls.Clear();
+
+            MembershipTransactionFees membershipTransactionFees = new MembershipTransactionFees
+            {
+                TopLevel = false,
+                FormBorderStyle = FormBorderStyle.None,
+                Dock = DockStyle.Fill
+            };
+
+            panelContainer.Controls.Add(membershipTransactionFees);
+            membershipTransactionFees.Show();
+        }
+
+        private void walkedinMemberToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (panelContainer.Controls.OfType<ViewWalkedInMembers>().Any()) return;
+            panelContainer.Controls.Clear();
+            ViewWalkedInMembers viewWalkedIn = new ViewWalkedInMembers
+            {
+                TopLevel = false,
+                FormBorderStyle = FormBorderStyle.None,
+                Dock = DockStyle.Fill
+            };
+
+            panelContainer.Controls.Add(viewWalkedIn);
+            viewWalkedIn.Show();
+        }
     }
 }

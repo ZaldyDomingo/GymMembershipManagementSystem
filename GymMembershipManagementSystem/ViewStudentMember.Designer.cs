@@ -33,6 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelContainer = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxSearchMember = new System.Windows.Forms.TextBox();
@@ -41,7 +42,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewStudent = new System.Windows.Forms.DataGridView();
             this.searchTimer = new System.Windows.Forms.Timer(this.components);
-            this.label3 = new System.Windows.Forms.Label();
             this.panelContainer.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -62,6 +62,16 @@
             this.panelContainer.Name = "panelContainer";
             this.panelContainer.Size = new System.Drawing.Size(1428, 1055);
             this.panelContainer.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(893, 63);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(260, 46);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Double Click the Member\r\nto see their details.";
             // 
             // panel2
             // 
@@ -144,7 +154,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewStudent.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewStudent.Location = new System.Drawing.Point(19, 122);
+            this.dataGridViewStudent.Location = new System.Drawing.Point(19, 126);
             this.dataGridViewStudent.Margin = new System.Windows.Forms.Padding(10);
             this.dataGridViewStudent.MultiSelect = false;
             this.dataGridViewStudent.Name = "dataGridViewStudent";
@@ -160,16 +170,6 @@
             // searchTimer
             // 
             this.searchTimer.Tick += new System.EventHandler(this.searchTimer_Tick);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(893, 63);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(260, 46);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "Double Click the Member\r\nto see their details.";
             // 
             // ViewStudentMember
             // 

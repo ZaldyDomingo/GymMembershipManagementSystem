@@ -102,29 +102,6 @@ namespace GymMembershipManagementSystem
 
         private void dataGridViewStudent_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //try
-            //{
-            //    if (e.RowIndex >= 0) // Ensure it's not the header row
-            //    {
-            //        // Get the selected row
-            //        DataGridViewRow selectedRow = dataGridViewStudent.Rows[e.RowIndex];
-
-            //        // Retrieve student details
-            //        string firstName = selectedRow.Cells["FirstName"].Value.ToString();
-            //        string lastName = selectedRow.Cells["LastName"].Value.ToString();
-            //        string mobileNumber = selectedRow.Cells["MobileNumber"].Value.ToString();
-            //        string emergencyContact = selectedRow.Cells["EmergencyContactPhone"].Value.ToString();
-            //        byte[] profileImage = selectedRow.Cells["ProfileImage"].Value as byte[]; // Assuming ProfileImage is a byte array
-
-            //        // Open the StudentDetailsForm with the student’s details
-            //        MemberDetailsForm detailsForm = new MemberDetailsForm(firstName, lastName, mobileNumber, emergencyContact, profileImage);
-            //        detailsForm.ShowDialog();
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show($"An error occurred while opening student details: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
             try
             {
                 if (e.RowIndex >= 0) // Ensure it's not the header row
