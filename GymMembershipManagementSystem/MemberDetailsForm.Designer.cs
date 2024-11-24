@@ -51,7 +51,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBoxProfileImage = new GymMembershipManagementSystem.roundedPictureBox();
-            this.buttonDelete = new System.Windows.Forms.Button();
+            this.buttonDeleteRegular = new System.Windows.Forms.Button();
+            this.buttonCheckInStudent = new System.Windows.Forms.Button();
+            this.buttonDeleteStudent = new System.Windows.Forms.Button();
+            this.buttonCheckInRegular = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelFirstName
@@ -278,28 +281,69 @@
             // 
             this.pictureBoxProfileImage.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxProfileImage.Image = null;
-            this.pictureBoxProfileImage.Location = new System.Drawing.Point(396, 60);
+            this.pictureBoxProfileImage.Location = new System.Drawing.Point(350, 22);
             this.pictureBoxProfileImage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBoxProfileImage.Name = "pictureBoxProfileImage";
             this.pictureBoxProfileImage.Size = new System.Drawing.Size(195, 199);
             this.pictureBoxProfileImage.TabIndex = 14;
             // 
-            // buttonDelete
+            // buttonDeleteRegular
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(417, 387);
-            this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(174, 80);
-            this.buttonDelete.TabIndex = 28;
-            this.buttonDelete.Text = "Delete";
-            this.buttonDelete.UseVisualStyleBackColor = true;
-            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+            this.buttonDeleteRegular.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonDeleteRegular.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDeleteRegular.Location = new System.Drawing.Point(595, 247);
+            this.buttonDeleteRegular.Name = "buttonDeleteRegular";
+            this.buttonDeleteRegular.Size = new System.Drawing.Size(174, 80);
+            this.buttonDeleteRegular.TabIndex = 29;
+            this.buttonDeleteRegular.Text = "Delete Member";
+            this.buttonDeleteRegular.UseVisualStyleBackColor = false;
+            this.buttonDeleteRegular.Click += new System.EventHandler(this.buttonDeleteRegular_Click);
+            // 
+            // buttonCheckInStudent
+            // 
+            this.buttonCheckInStudent.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonCheckInStudent.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCheckInStudent.Location = new System.Drawing.Point(371, 368);
+            this.buttonCheckInStudent.Name = "buttonCheckInStudent";
+            this.buttonCheckInStudent.Size = new System.Drawing.Size(174, 80);
+            this.buttonCheckInStudent.TabIndex = 30;
+            this.buttonCheckInStudent.Text = "Check-in Student";
+            this.buttonCheckInStudent.UseVisualStyleBackColor = false;
+            this.buttonCheckInStudent.Click += new System.EventHandler(this.buttonCheckInStudent_Click);
+            // 
+            // buttonDeleteStudent
+            // 
+            this.buttonDeleteStudent.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonDeleteStudent.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDeleteStudent.Location = new System.Drawing.Point(371, 247);
+            this.buttonDeleteStudent.Name = "buttonDeleteStudent";
+            this.buttonDeleteStudent.Size = new System.Drawing.Size(174, 80);
+            this.buttonDeleteStudent.TabIndex = 31;
+            this.buttonDeleteStudent.Text = "Delete Student";
+            this.buttonDeleteStudent.UseVisualStyleBackColor = false;
+            this.buttonDeleteStudent.Click += new System.EventHandler(this.buttonDeleteStudent_Click);
+            // 
+            // buttonCheckInRegular
+            // 
+            this.buttonCheckInRegular.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonCheckInRegular.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCheckInRegular.Location = new System.Drawing.Point(595, 368);
+            this.buttonCheckInRegular.Name = "buttonCheckInRegular";
+            this.buttonCheckInRegular.Size = new System.Drawing.Size(174, 80);
+            this.buttonCheckInRegular.TabIndex = 32;
+            this.buttonCheckInRegular.Text = "Check-in Member";
+            this.buttonCheckInRegular.UseVisualStyleBackColor = false;
+            this.buttonCheckInRegular.Click += new System.EventHandler(this.buttonCheckInRegular_Click);
             // 
             // MemberDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(719, 623);
-            this.Controls.Add(this.buttonDelete);
+            this.ClientSize = new System.Drawing.Size(835, 623);
+            this.Controls.Add(this.buttonCheckInRegular);
+            this.Controls.Add(this.buttonDeleteStudent);
+            this.Controls.Add(this.buttonCheckInStudent);
+            this.Controls.Add(this.buttonDeleteRegular);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -357,6 +401,9 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button buttonDelete;
+        private System.Windows.Forms.Button buttonDeleteRegular;
+        private System.Windows.Forms.Button buttonCheckInStudent;
+        private System.Windows.Forms.Button buttonDeleteStudent;
+        private System.Windows.Forms.Button buttonCheckInRegular;
     }
 }

@@ -113,10 +113,11 @@ namespace GymMembershipManagementSystem
                     sqlConnection.Close();
 
                     // Success message
-                    MessageBox.Show("Walk-in member registered successfully!\nMembership Fee: ₱60.00", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Walk-in member registered successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // Clear form fields after successful registration
                     ClearForm();
+                    this.Close();
                 }
             }
             catch (Exception ex)

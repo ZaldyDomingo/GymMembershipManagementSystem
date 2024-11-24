@@ -15,28 +15,68 @@ namespace GymMembershipManagementSystem
     public partial class MemberDetailsForm : Form
     {
         private const int MembershipDurationDays = 31;
-        private DateTime checkInDate;
+        private string membershipType;
         public MemberDetailsForm(string firstName, string lastName)
         {
             InitializeComponent();
 
-            checkInDate = DateTime.Now;
+
             PopulateMemberDetails(firstName, lastName);
+        }
+        private string GetMembershipType(int memberId)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection("Data Source=LAPTOP-9VQCFDCQ\\SQLEXPRESS01;Initial Catalog=gymMembership;Integrated Security=True;Encrypt=True;TrustServerCertificate=True"))
+            {
+                string query = @"
+            SELECT 
+                CASE 
+                    WHEN EXISTS (SELECT 1 FROM StudentMember WHERE StudentId = @MemberId) THEN 'Student'
+                    WHEN EXISTS (SELECT 1 FROM RegularMember WHERE RegularMemberId = @MemberId) THEN 'Regular'
+                    ELSE 'Unknown'
+                END AS MembershipType";
+
+                SqlCommand command = new SqlCommand(query, sqlConnection);
+                command.Parameters.AddWithValue("@MemberId", memberId);
+
+                try
+                {
+                    sqlConnection.Open();
+                    var result = command.ExecuteScalar();
+                    sqlConnection.Close();
+
+                    return result?.ToString() ?? "Unknown"; // Return membership type or "Unknown"
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show($"Error determining membership type: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return "Unknown";
+                }
+            }
         }
         private void PopulateMemberDetails(string firstName, string lastName)
         {
             try
             {
-                // Get the member ID from the database
                 int memberId = GetMemberIdFromDatabase(firstName, lastName);
                 if (memberId == -1)
                 {
                     MessageBox.Show("No member found with the provided details. Please check the input and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
-                // Fetch the full member details from both RegularMember and StudentMember tables
                 DataRow memberDetails = GetMemberDetailsFromDatabase(memberId);
+
+                membershipType = GetMembershipType(memberId); // Determine membership type
+
+                if (membershipType == "Student")
+                {
+                    buttonCheckInRegular.Visible = false;
+                    buttonDeleteRegular.Visible = false;
+                }
+                else if (membershipType == "Regular")
+                {
+                    buttonCheckInStudent.Visible = false;
+                    buttonDeleteStudent.Visible = false;
+                }
 
                 if (memberDetails != null)
                 {
@@ -166,7 +206,6 @@ namespace GymMembershipManagementSystem
                 }
             }
         }
-
         private DateTime? GetMembershipExpirationDate(int memberId)
         {
             using (SqlConnection sqlConnection = new SqlConnection("Data Source=LAPTOP-9VQCFDCQ\\SQLEXPRESS01;Initial Catalog=gymMembership;Integrated Security=True;Encrypt=True;TrustServerCertificate=True"))
@@ -203,7 +242,104 @@ namespace GymMembershipManagementSystem
             return null;
         }
 
-        private void buttonDelete_Click(object sender, EventArgs e)
+        private void buttonCheckInStudent_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string firstName = labelFirstName.Text.Trim();
+                string lastName = labelLastName.Text.Trim();
+
+                // Check if first name and last name are not empty
+                if (string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName))
+                {
+                    MessageBox.Show("First Name or Last Name cannot be empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Get student ID from the database using the first and last name
+                int memberId = GetMemberIdFromDatabase(firstName, lastName);
+                if (memberId == -1)
+                {
+                    MessageBox.Show("No member found with the provided details. Please check the input and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Check if the member is already checked in today
+                if (StudentIsAlreadyCheckedInToday(memberId))
+                {
+                    MessageBox.Show("You have already checked in today.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Proceed with recording the check-in for today
+                bool isCheckedIn = StudentRecordCheckIn(memberId);
+                if (isCheckedIn)
+                {
+                    MessageBox.Show("Check-in successful.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("An error occurred while recording the check-in. Please try again later.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private bool StudentIsAlreadyCheckedInToday(int memberId)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection("Data Source=LAPTOP-9VQCFDCQ\\SQLEXPRESS01;Initial Catalog=gymMembership;Integrated Security=True;Encrypt=True;TrustServerCertificate=True"))
+            {
+                string query = @"
+                    SELECT COUNT(*) 
+                    FROM StudentMemberCheckIn
+                    WHERE StudentId = @MemberId AND CAST(CheckInDate AS DATE) = CAST(GETDATE() AS DATE)";
+                SqlCommand command = new SqlCommand(query, sqlConnection);
+                command.Parameters.AddWithValue("@MemberId", memberId);
+
+                try
+                {
+                    sqlConnection.Open();
+                    int count = Convert.ToInt32(command.ExecuteScalar());
+                    sqlConnection.Close();
+
+                    return count > 0; // If count is greater than 0, already checked in
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show($"Error checking check-in status: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+        }
+
+        private bool StudentRecordCheckIn(int memberId)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection("Data Source=LAPTOP-9VQCFDCQ\\SQLEXPRESS01;Initial Catalog=gymMembership;Integrated Security=True;Encrypt=True;TrustServerCertificate=True"))
+            {
+                string query = @"
+                    INSERT INTO StudentMemberCheckIn (StudentId, CheckInDate)
+                    VALUES (@MemberId, GETDATE())";
+
+                SqlCommand command = new SqlCommand(query, sqlConnection);
+                command.Parameters.AddWithValue("@MemberId", memberId);
+
+                try
+                {
+                    sqlConnection.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+                    sqlConnection.Close();
+                    return rowsAffected > 0; // If rows are affected, check-in was recorded
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show($"Error recording check-in: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+        }
+        private void buttonDeleteStudent_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Are you sure you want to delete this member?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
@@ -253,25 +389,179 @@ namespace GymMembershipManagementSystem
             {
                 try
                 {
-                    // SQL query to delete the member from RegularMember and StudentMember tables
-                    string query = @"
-                         DELETE FROM RegularMember WHERE RegularMemberId = @MemberId;
-                         DELETE FROM StudentMember WHERE StudentId = @MemberId;";
+                    // SQL query to delete the member's check-in records
+                    string deleteCheckInQuery = @"
+                        DELETE FROM RegularMemberCheckIn WHERE RegularMemberId = @MemberId
+                        DELETE FROM StudentMemberCheckIn WHERE StudentId = @MemberId";
+                    string deleteMemberQuery = @"
+                        DELETE FROM RegularMember WHERE RegularMemberId = @MemberId;
+                        DELETE FROM StudentMember WHERE StudentId = @MemberId";
 
-                    SqlCommand command = new SqlCommand(query, sqlConnection);
-                    command.Parameters.AddWithValue("@MemberId", memberId);
-
+                    // Open the connection
                     sqlConnection.Open();
-                    int rowsAffected = command.ExecuteNonQuery();
+
+                    // Start a transaction to ensure data integrity
+                    using (var transaction = sqlConnection.BeginTransaction())
+                    {
+                        SqlCommand deleteCheckInCommand = new SqlCommand(deleteCheckInQuery, sqlConnection, transaction);
+                        deleteCheckInCommand.Parameters.AddWithValue("@MemberId", memberId);
+                        deleteCheckInCommand.ExecuteNonQuery();
+
+                        SqlCommand deleteMemberCommand = new SqlCommand(deleteMemberQuery, sqlConnection, transaction);
+                        deleteMemberCommand.Parameters.AddWithValue("@MemberId", memberId);
+                        deleteMemberCommand.ExecuteNonQuery();
+
+                        // Commit the transaction
+                        transaction.Commit();
+                    }
+                    sqlConnection.Close();
+                    return true;  // Return true if the deletion was successful
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error deleting member: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;  // Return false if there was an error
+                }
+            }
+        }
+        private bool RegularIsAlreadyCheckedInToday(int memberId)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection("Data Source=LAPTOP-9VQCFDCQ\\SQLEXPRESS01;Initial Catalog=gymMembership;Integrated Security=True;Encrypt=True;TrustServerCertificate=True"))
+            {
+                string query = @"
+                    SELECT COUNT(*) 
+                    FROM RegularMemberCheckIn
+                    WHERE RegularMemberId = @MemberId AND CAST(CheckInDate AS DATE) = CAST(GETDATE() AS DATE)";
+                SqlCommand command = new SqlCommand(query, sqlConnection);
+                command.Parameters.AddWithValue("@MemberId", memberId);
+
+                try
+                {
+                    sqlConnection.Open();
+                    int count = Convert.ToInt32(command.ExecuteScalar());
                     sqlConnection.Close();
 
-                    // If rows affected is greater than 0, deletion was successful
-                    return rowsAffected > 0;
+                    return count > 0; // If count is greater than 0, already checked in
                 }
                 catch (SqlException ex)
                 {
-                    MessageBox.Show($"Error executing query: {ex.Message}", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Error checking check-in status: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
+                }
+            }
+        }
+        private bool RegularRecordCheckIn(int memberId)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection("Data Source=LAPTOP-9VQCFDCQ\\SQLEXPRESS01;Initial Catalog=gymMembership;Integrated Security=True;Encrypt=True;TrustServerCertificate=True"))
+            {
+                string query = @"
+                    INSERT INTO RegularMemberCheckIn (RegularMemberId, CheckInDate)
+                    VALUES (@MemberId, GETDATE())";
+
+                SqlCommand command = new SqlCommand(query, sqlConnection);
+                command.Parameters.AddWithValue("@MemberId", memberId);
+
+                try
+                {
+                    sqlConnection.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+                    sqlConnection.Close();
+                    return rowsAffected > 0; // If rows are affected, check-in was recorded
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show($"Error recording check-in: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+        }
+        private void buttonCheckInRegular_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string firstName = labelFirstName.Text.Trim();
+                string lastName = labelLastName.Text.Trim();
+
+                // Check if first name and last name are not empty
+                if (string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName))
+                {
+                    MessageBox.Show("First Name or Last Name cannot be empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Get student ID from the database using the first and last name
+                int memberId = GetMemberIdFromDatabase(firstName, lastName);
+                if (memberId == -1)
+                {
+                    MessageBox.Show("No member found with the provided details. Please check the input and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Check if the member is already checked in today
+                if (RegularIsAlreadyCheckedInToday(memberId))
+                {
+                    MessageBox.Show("You have already checked in today.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Proceed with recording the check-in for today
+                bool isCheckedIn = RegularRecordCheckIn(memberId);
+                if (isCheckedIn)
+                {
+                    MessageBox.Show("Check-in successful.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("An error occurred while recording the check-in. Please try again later.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+        private void buttonDeleteRegular_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to delete this member?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    string firstName = labelFirstName.Text.Trim();
+                    string lastName = labelLastName.Text.Trim();
+
+                    // Check if first name and last name are not empty
+                    if (string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName))
+                    {
+                        MessageBox.Show("First Name or Last Name cannot be empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    // Get member ID from the database using the first and last name
+                    int memberId = GetMemberIdFromDatabase(firstName, lastName);
+                    if (memberId == -1)
+                    {
+                        MessageBox.Show("No member found with the provided details. Please check the input and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    // Proceed with deleting the member from the database
+                    bool isDeleted = DeleteMemberFromDatabase(memberId);
+                    if (isDeleted)
+                    {
+                        MessageBox.Show("Member successfully deleted.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();  // Close the form after successful deletion
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to delete the member. Please try again later.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An error occurred while deleting the member: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

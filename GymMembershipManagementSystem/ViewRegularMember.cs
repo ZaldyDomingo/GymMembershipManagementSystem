@@ -77,6 +77,7 @@ namespace GymMembershipManagementSystem
                 dataGridViewRegular.Columns["RegularMemberId"].Visible = false;
                 dataGridViewRegular.Columns["Age"].Visible = false;
                 dataGridViewRegular.Columns["DateOfBirth"].Visible = false;
+                dataGridViewRegular.Columns["ProfileImage"].Visible = false;
                 dataGridViewRegular.Columns["Address"].Visible = false;
                 dataGridViewRegular.Columns["Gender"].Visible = false;
                 dataGridViewRegular.Columns["DateJoined"].Visible = false;

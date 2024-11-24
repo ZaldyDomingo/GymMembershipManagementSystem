@@ -39,6 +39,7 @@
             this.walkInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewMemberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.regularMembersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.walkedinMemberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.totalTransactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.backToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,7 +54,6 @@
             this.calendarMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.labelDate = new System.Windows.Forms.Label();
-            this.walkedinMemberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripNavigation.SuspendLayout();
             this.menuStripTopNavigation.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -163,6 +163,16 @@
             this.regularMembersToolStripMenuItem.Size = new System.Drawing.Size(215, 55);
             this.regularMembersToolStripMenuItem.Text = "  Regular Members";
             this.regularMembersToolStripMenuItem.Click += new System.EventHandler(this.regularMembersToolStripMenuItem_Click);
+            // 
+            // walkedinMemberToolStripMenuItem
+            // 
+            this.walkedinMemberToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("walkedinMemberToolStripMenuItem.Image")));
+            this.walkedinMemberToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.walkedinMemberToolStripMenuItem.Name = "walkedinMemberToolStripMenuItem";
+            this.walkedinMemberToolStripMenuItem.Padding = new System.Windows.Forms.Padding(15);
+            this.walkedinMemberToolStripMenuItem.Size = new System.Drawing.Size(215, 55);
+            this.walkedinMemberToolStripMenuItem.Text = "  View Walked-in";
+            this.walkedinMemberToolStripMenuItem.Click += new System.EventHandler(this.walkedinMemberToolStripMenuItem_Click);
             // 
             // totalTransactionToolStripMenuItem
             // 
@@ -322,16 +332,6 @@
             this.labelDate.Size = new System.Drawing.Size(60, 19);
             this.labelDate.TabIndex = 7;
             this.labelDate.Text = "label2";
-            // 
-            // walkedinMemberToolStripMenuItem
-            // 
-            this.walkedinMemberToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("walkedinMemberToolStripMenuItem.Image")));
-            this.walkedinMemberToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.walkedinMemberToolStripMenuItem.Name = "walkedinMemberToolStripMenuItem";
-            this.walkedinMemberToolStripMenuItem.Padding = new System.Windows.Forms.Padding(15);
-            this.walkedinMemberToolStripMenuItem.Size = new System.Drawing.Size(215, 55);
-            this.walkedinMemberToolStripMenuItem.Text = "  View Walked-in";
-            this.walkedinMemberToolStripMenuItem.Click += new System.EventHandler(this.walkedinMemberToolStripMenuItem_Click);
             // 
             // MainPage
             // 

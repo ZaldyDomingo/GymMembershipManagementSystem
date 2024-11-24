@@ -159,5 +159,60 @@ namespace GymMembershipManagementSystem
             refreshTimer.Stop(); // Stop the timer when the form is closed
             base.OnFormClosed(e);
         }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Ensure a row is selected
+                if (dataGridViewOldWalkedin.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Please select a member to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Get the selected row
+                DataGridViewRow selectedRow = dataGridViewOldWalkedin.SelectedRows[0];
+                string memberId = selectedRow.Cells["MemberID"].Value.ToString(); // Ensure "MemberID" column is present
+
+                // Confirm deletion
+                DialogResult confirmResult = MessageBox.Show(
+                    "Are you sure you want to delete this member?",
+                    "Confirm Deletion",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
+
+                if (confirmResult == DialogResult.Yes)
+                {
+                    // Delete the member from the database
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        string deleteQuery = "DELETE FROM [gymMembership].[dbo].[WalkInMember] WHERE [MemberID] = @MemberID";
+
+                        SqlCommand command = new SqlCommand(deleteQuery, connection);
+                        command.Parameters.AddWithValue("@MemberID", memberId);
+
+                        connection.Open();
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Member deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            // Refresh the DataGridView
+                            LoadOldWalkInMembers();
+                            UpdateTotalWalkInMemberCount();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to delete the member.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while deleting the member: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

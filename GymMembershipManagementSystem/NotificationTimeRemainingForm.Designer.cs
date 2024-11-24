@@ -28,11 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.panelContainer = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.searchTimer = new System.Windows.Forms.Timer(this.components);
             this.panelContainer.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,10 +64,6 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "Recent Activity\r\n";
             // 
-            // searchTimer
-            // 
-            this.searchTimer.Tick += new System.EventHandler(this.searchTimer_Tick);
-            // 
             // NotificationTimeRemainingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -91,7 +85,6 @@
 
         private System.Windows.Forms.Panel panelContainer;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Timer searchTimer;
         private System.Windows.Forms.Panel panel3;
     }
 }

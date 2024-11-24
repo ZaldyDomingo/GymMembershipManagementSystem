@@ -45,9 +45,9 @@ namespace GymMembershipManagementSystem
             LoadRecentlyAddedMembers();
             dataGridViewRecentlyAdded.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12);
             dataGridViewRecentlyAdded.DefaultCellStyle.Font = new Font("Century Gothic", 10);
-            dataGridViewRecentlyAdded.RowTemplate.Height = 40;
+            dataGridViewRecentlyAdded.RowTemplate.Height = 28;
 
-            dataGridViewRecentlyAdded.ColumnHeadersHeight = 40;
+            dataGridViewRecentlyAdded.ColumnHeadersHeight = 28;
 
             dataGridViewRecentlyAdded.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
         }

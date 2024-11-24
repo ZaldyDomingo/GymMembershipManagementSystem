@@ -29,10 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridViewNewWalkin = new System.Windows.Forms.DataGridView();
@@ -44,6 +46,7 @@
             this.labelTotalWalkedInMember = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewNewWalkin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOldWalkedin)).BeginInit();
             this.SuspendLayout();
@@ -72,23 +75,33 @@
             this.dataGridViewNewWalkin.AllowUserToDeleteRows = false;
             this.dataGridViewNewWalkin.AllowUserToResizeColumns = false;
             this.dataGridViewNewWalkin.AllowUserToResizeRows = false;
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.Gainsboro;
-            this.dataGridViewNewWalkin.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle37.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle37.SelectionBackColor = System.Drawing.Color.WhiteSmoke;
+            this.dataGridViewNewWalkin.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle37;
             this.dataGridViewNewWalkin.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewNewWalkin.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewNewWalkin.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewNewWalkin.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle38.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle38.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle38.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle38.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle38.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewNewWalkin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle38;
             this.dataGridViewNewWalkin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle22.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewNewWalkin.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle39.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle39.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle39.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle39.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle39.SelectionBackColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle39.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewNewWalkin.DefaultCellStyle = dataGridViewCellStyle39;
+            this.dataGridViewNewWalkin.EnableHeadersVisualStyles = false;
+            this.dataGridViewNewWalkin.GridColor = System.Drawing.Color.White;
             this.dataGridViewNewWalkin.Location = new System.Drawing.Point(19, 126);
             this.dataGridViewNewWalkin.Margin = new System.Windows.Forms.Padding(10);
             this.dataGridViewNewWalkin.MultiSelect = false;
@@ -107,24 +120,34 @@
             this.dataGridViewOldWalkedin.AllowUserToDeleteRows = false;
             this.dataGridViewOldWalkedin.AllowUserToResizeColumns = false;
             this.dataGridViewOldWalkedin.AllowUserToResizeRows = false;
-            dataGridViewCellStyle23.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.Gainsboro;
-            this.dataGridViewOldWalkedin.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle40.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle40.SelectionBackColor = System.Drawing.Color.WhiteSmoke;
+            this.dataGridViewOldWalkedin.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle40;
             this.dataGridViewOldWalkedin.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewOldWalkedin.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewOldWalkedin.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewOldWalkedin.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle41.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle41.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle41.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle41.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle41.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle41.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewOldWalkedin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle41;
             this.dataGridViewOldWalkedin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle24.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewOldWalkedin.DefaultCellStyle = dataGridViewCellStyle24;
-            this.dataGridViewOldWalkedin.Location = new System.Drawing.Point(550, 126);
+            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle42.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle42.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle42.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle42.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle42.SelectionBackColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle42.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle42.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewOldWalkedin.DefaultCellStyle = dataGridViewCellStyle42;
+            this.dataGridViewOldWalkedin.EnableHeadersVisualStyles = false;
+            this.dataGridViewOldWalkedin.GridColor = System.Drawing.Color.White;
+            this.dataGridViewOldWalkedin.Location = new System.Drawing.Point(536, 126);
             this.dataGridViewOldWalkedin.Margin = new System.Windows.Forms.Padding(10);
             this.dataGridViewOldWalkedin.MultiSelect = false;
             this.dataGridViewOldWalkedin.Name = "dataGridViewOldWalkedin";
@@ -140,7 +163,7 @@
             // 
             this.labelTotalMembershipFee.AutoSize = true;
             this.labelTotalMembershipFee.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTotalMembershipFee.Location = new System.Drawing.Point(545, 89);
+            this.labelTotalMembershipFee.Location = new System.Drawing.Point(531, 89);
             this.labelTotalMembershipFee.Name = "labelTotalMembershipFee";
             this.labelTotalMembershipFee.Size = new System.Drawing.Size(311, 27);
             this.labelTotalMembershipFee.TabIndex = 19;
@@ -159,9 +182,9 @@
             // buttonRefresh
             // 
             this.buttonRefresh.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonRefresh.Location = new System.Drawing.Point(1055, 126);
+            this.buttonRefresh.Location = new System.Drawing.Point(1224, 15);
             this.buttonRefresh.Name = "buttonRefresh";
-            this.buttonRefresh.Size = new System.Drawing.Size(187, 75);
+            this.buttonRefresh.Size = new System.Drawing.Size(98, 47);
             this.buttonRefresh.TabIndex = 22;
             this.buttonRefresh.Text = "Refresh";
             this.buttonRefresh.UseVisualStyleBackColor = true;
@@ -171,7 +194,7 @@
             // 
             this.labelTotalWalkedInMember.AutoSize = true;
             this.labelTotalWalkedInMember.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTotalWalkedInMember.Location = new System.Drawing.Point(1136, 266);
+            this.labelTotalWalkedInMember.Location = new System.Drawing.Point(1165, 265);
             this.labelTotalWalkedInMember.Name = "labelTotalWalkedInMember";
             this.labelTotalWalkedInMember.Size = new System.Drawing.Size(82, 27);
             this.labelTotalWalkedInMember.TabIndex = 23;
@@ -181,7 +204,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(1085, 218);
+            this.label4.Location = new System.Drawing.Point(1113, 208);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(166, 38);
             this.label4.TabIndex = 24;
@@ -190,10 +213,21 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.DimGray;
-            this.panel1.Location = new System.Drawing.Point(1055, 302);
+            this.panel1.Location = new System.Drawing.Point(1084, 301);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(223, 3);
             this.panel1.TabIndex = 17;
+            // 
+            // buttonDelete
+            // 
+            this.buttonDelete.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDelete.Location = new System.Drawing.Point(1055, 126);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(127, 61);
+            this.buttonDelete.TabIndex = 25;
+            this.buttonDelete.Text = "Delete";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // ViewWalkedInMembers
             // 
@@ -201,6 +235,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1428, 1055);
+            this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.labelTotalWalkedInMember);
@@ -236,5 +271,6 @@
         private System.Windows.Forms.Label labelTotalWalkedInMember;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button buttonDelete;
     }
 }
