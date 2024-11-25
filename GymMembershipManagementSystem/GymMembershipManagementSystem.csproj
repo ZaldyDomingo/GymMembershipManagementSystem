@@ -62,6 +62,12 @@
     <Compile Include="CalendarUserInteract.Designer.cs">
       <DependentUpon>CalendarUserInteract.cs</DependentUpon>
     </Compile>
+    <Compile Include="CheckInListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CheckInListForm.Designer.cs">
+      <DependentUpon>CheckInListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DashboardForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,6 +193,9 @@
     </Compile>
     <EmbeddedResource Include="CalendarUserInteract.resx">
       <DependentUpon>CalendarUserInteract.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheckInListForm.resx">
+      <DependentUpon>CheckInListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DashboardForm.resx">
       <DependentUpon>DashboardForm.cs</DependentUpon>

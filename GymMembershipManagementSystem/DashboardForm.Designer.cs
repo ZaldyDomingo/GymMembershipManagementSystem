@@ -29,14 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashboardForm));
             this.panelContainer = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridViewRecentlyAdded = new System.Windows.Forms.DataGridView();
             this.panelContainerCount = new System.Windows.Forms.Panel();
@@ -56,9 +54,8 @@
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.countRefreshTimer = new System.Windows.Forms.Timer(this.components);
             this.timerRecentMember = new System.Windows.Forms.Timer(this.components);
+            this.monthCalendarMemberCheckedIn = new System.Windows.Forms.MonthCalendar();
             this.panelContainer.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRecentlyAdded)).BeginInit();
             this.panelContainerCount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResult)).BeginInit();
@@ -70,8 +67,8 @@
             // 
             this.panelContainer.AutoScroll = true;
             this.panelContainer.BackColor = System.Drawing.Color.White;
+            this.panelContainer.Controls.Add(this.monthCalendarMemberCheckedIn);
             this.panelContainer.Controls.Add(this.panel3);
-            this.panelContainer.Controls.Add(this.panel2);
             this.panelContainer.Controls.Add(this.label2);
             this.panelContainer.Controls.Add(this.dataGridViewRecentlyAdded);
             this.panelContainer.Controls.Add(this.panelContainerCount);
@@ -91,27 +88,11 @@
             this.panel3.Size = new System.Drawing.Size(3, 1071);
             this.panel3.TabIndex = 10;
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.pictureBox2);
-            this.panel2.Location = new System.Drawing.Point(81, 262);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(250, 218);
-            this.panel2.TabIndex = 9;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(31, 23);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(181, 163);
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(935, 217);
+            this.label2.Location = new System.Drawing.Point(935, 506);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(382, 37);
             this.label2.TabIndex = 8;
@@ -123,24 +104,24 @@
             this.dataGridViewRecentlyAdded.AllowUserToDeleteRows = false;
             this.dataGridViewRecentlyAdded.AllowUserToResizeColumns = false;
             this.dataGridViewRecentlyAdded.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(4);
-            this.dataGridViewRecentlyAdded.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle19.Padding = new System.Windows.Forms.Padding(4);
+            this.dataGridViewRecentlyAdded.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle19;
             this.dataGridViewRecentlyAdded.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewRecentlyAdded.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewRecentlyAdded.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewRecentlyAdded.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridViewRecentlyAdded.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewRecentlyAdded.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewRecentlyAdded.Location = new System.Drawing.Point(932, 264);
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle20.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewRecentlyAdded.DefaultCellStyle = dataGridViewCellStyle20;
+            this.dataGridViewRecentlyAdded.Location = new System.Drawing.Point(932, 553);
             this.dataGridViewRecentlyAdded.Margin = new System.Windows.Forms.Padding(10);
             this.dataGridViewRecentlyAdded.MultiSelect = false;
             this.dataGridViewRecentlyAdded.Name = "dataGridViewRecentlyAdded";
@@ -162,7 +143,7 @@
             this.panelContainerCount.Controls.Add(this.label3);
             this.panelContainerCount.Controls.Add(this.labelNotStudentMemberCount);
             this.panelContainerCount.Controls.Add(this.labelStudentCount);
-            this.panelContainerCount.Location = new System.Drawing.Point(932, 33);
+            this.panelContainerCount.Location = new System.Drawing.Point(932, 322);
             this.panelContainerCount.Name = "panelContainerCount";
             this.panelContainerCount.Size = new System.Drawing.Size(385, 181);
             this.panelContainerCount.TabIndex = 2;
@@ -252,15 +233,15 @@
             this.dataGridViewResult.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewResult.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridViewResult.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(1);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewResult.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle21.Padding = new System.Windows.Forms.Padding(1);
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewResult.DefaultCellStyle = dataGridViewCellStyle21;
             this.dataGridViewResult.Location = new System.Drawing.Point(72, 62);
             this.dataGridViewResult.Margin = new System.Windows.Forms.Padding(5);
             this.dataGridViewResult.MultiSelect = false;
@@ -325,6 +306,14 @@
             // 
             this.timerRecentMember.Tick += new System.EventHandler(this.timerRecentMember_Tick);
             // 
+            // monthCalendarMemberCheckedIn
+            // 
+            this.monthCalendarMemberCheckedIn.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.monthCalendarMemberCheckedIn.Location = new System.Drawing.Point(975, 18);
+            this.monthCalendarMemberCheckedIn.Name = "monthCalendarMemberCheckedIn";
+            this.monthCalendarMemberCheckedIn.TabIndex = 11;
+            this.monthCalendarMemberCheckedIn.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendarMemberCheckedIn_DateChanged);
+            // 
             // DashboardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -340,8 +329,6 @@
             this.Text = "DashboardForm";
             this.panelContainer.ResumeLayout(false);
             this.panelContainer.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRecentlyAdded)).EndInit();
             this.panelContainerCount.ResumeLayout(false);
             this.panelContainerCount.PerformLayout();
@@ -373,10 +360,9 @@
         private System.Windows.Forms.DataGridView dataGridViewRecentlyAdded;
         private System.Windows.Forms.Timer timerRecentMember;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.MonthCalendar monthCalendarMemberCheckedIn;
     }
 }

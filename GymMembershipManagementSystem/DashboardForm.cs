@@ -22,7 +22,7 @@ namespace GymMembershipManagementSystem
             InitializeDatabaseConnection();
             LoadAllMembers();
             DisplayMemberCounts();
-
+            
             searchWorker = new BackgroundWorker();
             searchWorker.DoWork += searchWorker_DoWork;
             searchWorker.RunWorkerCompleted += searchWorker_RunWorkerCompleted;
@@ -51,6 +51,7 @@ namespace GymMembershipManagementSystem
 
             dataGridViewRecentlyAdded.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
         }
+ 
         private void searchWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             System.Threading.Thread.Sleep(500);
@@ -314,6 +315,17 @@ namespace GymMembershipManagementSystem
             {
                 dataGridViewResult.Visible = true;
             }
+        }
+
+        private void monthCalendarMemberCheckedIn_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            DateTime selectedDate = e.Start;  // Get the selected date
+            ShowCheckInsForDate(selectedDate);  // Show check-ins for that date
+        }
+        private void ShowCheckInsForDate(DateTime selectedDate)
+        {
+            CheckInListForm checkInListForm = new CheckInListForm(selectedDate);
+            checkInListForm.ShowDialog();
         }
     }
 }
