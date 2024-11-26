@@ -316,17 +316,24 @@ namespace GymMembershipManagementSystem
                 dataGridViewResult.Visible = true;
             }
         }
+        private CheckInListForm checkInListForm = null;
+        private void monthCalendarMemberCheckedIn_DateSelected(object sender, DateRangeEventArgs e)
+        {
+            DateTime selectedDate = e.Start;
 
-        private void monthCalendarMemberCheckedIn_DateChanged(object sender, DateRangeEventArgs e)
-        {
-            DateTime selectedDate = e.Start;  // Get the selected date
-            ShowCheckInsForDate(selectedDate);  // Show check-ins for that date
+            if (checkInListForm == null || checkInListForm.IsDisposed)
+            {
+                checkInListForm = new CheckInListForm(selectedDate);
+                checkInListForm.FormClosed += (s, args) => checkInListForm = null; 
+                checkInListForm.Show();
+            }
+            else
+            {
+                checkInListForm.UpdateDate(selectedDate);
+                checkInListForm.Activate();
+            }
         }
-        private void ShowCheckInsForDate(DateTime selectedDate)
-        {
-            CheckInListForm checkInListForm = new CheckInListForm(selectedDate);
-            checkInListForm.ShowDialog();
-        }
+
     }
 }
 

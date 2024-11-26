@@ -31,6 +31,12 @@ namespace GymMembershipManagementSystem
             dataGridViewCheckIns.ColumnHeadersHeight = 28;
 
         }
+        public void UpdateDate(DateTime newDate)
+        {
+            this.selectedDate = newDate; // Update the selected date
+            LoadCheckIns(); // Refresh the check-in data
+        }
+
         private void InitializeDatabaseConnection()
         {
             string connectionString = "Data Source=LAPTOP-9VQCFDCQ\\SQLEXPRESS01;Initial Catalog=gymMembership;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
