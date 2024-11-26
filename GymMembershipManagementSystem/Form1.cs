@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace GymMembershipManagementSystem
 {
     public partial class MainPage : Form
@@ -263,6 +263,22 @@ namespace GymMembershipManagementSystem
 
             panelContainer.Controls.Add(viewWalkedIn);
             viewWalkedIn.Show();
+        }
+
+        private void minMaxSizeFormToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Check if the form is currently maximized
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                // Reduce the form size (to a specific smaller size, e.g., 800x600)
+                this.WindowState = FormWindowState.Normal;
+                this.Size = new Size(800, 600);  // Set the form size to a smaller size
+            }
+            else
+            {
+                // Maximize the form
+                this.WindowState = FormWindowState.Maximized;
+            }
         }
     }
 }

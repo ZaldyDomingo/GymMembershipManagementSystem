@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace GymMembershipManagementSystem
 {
@@ -22,6 +23,7 @@ namespace GymMembershipManagementSystem
             InitializeRefreshTimer();
             SetupDataGridView();
             LoadMemberData();
+            LoadMembershipFeeChart();
         }
         private void SetupDataGridView()
         {
@@ -85,5 +87,88 @@ namespace GymMembershipManagementSystem
             refreshTimer.Tick += (sender, e) => LoadMemberData();  // Reload the data every time the timer ticks
             refreshTimer.Start();
         }
+        private void LoadMembershipFeeChart()
+        {
+            // SQL queries to calculate sum of MembershipFee for each member type
+            string studentMemberQuery = "SELECT SUM(MembershipFee) AS TotalMembershipFee FROM [gymMembership].[dbo].[StudentMember]";
+            string regularMemberQuery = "SELECT SUM(MembershipFee) AS TotalMembershipFee FROM [gymMembership].[dbo].[RegularMember]";
+            string walkInMemberQuery = "SELECT SUM(MembershipFee) AS TotalMembershipFee FROM [gymMembership].[dbo].[WalkInMember]";
+
+            // Fetch the data
+            decimal studentFeeTotal = FetchMembershipFee(studentMemberQuery);
+            decimal regularFeeTotal = FetchMembershipFee(regularMemberQuery);
+            decimal walkInFeeTotal = FetchMembershipFee(walkInMemberQuery);
+
+            // Prepare chart series
+            Series studentSeries = new Series("Student Members")
+            {
+                ChartType = SeriesChartType.Bar,
+                Color = Color.Blue
+            };
+
+            Series regularSeries = new Series("Regular Members")
+            {
+                ChartType = SeriesChartType.Bar,
+                Color = Color.Green
+            };
+
+            Series walkInSeries = new Series("Walk-In Members")
+            {
+                ChartType = SeriesChartType.Bar,
+                Color = Color.Orange
+            };
+
+            // Add data to the series
+            studentSeries.Points.AddXY("Student Members", studentFeeTotal);
+            regularSeries.Points.AddXY("Regular Members", regularFeeTotal);
+            walkInSeries.Points.AddXY("Walk-In Members", walkInFeeTotal);
+
+            // Clear existing series and add new ones
+            chartMembershipFees.Series.Clear();
+            chartMembershipFees.Series.Add(studentSeries);
+            chartMembershipFees.Series.Add(regularSeries);
+            chartMembershipFees.Series.Add(walkInSeries);
+
+            // Configure chart axes
+            chartMembershipFees.ChartAreas[0].AxisX.Title = "Member Type";
+            chartMembershipFees.ChartAreas[0].AxisY.Title = "Total Membership Fee (Pesos)";
+
+            // Set the maximum value of the Y-axis to 1 million
+            chartMembershipFees.ChartAreas[0].AxisY.Maximum = 1000000;
+
+            // Add a legend
+            chartMembershipFees.Legends.Clear();
+            chartMembershipFees.Legends.Add(new Legend() { Docking = Docking.Top, Alignment = StringAlignment.Center });
+        }
+
+        private decimal FetchMembershipFee(string query)
+        {
+            decimal totalFee = 0;
+
+            using (SqlCommand cmd = new SqlCommand(query, sqlConnection))
+            {
+                try
+                {
+                    sqlConnection.Open();
+                    var result = cmd.ExecuteScalar();
+                    if (result != DBNull.Value)
+                    {
+                        totalFee = Convert.ToDecimal(result);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error fetching membership fee: {ex.Message}");
+                }
+                finally
+                {
+                    sqlConnection.Close();
+                }
+            }
+
+            return totalFee;
+        }
+
+
     }
 }

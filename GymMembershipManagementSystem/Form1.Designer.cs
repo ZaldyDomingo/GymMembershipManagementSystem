@@ -54,6 +54,7 @@
             this.calendarMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.labelDate = new System.Windows.Forms.Label();
+            this.minMaxSizeFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripNavigation.SuspendLayout();
             this.menuStripTopNavigation.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -66,7 +67,7 @@
             this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContainer.Location = new System.Drawing.Point(228, 70);
             this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new System.Drawing.Size(1714, 939);
+            this.panelContainer.Size = new System.Drawing.Size(1696, 928);
             this.panelContainer.TabIndex = 1;
             // 
             // menuStripNavigation
@@ -84,7 +85,7 @@
             this.totalTransactionToolStripMenuItem});
             this.menuStripNavigation.Location = new System.Drawing.Point(0, 70);
             this.menuStripNavigation.Name = "menuStripNavigation";
-            this.menuStripNavigation.Size = new System.Drawing.Size(228, 939);
+            this.menuStripNavigation.Size = new System.Drawing.Size(228, 928);
             this.menuStripNavigation.TabIndex = 0;
             this.menuStripNavigation.Text = "menuStripRightNavigation";
             // 
@@ -229,12 +230,13 @@
             this.menuStripTopNavigation.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStripTopNavigation.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exitToolStripMenuItem,
+            this.minMaxSizeFormToolStripMenuItem,
             this.userToolStripMenuItem1,
             this.notificationToolStripMenuItem,
             this.backToolStripMenuItem});
             this.menuStripTopNavigation.Location = new System.Drawing.Point(0, 0);
             this.menuStripTopNavigation.Name = "menuStripTopNavigation";
-            this.menuStripTopNavigation.Size = new System.Drawing.Size(1942, 70);
+            this.menuStripTopNavigation.Size = new System.Drawing.Size(1924, 70);
             this.menuStripTopNavigation.TabIndex = 2;
             this.menuStripTopNavigation.Text = "menuStripTopNavigation";
             // 
@@ -293,10 +295,10 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.calendarMenuToolStripMenuItem,
             this.logOutToolStripMenuItem1});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 1009);
+            this.menuStrip1.Location = new System.Drawing.Point(0, 998);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(15);
-            this.menuStrip1.Size = new System.Drawing.Size(1942, 57);
+            this.menuStrip1.Size = new System.Drawing.Size(1924, 57);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -333,12 +335,21 @@
             this.labelDate.TabIndex = 7;
             this.labelDate.Text = "label2";
             // 
+            // minMaxSizeFormToolStripMenuItem
+            // 
+            this.minMaxSizeFormToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.minMaxSizeFormToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("minMaxSizeFormToolStripMenuItem.Image")));
+            this.minMaxSizeFormToolStripMenuItem.Name = "minMaxSizeFormToolStripMenuItem";
+            this.minMaxSizeFormToolStripMenuItem.Padding = new System.Windows.Forms.Padding(15);
+            this.minMaxSizeFormToolStripMenuItem.Size = new System.Drawing.Size(54, 66);
+            this.minMaxSizeFormToolStripMenuItem.Click += new System.EventHandler(this.minMaxSizeFormToolStripMenuItem_Click);
+            // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1942, 1066);
+            this.ClientSize = new System.Drawing.Size(1924, 1055);
             this.Controls.Add(this.labelDate);
             this.Controls.Add(this.labelClock);
             this.Controls.Add(this.labelHeaderMenu);
@@ -391,6 +402,7 @@
         private System.Windows.Forms.Label labelDate;
         private System.Windows.Forms.ToolStripMenuItem totalTransactionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem walkedinMemberToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem minMaxSizeFormToolStripMenuItem;
     }
 }
 

@@ -32,18 +32,24 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panelContainer = new System.Windows.Forms.Panel();
             this.labelTotalMembershipFee = new System.Windows.Forms.Label();
             this.dataGridStudentFeeTotal = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.refreshTimer = new System.Windows.Forms.Timer(this.components);
+            this.chartMembershipFees = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panelContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStudentFeeTotal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartMembershipFees)).BeginInit();
             this.SuspendLayout();
             // 
             // panelContainer
             // 
+            this.panelContainer.Controls.Add(this.chartMembershipFees);
             this.panelContainer.Controls.Add(this.labelTotalMembershipFee);
             this.panelContainer.Controls.Add(this.dataGridStudentFeeTotal);
             this.panelContainer.Controls.Add(this.label2);
@@ -106,7 +112,7 @@
             this.dataGridStudentFeeTotal.RowHeadersWidth = 51;
             this.dataGridStudentFeeTotal.RowTemplate.Height = 80;
             this.dataGridStudentFeeTotal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridStudentFeeTotal.Size = new System.Drawing.Size(551, 377);
+            this.dataGridStudentFeeTotal.Size = new System.Drawing.Size(1292, 288);
             this.dataGridStudentFeeTotal.TabIndex = 15;
             // 
             // label2
@@ -127,6 +133,24 @@
             this.panel2.Size = new System.Drawing.Size(3, 901);
             this.panel2.TabIndex = 13;
             // 
+            // chartMembershipFees
+            // 
+            this.chartMembershipFees.BackSecondaryColor = System.Drawing.Color.Transparent;
+            chartArea1.Name = "ChartArea1";
+            this.chartMembershipFees.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartMembershipFees.Legends.Add(legend1);
+            this.chartMembershipFees.Location = new System.Drawing.Point(21, 427);
+            this.chartMembershipFees.Name = "chartMembershipFees";
+            this.chartMembershipFees.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartMembershipFees.Series.Add(series1);
+            this.chartMembershipFees.Size = new System.Drawing.Size(1290, 300);
+            this.chartMembershipFees.TabIndex = 17;
+            this.chartMembershipFees.Text = "chart1";
+            // 
             // MembershipTransactionFees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -141,6 +165,7 @@
             this.panelContainer.ResumeLayout(false);
             this.panelContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStudentFeeTotal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartMembershipFees)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -153,5 +178,6 @@
         private System.Windows.Forms.DataGridView dataGridStudentFeeTotal;
         private System.Windows.Forms.Label labelTotalMembershipFee;
         private System.Windows.Forms.Timer refreshTimer;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartMembershipFees;
     }
 }

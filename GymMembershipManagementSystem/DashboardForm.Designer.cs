@@ -29,11 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashboardForm));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panelContainer = new System.Windows.Forms.Panel();
+            this.chartDetails = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.monthCalendarMemberCheckedIn = new System.Windows.Forms.MonthCalendar();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -55,18 +62,22 @@
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.countRefreshTimer = new System.Windows.Forms.Timer(this.components);
             this.timerRecentMember = new System.Windows.Forms.Timer(this.components);
+            this.chartMembershipFees = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panelContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRecentlyAdded)).BeginInit();
             this.panelContainerCount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResult)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartMembershipFees)).BeginInit();
             this.SuspendLayout();
             // 
             // panelContainer
             // 
             this.panelContainer.AutoScroll = true;
             this.panelContainer.BackColor = System.Drawing.Color.White;
+            this.panelContainer.Controls.Add(this.chartMembershipFees);
             this.panelContainer.Controls.Add(this.monthCalendarMemberCheckedIn);
             this.panelContainer.Controls.Add(this.panel3);
             this.panelContainer.Controls.Add(this.label2);
@@ -74,16 +85,35 @@
             this.panelContainer.Controls.Add(this.panelContainerCount);
             this.panelContainer.Controls.Add(this.dataGridViewResult);
             this.panelContainer.Controls.Add(this.panel1);
+            this.panelContainer.Controls.Add(this.chartDetails);
             this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContainer.Location = new System.Drawing.Point(0, 0);
             this.panelContainer.Name = "panelContainer";
             this.panelContainer.Size = new System.Drawing.Size(1428, 1055);
             this.panelContainer.TabIndex = 0;
             // 
+            // chartDetails
+            // 
+            this.chartDetails.BackSecondaryColor = System.Drawing.Color.Black;
+            chartArea2.Name = "ChartArea1";
+            this.chartDetails.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartDetails.Legends.Add(legend2);
+            this.chartDetails.Location = new System.Drawing.Point(35, 107);
+            this.chartDetails.Name = "chartDetails";
+            this.chartDetails.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chartDetails.Series.Add(series2);
+            this.chartDetails.Size = new System.Drawing.Size(868, 300);
+            this.chartDetails.TabIndex = 12;
+            this.chartDetails.Text = "chartDetails";
+            // 
             // monthCalendarMemberCheckedIn
             // 
             this.monthCalendarMemberCheckedIn.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.monthCalendarMemberCheckedIn.Location = new System.Drawing.Point(975, 18);
+            this.monthCalendarMemberCheckedIn.Location = new System.Drawing.Point(957, 18);
             this.monthCalendarMemberCheckedIn.Name = "monthCalendarMemberCheckedIn";
             this.monthCalendarMemberCheckedIn.TabIndex = 11;
             this.monthCalendarMemberCheckedIn.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendarMemberCheckedIn_DateSelected);
@@ -100,7 +130,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(935, 506);
+            this.label2.Location = new System.Drawing.Point(930, 421);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(382, 37);
             this.label2.TabIndex = 8;
@@ -129,7 +159,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewRecentlyAdded.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewRecentlyAdded.Location = new System.Drawing.Point(932, 553);
+            this.dataGridViewRecentlyAdded.Location = new System.Drawing.Point(927, 468);
             this.dataGridViewRecentlyAdded.Margin = new System.Windows.Forms.Padding(10);
             this.dataGridViewRecentlyAdded.MultiSelect = false;
             this.dataGridViewRecentlyAdded.Name = "dataGridViewRecentlyAdded";
@@ -151,7 +181,7 @@
             this.panelContainerCount.Controls.Add(this.label3);
             this.panelContainerCount.Controls.Add(this.labelNotStudentMemberCount);
             this.panelContainerCount.Controls.Add(this.labelStudentCount);
-            this.panelContainerCount.Location = new System.Drawing.Point(932, 322);
+            this.panelContainerCount.Location = new System.Drawing.Point(927, 237);
             this.panelContainerCount.Name = "panelContainerCount";
             this.panelContainerCount.Size = new System.Drawing.Size(385, 181);
             this.panelContainerCount.TabIndex = 2;
@@ -314,6 +344,24 @@
             // 
             this.timerRecentMember.Tick += new System.EventHandler(this.timerRecentMember_Tick);
             // 
+            // chartMembershipFees
+            // 
+            this.chartMembershipFees.BackSecondaryColor = System.Drawing.Color.Transparent;
+            chartArea1.Name = "ChartArea1";
+            this.chartMembershipFees.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartMembershipFees.Legends.Add(legend1);
+            this.chartMembershipFees.Location = new System.Drawing.Point(35, 421);
+            this.chartMembershipFees.Name = "chartMembershipFees";
+            this.chartMembershipFees.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartMembershipFees.Series.Add(series1);
+            this.chartMembershipFees.Size = new System.Drawing.Size(868, 300);
+            this.chartMembershipFees.TabIndex = 13;
+            this.chartMembershipFees.Text = "chart1";
+            // 
             // DashboardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -329,6 +377,7 @@
             this.Text = "DashboardForm";
             this.panelContainer.ResumeLayout(false);
             this.panelContainer.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartDetails)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRecentlyAdded)).EndInit();
             this.panelContainerCount.ResumeLayout(false);
             this.panelContainerCount.PerformLayout();
@@ -336,6 +385,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartMembershipFees)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -364,5 +414,7 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.MonthCalendar monthCalendarMemberCheckedIn;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartDetails;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartMembershipFees;
     }
 }

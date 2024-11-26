@@ -50,11 +50,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.pictureBoxProfileImage = new GymMembershipManagementSystem.roundedPictureBox();
             this.buttonDeleteRegular = new System.Windows.Forms.Button();
             this.buttonCheckInStudent = new System.Windows.Forms.Button();
             this.buttonDeleteStudent = new System.Windows.Forms.Button();
             this.buttonCheckInRegular = new System.Windows.Forms.Button();
+            this.pictureBoxProfileImage = new GymMembershipManagementSystem.roundedPictureBox();
             this.SuspendLayout();
             // 
             // labelFirstName
@@ -277,21 +277,11 @@
             this.label7.TabIndex = 27;
             this.label7.Text = "Age:";
             // 
-            // pictureBoxProfileImage
-            // 
-            this.pictureBoxProfileImage.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxProfileImage.Image = null;
-            this.pictureBoxProfileImage.Location = new System.Drawing.Point(350, 22);
-            this.pictureBoxProfileImage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pictureBoxProfileImage.Name = "pictureBoxProfileImage";
-            this.pictureBoxProfileImage.Size = new System.Drawing.Size(195, 199);
-            this.pictureBoxProfileImage.TabIndex = 14;
-            // 
             // buttonDeleteRegular
             // 
             this.buttonDeleteRegular.BackColor = System.Drawing.SystemColors.Control;
             this.buttonDeleteRegular.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDeleteRegular.Location = new System.Drawing.Point(595, 247);
+            this.buttonDeleteRegular.Location = new System.Drawing.Point(427, 247);
             this.buttonDeleteRegular.Name = "buttonDeleteRegular";
             this.buttonDeleteRegular.Size = new System.Drawing.Size(174, 80);
             this.buttonDeleteRegular.TabIndex = 29;
@@ -303,7 +293,7 @@
             // 
             this.buttonCheckInStudent.BackColor = System.Drawing.SystemColors.Control;
             this.buttonCheckInStudent.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCheckInStudent.Location = new System.Drawing.Point(371, 368);
+            this.buttonCheckInStudent.Location = new System.Drawing.Point(427, 368);
             this.buttonCheckInStudent.Name = "buttonCheckInStudent";
             this.buttonCheckInStudent.Size = new System.Drawing.Size(174, 80);
             this.buttonCheckInStudent.TabIndex = 30;
@@ -315,7 +305,7 @@
             // 
             this.buttonDeleteStudent.BackColor = System.Drawing.SystemColors.Control;
             this.buttonDeleteStudent.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDeleteStudent.Location = new System.Drawing.Point(371, 247);
+            this.buttonDeleteStudent.Location = new System.Drawing.Point(427, 247);
             this.buttonDeleteStudent.Name = "buttonDeleteStudent";
             this.buttonDeleteStudent.Size = new System.Drawing.Size(174, 80);
             this.buttonDeleteStudent.TabIndex = 31;
@@ -327,7 +317,7 @@
             // 
             this.buttonCheckInRegular.BackColor = System.Drawing.SystemColors.Control;
             this.buttonCheckInRegular.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCheckInRegular.Location = new System.Drawing.Point(595, 368);
+            this.buttonCheckInRegular.Location = new System.Drawing.Point(427, 368);
             this.buttonCheckInRegular.Name = "buttonCheckInRegular";
             this.buttonCheckInRegular.Size = new System.Drawing.Size(174, 80);
             this.buttonCheckInRegular.TabIndex = 32;
@@ -335,11 +325,21 @@
             this.buttonCheckInRegular.UseVisualStyleBackColor = false;
             this.buttonCheckInRegular.Click += new System.EventHandler(this.buttonCheckInRegular_Click);
             // 
+            // pictureBoxProfileImage
+            // 
+            this.pictureBoxProfileImage.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxProfileImage.Image = null;
+            this.pictureBoxProfileImage.Location = new System.Drawing.Point(415, 22);
+            this.pictureBoxProfileImage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBoxProfileImage.Name = "pictureBoxProfileImage";
+            this.pictureBoxProfileImage.Size = new System.Drawing.Size(195, 199);
+            this.pictureBoxProfileImage.TabIndex = 14;
+            // 
             // MemberDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(835, 623);
+            this.ClientSize = new System.Drawing.Size(744, 623);
             this.Controls.Add(this.buttonCheckInRegular);
             this.Controls.Add(this.buttonDeleteStudent);
             this.Controls.Add(this.buttonCheckInStudent);

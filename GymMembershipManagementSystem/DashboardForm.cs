@@ -8,6 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
+
+
 
 namespace GymMembershipManagementSystem
 {
@@ -15,6 +18,7 @@ namespace GymMembershipManagementSystem
     {
         private SqlConnection sqlConnection;
         private BackgroundWorker searchWorker;
+        
         public DashboardForm()
         {
 
@@ -22,7 +26,8 @@ namespace GymMembershipManagementSystem
             InitializeDatabaseConnection();
             LoadAllMembers();
             DisplayMemberCounts();
-            
+            LoadMemberJoinChart();
+            LoadMembershipFeeChart();
             searchWorker = new BackgroundWorker();
             searchWorker.DoWork += searchWorker_DoWork;
             searchWorker.RunWorkerCompleted += searchWorker_RunWorkerCompleted;
@@ -235,6 +240,8 @@ namespace GymMembershipManagementSystem
         private void countRefreshTimer_Tick(object sender, EventArgs e)
         {
             DisplayMemberCounts();
+            LoadMemberJoinChart();
+            LoadMembershipFeeChart();
         }
         private void buttonViewMember_Click(object sender, EventArgs e)
         {
@@ -332,6 +339,174 @@ namespace GymMembershipManagementSystem
                 checkInListForm.UpdateDate(selectedDate);
                 checkInListForm.Activate();
             }
+        }
+
+        private void LoadMemberJoinChart()
+        {
+            // SQL queries for Regular and Student Members
+            string regularMemberQuery = @"
+                SELECT FORMAT(DateJoined, 'yyyy-MM') AS JoinMonth, COUNT(*) AS MemberCount
+                FROM gymMembership.dbo.RegularMember
+                GROUP BY FORMAT(DateJoined, 'yyyy-MM')
+                ORDER BY JoinMonth;";
+
+            string studentMemberQuery = @"
+                SELECT FORMAT(DateJoined, 'yyyy-MM') AS JoinMonth, COUNT(*) AS MemberCount
+                FROM gymMembership.dbo.StudentMember
+                GROUP BY FORMAT(DateJoined, 'yyyy-MM')
+                ORDER BY JoinMonth;";
+
+            // Fetch data for Regular and Student Members
+            Dictionary<string, int> regularData = FetchData(regularMemberQuery);
+            Dictionary<string, int> studentData = FetchData(studentMemberQuery);
+
+            // Merge keys (months) from both data sources
+            var allMonths = Enumerable.Range(1, 12).Select(i => new DateTime(2024, i, 1).ToString("yyyy-MM")).ToArray();
+
+            // Prepare chart series
+            Series regularSeries = new Series("Regular Members")
+            {
+                ChartType = SeriesChartType.Column,
+                Color = Color.Blue
+            };
+
+            Series studentSeries = new Series("Student Members")
+            {
+                ChartType = SeriesChartType.Column,
+                Color = Color.Green
+            };
+
+            // Add data to the series
+            foreach (var month in allMonths)
+            {
+                regularSeries.Points.AddXY(month, regularData.ContainsKey(month) ? regularData[month] : 0);
+                studentSeries.Points.AddXY(month, studentData.ContainsKey(month) ? studentData[month] : 0);
+            }
+
+            // Clear existing series and add the new ones
+            chartDetails.Series.Clear();
+            chartDetails.Series.Add(regularSeries);
+            chartDetails.Series.Add(studentSeries);
+
+            // Configure chart axes
+            chartDetails.ChartAreas[0].AxisX.Title = "Month";
+            chartDetails.ChartAreas[0].AxisY.Title = "Number of Members";
+
+            // Set Y-Axis Maximum value to 200
+            chartDetails.ChartAreas[0].AxisY.Maximum = 200;
+
+            // Add a legend
+            chartDetails.Legends.Clear();
+            chartDetails.Legends.Add(new Legend() { Docking = Docking.Top, Alignment = StringAlignment.Center });
+        }
+
+        private Dictionary<string, int> FetchData(string query)
+        {
+            var data = new Dictionary<string, int>();
+            using (SqlCommand cmd = new SqlCommand(query, sqlConnection))
+            {
+                try
+                {
+                    sqlConnection.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        string month = reader["JoinMonth"].ToString();
+                        int count = Convert.ToInt32(reader["MemberCount"]);
+                        data[month] = count;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error fetching data: {ex.Message}");
+                }
+                finally
+                {
+                    sqlConnection.Close();
+                }
+            }
+            return data;
+        }
+        private void LoadMembershipFeeChart()
+        {
+            // SQL queries to calculate sum of MembershipFee for each member type
+            string studentMemberQuery = "SELECT SUM(MembershipFee) AS TotalMembershipFee FROM [gymMembership].[dbo].[StudentMember]";
+            string regularMemberQuery = "SELECT SUM(MembershipFee) AS TotalMembershipFee FROM [gymMembership].[dbo].[RegularMember]";
+            string walkInMemberQuery = "SELECT SUM(MembershipFee) AS TotalMembershipFee FROM [gymMembership].[dbo].[WalkInMember]";
+
+            // Fetch the data
+            decimal studentFeeTotal = FetchMembershipFee(studentMemberQuery);
+            decimal regularFeeTotal = FetchMembershipFee(regularMemberQuery);
+            decimal walkInFeeTotal = FetchMembershipFee(walkInMemberQuery);
+
+            // Prepare chart series
+            Series studentSeries = new Series("Student Members")
+            {
+                ChartType = SeriesChartType.Bar,
+                Color = Color.Blue
+            };
+
+            Series regularSeries = new Series("Regular Members")
+            {
+                ChartType = SeriesChartType.Bar,
+                Color = Color.Green
+            };
+
+            Series walkInSeries = new Series("Walk-In Members")
+            {
+                ChartType = SeriesChartType.Bar,
+                Color = Color.Orange
+            };
+
+            // Add data to the series
+            studentSeries.Points.AddXY("Student Members", studentFeeTotal);
+            regularSeries.Points.AddXY("Regular Members", regularFeeTotal);
+            walkInSeries.Points.AddXY("Walk-In Members", walkInFeeTotal);
+
+            // Clear existing series and add new ones
+            chartMembershipFees.Series.Clear();
+            chartMembershipFees.Series.Add(studentSeries);
+            chartMembershipFees.Series.Add(regularSeries);
+            chartMembershipFees.Series.Add(walkInSeries);
+
+            // Configure chart axes
+            chartMembershipFees.ChartAreas[0].AxisX.Title = "Member Type";
+            chartMembershipFees.ChartAreas[0].AxisY.Title = "Total Membership Fee (Pesos)";
+
+            // Set the maximum value of the Y-axis to 1 million
+            chartMembershipFees.ChartAreas[0].AxisY.Maximum = 1000000;
+
+            // Add a legend
+            chartMembershipFees.Legends.Clear();
+            chartMembershipFees.Legends.Add(new Legend() { Docking = Docking.Top, Alignment = StringAlignment.Center });
+        }
+
+        private decimal FetchMembershipFee(string query)
+        {
+            decimal totalFee = 0;
+
+            using (SqlCommand cmd = new SqlCommand(query, sqlConnection))
+            {
+                try
+                {
+                    sqlConnection.Open();
+                    var result = cmd.ExecuteScalar();
+                    if (result != DBNull.Value)
+                    {
+                        totalFee = Convert.ToDecimal(result);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error fetching membership fee: {ex.Message}");
+                }
+                finally
+                {
+                    sqlConnection.Close();
+                }
+            }
+
+            return totalFee;
         }
 
     }
