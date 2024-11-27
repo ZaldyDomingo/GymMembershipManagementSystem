@@ -24,7 +24,7 @@ namespace GymMembershipManagementSystem
 
             InitializeComponent();
             InitializeDatabaseConnection();
-            LoadAllMembers();
+            LoadAllMembers();                   
             DisplayMemberCounts();
             LoadMemberJoinChart();
             LoadMembershipFeeChart();

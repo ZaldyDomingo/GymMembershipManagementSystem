@@ -26,23 +26,33 @@ namespace GymMembershipManagementSystem
         }
         private void MaskedAddressText()
         {
+            textBoxAddress.Text = "Address";
             textBoxAddress.ForeColor = Color.Gray;
-            SetPlaceholder(textBoxAddress, "Address");
-            textBoxAddress.KeyPress += MaskingMethods.ValidateNameInput;
+            // Use Singleton Pattern for placeholder management
+            MaskingMethod.Instance.AddPlaceholder(textBoxAddress, "Address");
+            textBoxAddress.KeyPress += MaskingMethod.Instance.ValidateNameInput;
+            textBoxAddress.Enter += (sender, e) => MaskingMethod.Instance.RemovePlaceholder(textBoxAddress, "Address");
+            textBoxAddress.Leave += (sender, e) => MaskingMethod.Instance.AddPlaceholder(textBoxAddress, "Address");
         }
+
         private void MaskedFirstNameText()
         {
-            textBoxFirstName.Text = "First name";
             textBoxFirstName.ForeColor = Color.Gray;
-            SetPlaceholder(textBoxFirstName, "First name");
-            textBoxFirstName.KeyPress += MaskingMethods.ValidateNameInput;
+            // Use Singleton Pattern for placeholder management
+            MaskingMethod.Instance.AddPlaceholder(textBoxFirstName, "First name");
+            textBoxFirstName.KeyPress += MaskingMethod.Instance.ValidateNameInput;
+            textBoxFirstName.Enter += (sender, e) => MaskingMethod.Instance.RemovePlaceholder(textBoxFirstName, "First name");
+            textBoxFirstName.Leave += (sender, e) => MaskingMethod.Instance.AddPlaceholder(textBoxFirstName, "First name");
         }
+
         private void MaskedLastNameText()
         {
-
             textBoxLastName.ForeColor = Color.Gray;
-            SetPlaceholder(textBoxLastName, "Last name");
-            textBoxLastName.KeyPress += MaskingMethods.ValidateNameInput;
+            // Use Singleton Pattern for placeholder management
+            MaskingMethod.Instance.AddPlaceholder(textBoxLastName, "Last name");
+            textBoxLastName.KeyPress += MaskingMethod.Instance.ValidateNameInput;
+            textBoxLastName.Enter += (sender, e) => MaskingMethod.Instance.RemovePlaceholder(textBoxLastName, "Last name");
+            textBoxLastName.Leave += (sender, e) => MaskingMethod.Instance.AddPlaceholder(textBoxLastName, "Last name");
         }
         private void SetPlaceholder(TextBox textBox, string placeholder)
         {

@@ -117,6 +117,7 @@
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\MaskingMethods.cs" />
+    <Compile Include="MaskingMethod.cs" />
     <Compile Include="MemberDetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>

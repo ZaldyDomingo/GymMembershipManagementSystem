@@ -19,47 +19,32 @@ namespace GymMembershipManagementSystem
         {
             InitializeComponent();
             InitializeDatabaseConnection();
-            MaskedFirstNameText();
-            MaskedLastNameText();
-            MaskedAddressText();
-            MaskedMemberPhoneNumber();
+            InitializeMaskedTextFields();
         }
         private void InitializeDatabaseConnection()
         {
             string connectionString = "Data Source=LAPTOP-9VQCFDCQ\\SQLEXPRESS01;Initial Catalog=gymMembership;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
             sqlConnection = new SqlConnection(connectionString);
         }
-        private void MaskedFirstNameText()
+        private void InitializeMaskedTextFields()
         {
-            textBoxFirstName.ForeColor = Color.Gray;
-            SetPlaceholder(textBoxFirstName, "First name");
-            textBoxFirstName.KeyPress += MaskingMethods.ValidateNameInput;
+            MaskTextField(textBoxFirstName, "First name");
+            MaskTextField(textBoxLastName, "Last name");
+            MaskTextField(textBoxAddress, "Address");
+            MaskTextField(textBoxPhoneNumber, "Phone Number");
         }
 
-        private void MaskedLastNameText()
+        private void MaskTextField(TextBox textBox, string placeholder)
         {
-            textBoxLastName.ForeColor = Color.Gray;
-            SetPlaceholder(textBoxLastName, "Last name");
-            textBoxLastName.KeyPress += MaskingMethods.ValidateNameInput;
-        }
-        private void MaskedAddressText()
-        {
-            textBoxAddress.ForeColor = Color.Gray;
-            SetPlaceholder(textBoxAddress, "Address");
-            textBoxAddress.KeyPress += MaskingMethods.ValidateNameInput;
-        }
-        private void MaskedMemberPhoneNumber()
-        {
-            textBoxPhoneNumber.ForeColor = Color.Gray;
-            SetPlaceholder(textBoxPhoneNumber, "Phone Number");
-            textBoxPhoneNumber.KeyPress += MaskingMethods.ValidateNameInput;
-        }
-        private void SetPlaceholder(TextBox textBox, string placeholder)
-        {
-            textBox.Text = placeholder;
+            MaskingMethod.Instance.AddPlaceholder(textBox, placeholder);
             textBox.ForeColor = Color.Gray;
-            textBox.Enter += (sender, e) => MaskingMethods.RemovePlaceholder(textBox, placeholder);
-            textBox.Leave += (sender, e) => MaskingMethods.AddPlaceholder(textBox, placeholder);
+
+            // Add placeholder behavior
+            textBox.Enter += (sender, e) => MaskingMethod.Instance.RemovePlaceholder(textBox, placeholder);
+            textBox.Leave += (sender, e) => MaskingMethod.Instance.AddPlaceholder(textBox, placeholder);
+
+            // Add input validation
+            textBox.KeyPress += MaskingMethod.Instance.ValidateNameInput;
         }
         private void buttonBack_Click(object sender, EventArgs e)
         {
