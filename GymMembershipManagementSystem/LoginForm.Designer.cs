@@ -92,7 +92,7 @@
             // 
             this.checkBoxPassword.AutoSize = true;
             this.checkBoxPassword.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxPassword.Location = new System.Drawing.Point(109, 278);
+            this.checkBoxPassword.Location = new System.Drawing.Point(35, 273);
             this.checkBoxPassword.Name = "checkBoxPassword";
             this.checkBoxPassword.Size = new System.Drawing.Size(165, 26);
             this.checkBoxPassword.TabIndex = 10;

@@ -35,16 +35,21 @@ namespace GymMembershipManagementSystem
         private void MaskedUserNameText()
         {
             textBoxUserName.ForeColor = Color.Gray;
-            SetPlaceholder(textBoxUserName, "Username");
-            textBoxUserName.KeyPress += MaskingMethods.ValidateNameInput;
+            // Use Singleton to manage placeholder behavior
+            MaskingMethod.Instance.AddPlaceholder(textBoxUserName, "Username");
+            textBoxUserName.KeyPress += MaskingMethod.Instance.ValidateNameInput;
+
+            textBoxUserName.Enter += (sender, e) => MaskingMethod.Instance.RemovePlaceholder(textBoxUserName, "Username");
+            textBoxUserName.Leave += (sender, e) => MaskingMethod.Instance.AddPlaceholder(textBoxUserName, "Username");
         }
+
         public void MaskedUserPasswordText()
         {
             textBoxPassword.ForeColor = Color.Gray;
             textBoxPassword.UseSystemPasswordChar = false; // Initially not masked
             textBoxPassword.Text = "Password"; // Set placeholder text initially
 
-            // Attach events to handle placeholder behavior
+            // Use Singleton to handle placeholder logic
             textBoxPassword.Enter += (sender, e) =>
             {
                 if (textBoxPassword.Text == "Password")
@@ -59,19 +64,11 @@ namespace GymMembershipManagementSystem
             {
                 if (string.IsNullOrWhiteSpace(textBoxPassword.Text))
                 {
-                    textBoxPassword.UseSystemPasswordChar = false; 
-                    textBoxPassword.Text = "Password"; 
+                    textBoxPassword.UseSystemPasswordChar = false;
+                    textBoxPassword.Text = "Password";
                     textBoxPassword.ForeColor = Color.Gray;
                 }
             };
-
-        }
-        private void SetPlaceholder(TextBox textBox, string placeholder)
-        {
-            textBox.Text = placeholder;
-            textBox.ForeColor = Color.Gray;
-            textBox.Enter += (sender, e) => MaskingMethods.RemovePlaceholder(textBox, placeholder);
-            textBox.Leave += (sender, e) => MaskingMethods.AddPlaceholder(textBox, placeholder);
         }
 
         private void checkBoxPassword_CheckedChanged(object sender, EventArgs e)

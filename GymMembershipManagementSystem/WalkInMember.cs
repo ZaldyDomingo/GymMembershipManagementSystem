@@ -21,11 +21,7 @@ namespace GymMembershipManagementSystem
             InitializeDatabaseConnection();
             InitializeMaskedTextFields();
         }
-        private void InitializeDatabaseConnection()
-        {
-            string connectionString = "Data Source=LAPTOP-9VQCFDCQ\\SQLEXPRESS01;Initial Catalog=gymMembership;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
-            sqlConnection = new SqlConnection(connectionString);
-        }
+
         private void InitializeMaskedTextFields()
         {
             MaskTextField(textBoxFirstName, "First name");
@@ -39,12 +35,15 @@ namespace GymMembershipManagementSystem
             MaskingMethod.Instance.AddPlaceholder(textBox, placeholder);
             textBox.ForeColor = Color.Gray;
 
-            // Add placeholder behavior
             textBox.Enter += (sender, e) => MaskingMethod.Instance.RemovePlaceholder(textBox, placeholder);
             textBox.Leave += (sender, e) => MaskingMethod.Instance.AddPlaceholder(textBox, placeholder);
 
-            // Add input validation
             textBox.KeyPress += MaskingMethod.Instance.ValidateNameInput;
+        }
+        private void InitializeDatabaseConnection()
+        {
+            string connectionString = "Data Source=LAPTOP-9VQCFDCQ\\SQLEXPRESS01;Initial Catalog=gymMembership;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
+            sqlConnection = new SqlConnection(connectionString);
         }
         private void buttonBack_Click(object sender, EventArgs e)
         {

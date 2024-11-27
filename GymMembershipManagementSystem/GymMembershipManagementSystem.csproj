@@ -116,7 +116,6 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\MaskingMethods.cs" />
     <Compile Include="MaskingMethod.cs" />
     <Compile Include="MemberDetailsForm.cs">
       <SubType>Form</SubType>
@@ -318,6 +317,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Classes\" />
     <Folder Include="Forms\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

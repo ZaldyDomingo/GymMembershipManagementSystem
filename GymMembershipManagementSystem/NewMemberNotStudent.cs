@@ -54,13 +54,7 @@ namespace GymMembershipManagementSystem
             textBoxLastName.Enter += (sender, e) => MaskingMethod.Instance.RemovePlaceholder(textBoxLastName, "Last name");
             textBoxLastName.Leave += (sender, e) => MaskingMethod.Instance.AddPlaceholder(textBoxLastName, "Last name");
         }
-        private void SetPlaceholder(TextBox textBox, string placeholder)
-        {
-            textBox.Text = placeholder;
-            textBox.ForeColor = Color.Gray;
-            textBox.Enter += (sender, e) => MaskingMethods.RemovePlaceholder(textBox, placeholder);
-            textBox.Leave += (sender, e) => MaskingMethods.AddPlaceholder(textBox, placeholder);
-        }
+   
         private void InitializeDatabaseConnection()
         {
             // Set up the connection string for your SQL Server database
