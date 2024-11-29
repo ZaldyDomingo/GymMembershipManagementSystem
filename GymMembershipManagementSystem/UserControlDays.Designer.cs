@@ -35,7 +35,7 @@
             // 
             this.labelDays.AutoSize = true;
             this.labelDays.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDays.Location = new System.Drawing.Point(3, 13);
+            this.labelDays.Location = new System.Drawing.Point(16, 15);
             this.labelDays.Name = "labelDays";
             this.labelDays.Size = new System.Drawing.Size(32, 23);
             this.labelDays.TabIndex = 0;

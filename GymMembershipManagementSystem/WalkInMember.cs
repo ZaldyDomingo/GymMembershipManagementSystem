@@ -114,7 +114,7 @@ namespace GymMembershipManagementSystem
         {
             textBoxFirstName.Clear();
             textBoxLastName.Clear();
-            textBoxAddress.Clear();
+            textBoxAddress.Clear();                                                                                                                 
             textBoxPhoneNumber.Clear();
             dateTimePickerJoinedDate.Value = DateTime.Now; // Reset the DateTimePicker to the current date
         }

@@ -64,72 +64,118 @@ namespace GymMembershipManagementSystem
 
         private void buttonRegister_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(textBoxFirstName.Text) ||
-                string.IsNullOrWhiteSpace(textBoxLastName.Text) ||
-                string.IsNullOrWhiteSpace(textBoxAge.Text) ||
-                string.IsNullOrWhiteSpace(textBoxAddress.Text) ||
-                string.IsNullOrWhiteSpace(textBoxMobileNumber.Text) ||
-                string.IsNullOrWhiteSpace(textBoxEmail.Text) ||
-                string.IsNullOrWhiteSpace(textBoxGuardianFullName.Text) ||
-                string.IsNullOrWhiteSpace(textBoxGuardianNumber.Text))
-            {
-                MessageBox.Show("Please fill in all required fields.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
             try
             {
-                string firstname = textBoxFirstName.Text;
-                string lastname = textBoxLastName.Text;
-                string dateofbirth = dateTimePickerDOB.Value.ToString("yyyy-MM-dd");
-                int age = int.Parse(textBoxAge.Text);
-                string homeaddress = textBoxAddress.Text;
-                string gender = radioButtonMale.Checked ? "Male" : "Female";
-                string mobileNumber = textBoxMobileNumber.Text;
-                string email = textBoxEmail.Text;
-                string guardianname = textBoxGuardianFullName.Text;
-                string guardiannumber = textBoxGuardianNumber.Text;
-                string datejoined = dateTimePickerJoinedDate.Value.ToString("yyyy-MM-dd");
-
-                DateTime startDate = dateTimePickerJoinedDate.Value;
-                DateTime expirationDate = startDate.AddDays(31);
-
-                byte[] imageBytes = ConvertImageToByteArray(pictureBoxMember.Image);
-
-                // Update the table name to NewRegularMemberForm
-                string query = "INSERT INTO RegularMember (FirstName, LastName, DateOfBirth, Age, Gender, Address, MobileNumber, Email, EmergencyContactName, EmergencyContactPhone, DateJoined, ProfileImage, MembershipStartDate, MembershipFee, MembershipEndDate) " +
-                               "VALUES (@FirstName, @LastName, @DateOfBirth, @Age, @Gender, @Address, @MobileNumber, @Email, @EmergencyContactName, @EmergencyContactPhone, @DateJoined, @ProfileImage, @MembershipStartDate, @MembershipFee, @MembershipEndDate)";
-
-                using (SqlCommand command = new SqlCommand(query, sqlConnection))
+                if (string.IsNullOrWhiteSpace(textBoxFirstName.Text) ||
+                    string.IsNullOrWhiteSpace(textBoxLastName.Text) ||
+                    string.IsNullOrWhiteSpace(textBoxAge.Text) ||
+                    string.IsNullOrWhiteSpace(textBoxAddress.Text) ||
+                    string.IsNullOrWhiteSpace(textBoxMobileNumber.Text) ||
+                    string.IsNullOrWhiteSpace(textBoxEmail.Text) ||
+                    string.IsNullOrWhiteSpace(textBoxGuardianFullName.Text) ||
+                    string.IsNullOrWhiteSpace(textBoxGuardianNumber.Text))
                 {
-                    command.Parameters.AddWithValue("@FirstName", firstname);
-                    command.Parameters.AddWithValue("@LastName", lastname);
-                    command.Parameters.AddWithValue("@DateOfBirth", dateofbirth);
-                    command.Parameters.AddWithValue("@Age", age);
-                    command.Parameters.AddWithValue("@Gender", gender);
-                    command.Parameters.AddWithValue("@Address", homeaddress);
-                    command.Parameters.AddWithValue("@MobileNumber", mobileNumber);
-                    command.Parameters.AddWithValue("@Email", email);
-                    command.Parameters.AddWithValue("@EmergencyContactName", guardianname);
-                    command.Parameters.AddWithValue("@EmergencyContactPhone", guardiannumber);
-                    command.Parameters.AddWithValue("@DateJoined", datejoined);
-                    command.Parameters.AddWithValue("@ProfileImage", imageBytes);
-                    command.Parameters.AddWithValue("@MembershipStartDate", startDate.ToString("yyyy-MM-dd"));
-                    command.Parameters.AddWithValue("@MembershipFee", MembershipFee);
-                    command.Parameters.AddWithValue("@MembershipEndDate", expirationDate.ToString("yyyy-MM-dd"));
+                    MessageBox.Show("Please fill in all required fields.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-                    sqlConnection.Open();
-                    command.ExecuteNonQuery();
-                    sqlConnection.Close();
+                try
+                {
+                    // Collect member details
+                    string firstname = textBoxFirstName.Text;
+                    string lastname = textBoxLastName.Text;
+                    string dateofbirth = dateTimePickerDOB.Value.ToString("yyyy-MM-dd");
+                    int age = int.Parse(textBoxAge.Text);
+                    string homeaddress = textBoxAddress.Text;
+                    string gender = radioButtonMale.Checked ? "Male" : "Female";
+                    string mobileNumber = textBoxMobileNumber.Text;
+                    string email = textBoxEmail.Text;
+                    string guardianname = textBoxGuardianFullName.Text;
+                    string guardiannumber = textBoxGuardianNumber.Text;
+                    string datejoined = dateTimePickerJoinedDate.Value.ToString("yyyy-MM-dd");
+                    DateTime startDate = dateTimePickerJoinedDate.Value;
+                    DateTime expirationDate = startDate.AddDays(31); // Add 31 days for membership
 
-                    MessageBox.Show("Member registered successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ClearFormFields();
-                    this.Close();
+                    byte[] imageBytes = ConvertImageToByteArray(pictureBoxMember.Image);
+
+                    // Insert into database
+                    string query = "INSERT INTO RegularMember (FirstName, LastName, DateOfBirth, Age, Gender, Address, MobileNumber, Email, EmergencyContactName, EmergencyContactPhone, DateJoined, ProfileImage, MembershipStartDate, MembershipFee, MembershipEndDate) " +
+                                   "VALUES (@FirstName, @LastName, @DateOfBirth, @Age, @Gender, @Address, @MobileNumber, @Email, @EmergencyContactName, @EmergencyContactPhone, @DateJoined, @ProfileImage, @MembershipStartDate, @MembershipFee, @MembershipEndDate)";
+
+                    using (SqlCommand command = new SqlCommand(query, sqlConnection))
+                    {
+                        command.Parameters.AddWithValue("@FirstName", firstname);
+                        command.Parameters.AddWithValue("@LastName", lastname);
+                        command.Parameters.AddWithValue("@DateOfBirth", dateofbirth);
+                        command.Parameters.AddWithValue("@Age", age);
+                        command.Parameters.AddWithValue("@Gender", gender);
+                        command.Parameters.AddWithValue("@Address", homeaddress);
+                        command.Parameters.AddWithValue("@MobileNumber", mobileNumber);
+                        command.Parameters.AddWithValue("@Email", email);
+                        command.Parameters.AddWithValue("@EmergencyContactName", guardianname);
+                        command.Parameters.AddWithValue("@EmergencyContactPhone", guardiannumber);
+                        command.Parameters.AddWithValue("@DateJoined", datejoined);
+                        command.Parameters.AddWithValue("@ProfileImage", imageBytes);
+                        command.Parameters.AddWithValue("@MembershipStartDate", startDate.ToString("yyyy-MM-dd"));
+                        command.Parameters.AddWithValue("@MembershipFee", MembershipFee);
+                        command.Parameters.AddWithValue("@MembershipEndDate", expirationDate.ToString("yyyy-MM-dd"));
+
+                        sqlConnection.Open();
+                        command.ExecuteNonQuery();
+                        sqlConnection.Close();
+
+                        // Generate Invoice
+                        string savePath = GetSavePath($"{firstname}_{lastname}'s_Invoice.pdf");
+                        try
+                        {
+                            InvoiceGenerator.GenerateInvoice(
+                                firstname,
+                                lastname,
+                                homeaddress,
+                                mobileNumber,
+                                MembershipFee,
+                                startDate,
+                                expirationDate,
+                                savePath
+                            );
+                            MessageBox.Show($"Member registered successfully! Invoice saved at: {savePath}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Member registered, but failed to generate invoice: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+
+                        // Clear form
+                        ClearFormFields();
+                        this.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private string GetSavePath(string defaultFileName)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "PDF Files|*.pdf";
+                saveFileDialog.Title = "Save Invoice As";
+                saveFileDialog.FileName = defaultFileName;
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    return saveFileDialog.FileName;
+                }
+                else
+                {
+                    throw new Exception("Save operation was canceled.");
+                }
             }
         }
         private void ClearFormFields()
