@@ -205,12 +205,6 @@
     <Compile Include="MembershipTransactionFees.Designer.cs">
       <DependentUpon>MembershipTransactionFees.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewMainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NewMainForm.Designer.cs">
-      <DependentUpon>NewMainForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="NewMemberForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -251,12 +245,6 @@
     </Compile>
     <Compile Include="UserControlDays.Designer.cs">
       <DependentUpon>UserControlDays.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ViewAllMember.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ViewAllMember.Designer.cs">
-      <DependentUpon>ViewAllMember.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewRegularMember.cs">
       <SubType>Form</SubType>
@@ -303,9 +291,6 @@
     <EmbeddedResource Include="MembershipTransactionFees.resx">
       <DependentUpon>MembershipTransactionFees.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewMainForm.resx">
-      <DependentUpon>NewMainForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="NewMemberForm.resx">
       <DependentUpon>NewMemberForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -329,9 +314,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlDays.resx">
       <DependentUpon>UserControlDays.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ViewAllMember.resx">
-      <DependentUpon>ViewAllMember.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewRegularMember.resx">
       <DependentUpon>ViewRegularMember.cs</DependentUpon>

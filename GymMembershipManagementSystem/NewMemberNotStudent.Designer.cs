@@ -92,8 +92,9 @@
             this.panelContainer.Controls.Add(this.panelHeader);
             this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContainer.Location = new System.Drawing.Point(0, 0);
+            this.panelContainer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new System.Drawing.Size(1150, 729);
+            this.panelContainer.Size = new System.Drawing.Size(940, 694);
             this.panelContainer.TabIndex = 0;
             // 
             // label10
@@ -101,7 +102,8 @@
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.label10.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(400, 467);
+            this.label10.Location = new System.Drawing.Point(327, 445);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(46, 20);
             this.label10.TabIndex = 66;
@@ -112,7 +114,8 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.label9.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(45, 467);
+            this.label9.Location = new System.Drawing.Point(37, 445);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(122, 20);
             this.label9.TabIndex = 65;
@@ -123,7 +126,8 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.label4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(436, 236);
+            this.label4.Location = new System.Drawing.Point(357, 225);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 20);
             this.label4.TabIndex = 64;
@@ -137,45 +141,50 @@
             this.panel2.Controls.Add(this.textBoxGuardianNumber);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.textBoxGuardianFullName);
-            this.panel2.Location = new System.Drawing.Point(12, 549);
+            this.panel2.Location = new System.Drawing.Point(10, 522);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(744, 169);
+            this.panel2.Size = new System.Drawing.Size(609, 161);
             this.panel2.TabIndex = 63;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(397, 77);
+            this.label8.Location = new System.Drawing.Point(325, 73);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(142, 21);
+            this.label8.Size = new System.Drawing.Size(118, 20);
             this.label8.TabIndex = 34;
             this.label8.Text = "Phone Number";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(43, 77);
+            this.label3.Location = new System.Drawing.Point(35, 73);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(95, 21);
+            this.label3.Size = new System.Drawing.Size(79, 20);
             this.label3.TabIndex = 32;
             this.label3.Text = "Full Name";
             // 
             // textBoxGuardianNumber
             // 
             this.textBoxGuardianNumber.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxGuardianNumber.Location = new System.Drawing.Point(392, 108);
-            this.textBoxGuardianNumber.MaximumSize = new System.Drawing.Size(308, 39);
-            this.textBoxGuardianNumber.MinimumSize = new System.Drawing.Size(308, 39);
+            this.textBoxGuardianNumber.Location = new System.Drawing.Point(321, 102);
+            this.textBoxGuardianNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxGuardianNumber.MaximumSize = new System.Drawing.Size(253, 37);
+            this.textBoxGuardianNumber.MinimumSize = new System.Drawing.Size(253, 37);
             this.textBoxGuardianNumber.Multiline = true;
             this.textBoxGuardianNumber.Name = "textBoxGuardianNumber";
-            this.textBoxGuardianNumber.Size = new System.Drawing.Size(308, 39);
+            this.textBoxGuardianNumber.Size = new System.Drawing.Size(253, 37);
             this.textBoxGuardianNumber.TabIndex = 30;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(15, 24);
+            this.label2.Location = new System.Drawing.Point(12, 22);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(567, 34);
             this.label2.TabIndex = 29;
@@ -184,22 +193,24 @@
             // textBoxGuardianFullName
             // 
             this.textBoxGuardianFullName.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxGuardianFullName.Location = new System.Drawing.Point(37, 108);
-            this.textBoxGuardianFullName.MaximumSize = new System.Drawing.Size(308, 39);
-            this.textBoxGuardianFullName.MinimumSize = new System.Drawing.Size(308, 39);
+            this.textBoxGuardianFullName.Location = new System.Drawing.Point(30, 102);
+            this.textBoxGuardianFullName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxGuardianFullName.MaximumSize = new System.Drawing.Size(253, 37);
+            this.textBoxGuardianFullName.MinimumSize = new System.Drawing.Size(253, 37);
             this.textBoxGuardianFullName.Multiline = true;
             this.textBoxGuardianFullName.Name = "textBoxGuardianFullName";
-            this.textBoxGuardianFullName.Size = new System.Drawing.Size(308, 39);
+            this.textBoxGuardianFullName.Size = new System.Drawing.Size(253, 37);
             this.textBoxGuardianFullName.TabIndex = 28;
             // 
             // buttonBrowse
             // 
             this.buttonBrowse.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonBrowse.Location = new System.Drawing.Point(892, 479);
-            this.buttonBrowse.MaximumSize = new System.Drawing.Size(121, 54);
-            this.buttonBrowse.MinimumSize = new System.Drawing.Size(121, 54);
+            this.buttonBrowse.Location = new System.Drawing.Point(730, 456);
+            this.buttonBrowse.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonBrowse.MaximumSize = new System.Drawing.Size(99, 52);
+            this.buttonBrowse.MinimumSize = new System.Drawing.Size(99, 52);
             this.buttonBrowse.Name = "buttonBrowse";
-            this.buttonBrowse.Size = new System.Drawing.Size(121, 54);
+            this.buttonBrowse.Size = new System.Drawing.Size(99, 52);
             this.buttonBrowse.TabIndex = 62;
             this.buttonBrowse.Text = "Browse";
             this.buttonBrowse.UseVisualStyleBackColor = true;
@@ -208,11 +219,12 @@
             // pictureBoxMember
             // 
             this.pictureBoxMember.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxMember.Image")));
-            this.pictureBoxMember.Location = new System.Drawing.Point(776, 161);
-            this.pictureBoxMember.MaximumSize = new System.Drawing.Size(355, 312);
-            this.pictureBoxMember.MinimumSize = new System.Drawing.Size(355, 312);
+            this.pictureBoxMember.Location = new System.Drawing.Point(634, 153);
+            this.pictureBoxMember.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBoxMember.MaximumSize = new System.Drawing.Size(290, 298);
+            this.pictureBoxMember.MinimumSize = new System.Drawing.Size(290, 298);
             this.pictureBoxMember.Name = "pictureBoxMember";
-            this.pictureBoxMember.Size = new System.Drawing.Size(355, 312);
+            this.pictureBoxMember.Size = new System.Drawing.Size(290, 298);
             this.pictureBoxMember.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxMember.TabIndex = 60;
             this.pictureBoxMember.TabStop = false;
@@ -223,7 +235,8 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.Control;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(782, 550);
+            this.label1.Location = new System.Drawing.Point(640, 524);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(98, 20);
             this.label1.TabIndex = 59;
@@ -232,45 +245,49 @@
             // textBoxAddress
             // 
             this.textBoxAddress.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxAddress.Location = new System.Drawing.Point(400, 392);
-            this.textBoxAddress.MaximumSize = new System.Drawing.Size(308, 39);
-            this.textBoxAddress.MinimumSize = new System.Drawing.Size(308, 39);
+            this.textBoxAddress.Location = new System.Drawing.Point(327, 373);
+            this.textBoxAddress.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxAddress.MaximumSize = new System.Drawing.Size(253, 37);
+            this.textBoxAddress.MinimumSize = new System.Drawing.Size(253, 37);
             this.textBoxAddress.Multiline = true;
             this.textBoxAddress.Name = "textBoxAddress";
-            this.textBoxAddress.Size = new System.Drawing.Size(308, 39);
+            this.textBoxAddress.Size = new System.Drawing.Size(253, 37);
             this.textBoxAddress.TabIndex = 58;
             // 
             // textBoxMobileNumber
             // 
             this.textBoxMobileNumber.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxMobileNumber.Location = new System.Drawing.Point(45, 490);
-            this.textBoxMobileNumber.MaximumSize = new System.Drawing.Size(308, 39);
-            this.textBoxMobileNumber.MinimumSize = new System.Drawing.Size(308, 39);
+            this.textBoxMobileNumber.Location = new System.Drawing.Point(37, 467);
+            this.textBoxMobileNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxMobileNumber.MaximumSize = new System.Drawing.Size(253, 37);
+            this.textBoxMobileNumber.MinimumSize = new System.Drawing.Size(253, 37);
             this.textBoxMobileNumber.Multiline = true;
             this.textBoxMobileNumber.Name = "textBoxMobileNumber";
-            this.textBoxMobileNumber.Size = new System.Drawing.Size(308, 39);
+            this.textBoxMobileNumber.Size = new System.Drawing.Size(253, 37);
             this.textBoxMobileNumber.TabIndex = 57;
             // 
             // textBoxEmail
             // 
             this.textBoxEmail.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxEmail.Location = new System.Drawing.Point(400, 490);
-            this.textBoxEmail.MaximumSize = new System.Drawing.Size(308, 39);
-            this.textBoxEmail.MinimumSize = new System.Drawing.Size(308, 39);
+            this.textBoxEmail.Location = new System.Drawing.Point(327, 467);
+            this.textBoxEmail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxEmail.MaximumSize = new System.Drawing.Size(253, 37);
+            this.textBoxEmail.MinimumSize = new System.Drawing.Size(253, 37);
             this.textBoxEmail.Multiline = true;
             this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(308, 39);
+            this.textBoxEmail.Size = new System.Drawing.Size(253, 37);
             this.textBoxEmail.TabIndex = 56;
             // 
             // textBoxAge
             // 
             this.textBoxAge.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxAge.Location = new System.Drawing.Point(434, 262);
-            this.textBoxAge.MaximumSize = new System.Drawing.Size(137, 39);
-            this.textBoxAge.MinimumSize = new System.Drawing.Size(137, 39);
+            this.textBoxAge.Location = new System.Drawing.Point(356, 249);
+            this.textBoxAge.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxAge.MaximumSize = new System.Drawing.Size(113, 37);
+            this.textBoxAge.MinimumSize = new System.Drawing.Size(113, 37);
             this.textBoxAge.Multiline = true;
             this.textBoxAge.Name = "textBoxAge";
-            this.textBoxAge.Size = new System.Drawing.Size(137, 39);
+            this.textBoxAge.Size = new System.Drawing.Size(113, 37);
             this.textBoxAge.TabIndex = 53;
             // 
             // label6
@@ -278,7 +295,8 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.label6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(45, 236);
+            this.label6.Location = new System.Drawing.Point(37, 225);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(99, 20);
             this.label6.TabIndex = 52;
@@ -289,7 +307,8 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.label5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(65, 364);
+            this.label5.Location = new System.Drawing.Point(53, 347);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(66, 20);
             this.label5.TabIndex = 51;
@@ -301,12 +320,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxFirstName.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxFirstName.Location = new System.Drawing.Point(41, 150);
-            this.textBoxFirstName.MaximumSize = new System.Drawing.Size(312, 39);
-            this.textBoxFirstName.MinimumSize = new System.Drawing.Size(312, 39);
+            this.textBoxFirstName.Location = new System.Drawing.Point(34, 142);
+            this.textBoxFirstName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxFirstName.MaximumSize = new System.Drawing.Size(256, 37);
+            this.textBoxFirstName.MinimumSize = new System.Drawing.Size(256, 37);
             this.textBoxFirstName.Multiline = true;
             this.textBoxFirstName.Name = "textBoxFirstName";
-            this.textBoxFirstName.Size = new System.Drawing.Size(312, 39);
+            this.textBoxFirstName.Size = new System.Drawing.Size(256, 37);
             this.textBoxFirstName.TabIndex = 50;
             // 
             // buttonRegister
@@ -315,11 +335,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonRegister.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonRegister.Location = new System.Drawing.Point(820, 637);
-            this.buttonRegister.MaximumSize = new System.Drawing.Size(257, 64);
-            this.buttonRegister.MinimumSize = new System.Drawing.Size(257, 64);
+            this.buttonRegister.Location = new System.Drawing.Point(670, 607);
+            this.buttonRegister.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonRegister.MaximumSize = new System.Drawing.Size(210, 61);
+            this.buttonRegister.MinimumSize = new System.Drawing.Size(210, 61);
             this.buttonRegister.Name = "buttonRegister";
-            this.buttonRegister.Size = new System.Drawing.Size(257, 64);
+            this.buttonRegister.Size = new System.Drawing.Size(210, 61);
             this.buttonRegister.TabIndex = 49;
             this.buttonRegister.Text = "Register";
             this.buttonRegister.UseVisualStyleBackColor = true;
@@ -328,28 +349,31 @@
             // dateTimePickerJoinedDate
             // 
             this.dateTimePickerJoinedDate.CalendarFont = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerJoinedDate.Location = new System.Drawing.Point(782, 578);
-            this.dateTimePickerJoinedDate.MaximumSize = new System.Drawing.Size(350, 30);
-            this.dateTimePickerJoinedDate.MinimumSize = new System.Drawing.Size(350, 30);
+            this.dateTimePickerJoinedDate.Location = new System.Drawing.Point(640, 551);
+            this.dateTimePickerJoinedDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePickerJoinedDate.MaximumSize = new System.Drawing.Size(288, 30);
+            this.dateTimePickerJoinedDate.MinimumSize = new System.Drawing.Size(288, 30);
             this.dateTimePickerJoinedDate.Name = "dateTimePickerJoinedDate";
-            this.dateTimePickerJoinedDate.Size = new System.Drawing.Size(350, 30);
+            this.dateTimePickerJoinedDate.Size = new System.Drawing.Size(288, 30);
             this.dateTimePickerJoinedDate.TabIndex = 48;
             // 
             // dateTimePickerDOB
             // 
             this.dateTimePickerDOB.CalendarFont = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerDOB.Location = new System.Drawing.Point(45, 262);
-            this.dateTimePickerDOB.MaximumSize = new System.Drawing.Size(337, 30);
-            this.dateTimePickerDOB.MinimumSize = new System.Drawing.Size(337, 30);
+            this.dateTimePickerDOB.Location = new System.Drawing.Point(37, 249);
+            this.dateTimePickerDOB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePickerDOB.MaximumSize = new System.Drawing.Size(276, 30);
+            this.dateTimePickerDOB.MinimumSize = new System.Drawing.Size(276, 30);
             this.dateTimePickerDOB.Name = "dateTimePickerDOB";
-            this.dateTimePickerDOB.Size = new System.Drawing.Size(337, 30);
+            this.dateTimePickerDOB.Size = new System.Drawing.Size(276, 30);
             this.dateTimePickerDOB.TabIndex = 47;
             // 
             // radioButtonMale
             // 
             this.radioButtonMale.AutoSize = true;
             this.radioButtonMale.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonMale.Location = new System.Drawing.Point(67, 394);
+            this.radioButtonMale.Location = new System.Drawing.Point(55, 375);
+            this.radioButtonMale.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.radioButtonMale.Name = "radioButtonMale";
             this.radioButtonMale.Size = new System.Drawing.Size(80, 27);
             this.radioButtonMale.TabIndex = 46;
@@ -361,7 +385,8 @@
             // 
             this.radioButtonFemale.AutoSize = true;
             this.radioButtonFemale.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonFemale.Location = new System.Drawing.Point(165, 394);
+            this.radioButtonFemale.Location = new System.Drawing.Point(135, 375);
+            this.radioButtonFemale.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.radioButtonFemale.Name = "radioButtonFemale";
             this.radioButtonFemale.Size = new System.Drawing.Size(105, 27);
             this.radioButtonFemale.TabIndex = 45;
@@ -372,12 +397,13 @@
             // textBoxLastName
             // 
             this.textBoxLastName.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxLastName.Location = new System.Drawing.Point(400, 150);
-            this.textBoxLastName.MaximumSize = new System.Drawing.Size(312, 39);
-            this.textBoxLastName.MinimumSize = new System.Drawing.Size(312, 39);
+            this.textBoxLastName.Location = new System.Drawing.Point(327, 142);
+            this.textBoxLastName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxLastName.MaximumSize = new System.Drawing.Size(256, 37);
+            this.textBoxLastName.MinimumSize = new System.Drawing.Size(256, 37);
             this.textBoxLastName.Multiline = true;
             this.textBoxLastName.Name = "textBoxLastName";
-            this.textBoxLastName.Size = new System.Drawing.Size(312, 39);
+            this.textBoxLastName.Size = new System.Drawing.Size(256, 37);
             this.textBoxLastName.TabIndex = 44;
             // 
             // panelHeader
@@ -387,8 +413,9 @@
             this.panelHeader.Controls.Add(this.panel1);
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
+            this.panelHeader.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(1150, 74);
+            this.panelHeader.Size = new System.Drawing.Size(940, 71);
             this.panelHeader.TabIndex = 43;
             // 
             // label7
@@ -398,7 +425,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(392, 24);
+            this.label7.Location = new System.Drawing.Point(321, 22);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(312, 37);
             this.label7.TabIndex = 23;
@@ -407,31 +435,33 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.buttonBack);
-            this.panel1.Location = new System.Drawing.Point(2, 24);
+            this.panel1.Location = new System.Drawing.Point(1, 22);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(55, 45);
+            this.panel1.Size = new System.Drawing.Size(45, 42);
             this.panel1.TabIndex = 41;
             // 
             // buttonBack
             // 
             this.buttonBack.BackColor = System.Drawing.Color.RosyBrown;
             this.buttonBack.Image = ((System.Drawing.Image)(resources.GetObject("buttonBack.Image")));
-            this.buttonBack.Location = new System.Drawing.Point(-5, -21);
+            this.buttonBack.Location = new System.Drawing.Point(-4, -20);
+            this.buttonBack.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonBack.Name = "buttonBack";
-            this.buttonBack.Size = new System.Drawing.Size(78, 72);
+            this.buttonBack.Size = new System.Drawing.Size(64, 68);
             this.buttonBack.TabIndex = 40;
             this.buttonBack.UseVisualStyleBackColor = false;
             this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
             // NewMemberNotStudent
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1150, 729);
+            this.ClientSize = new System.Drawing.Size(940, 694);
             this.Controls.Add(this.panelContainer);
-            this.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "NewMemberNotStudent";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NewMemberNotStudent";

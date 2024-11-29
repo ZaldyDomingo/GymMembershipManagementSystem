@@ -103,13 +103,13 @@ namespace GymMembershipManagementSystem
             Series studentSeries = new Series("Student Members")
             {
                 ChartType = SeriesChartType.Bar,
-                Color = Color.Blue
+                Color = Color.Silver
             };
 
             Series regularSeries = new Series("Regular Members")
             {
                 ChartType = SeriesChartType.Bar,
-                Color = Color.Green
+                Color = Color.Khaki
             };
 
             Series walkInSeries = new Series("Walk-In Members")

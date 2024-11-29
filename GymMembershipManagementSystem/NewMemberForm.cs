@@ -26,6 +26,11 @@ namespace GymMembershipManagementSystem
             MaskedFirstNameText();
             MaskedLastNameText();
             MaskedAddressText();
+            MaskedAgeText();
+            MaskedMobileNumber();
+            MaskedEmail();
+            MaskedGuardianFullName();
+            MaskedGuardianMobileNumber();
         }
 
         private void MaskedAddressText()
@@ -58,7 +63,51 @@ namespace GymMembershipManagementSystem
             textBoxLastName.Enter += (sender, e) => MaskingMethod.Instance.RemovePlaceholder(textBoxLastName, "Last name");
             textBoxLastName.Leave += (sender, e) => MaskingMethod.Instance.AddPlaceholder(textBoxLastName, "Last name");
         }
-
+        private void MaskedAgeText()
+        {
+            textBoxAge.ForeColor = Color.Gray;
+            // Use Singleton Pattern for placeholder management
+            MaskingMethod.Instance.AddPlaceholder(textBoxAge, "Age");
+            textBoxAge.KeyPress += MaskingMethod.Instance.ValidateNameInput;
+            textBoxAge.Enter += (sender, e) => MaskingMethod.Instance.RemovePlaceholder(textBoxAge, "Age");
+            textBoxAge.Leave += (sender, e) => MaskingMethod.Instance.AddPlaceholder(textBoxAge, "Age");
+        }
+        private void MaskedMobileNumber()
+        {
+            textBoxMobileNumber.ForeColor = Color.Gray;
+            // Use Singleton Pattern for placeholder management
+            MaskingMethod.Instance.AddPlaceholder(textBoxMobileNumber, "Mobile Number");
+            textBoxMobileNumber.KeyPress += MaskingMethod.Instance.ValidateNameInput;
+            textBoxMobileNumber.Enter += (sender, e) => MaskingMethod.Instance.RemovePlaceholder(textBoxMobileNumber, "Mobile Number");
+            textBoxMobileNumber.Leave += (sender, e) => MaskingMethod.Instance.AddPlaceholder(textBoxMobileNumber, "Mobile Number");
+        }
+        private void MaskedEmail()
+        {
+            textBoxEmail.ForeColor = Color.Gray;
+            // Use Singleton Pattern for placeholder management
+            MaskingMethod.Instance.AddPlaceholder(textBoxEmail, "Email");
+            textBoxEmail.KeyPress += MaskingMethod.Instance.ValidateNameInput;
+            textBoxEmail.Enter += (sender, e) => MaskingMethod.Instance.RemovePlaceholder(textBoxEmail, "Email");
+            textBoxEmail.Leave += (sender, e) => MaskingMethod.Instance.AddPlaceholder(textBoxEmail, "Email");
+        }
+        private void MaskedGuardianFullName()
+        {
+            textBoxGuardianFullName.ForeColor = Color.Gray;
+            // Use Singleton Pattern for placeholder management
+            MaskingMethod.Instance.AddPlaceholder(textBoxGuardianFullName, "Full Name");
+            textBoxGuardianFullName.KeyPress += MaskingMethod.Instance.ValidateNameInput;
+            textBoxGuardianFullName.Enter += (sender, e) => MaskingMethod.Instance.RemovePlaceholder(textBoxGuardianFullName, "Full Name");
+            textBoxGuardianFullName.Leave += (sender, e) => MaskingMethod.Instance.AddPlaceholder(textBoxGuardianFullName, "Full Name");
+        }
+        private void MaskedGuardianMobileNumber()
+        {
+            textBoxGuardianNumber.ForeColor = Color.Gray;
+            // Use Singleton Pattern for placeholder management
+            MaskingMethod.Instance.AddPlaceholder(textBoxGuardianNumber, "Mobile Number");
+            textBoxGuardianNumber.KeyPress += MaskingMethod.Instance.ValidateNameInput;
+            textBoxGuardianNumber.Enter += (sender, e) => MaskingMethod.Instance.RemovePlaceholder(textBoxGuardianNumber, "Mobile Number");
+            textBoxGuardianNumber.Leave += (sender, e) => MaskingMethod.Instance.AddPlaceholder(textBoxGuardianNumber, "Mobile Number");
+        }
         private void buttonRegister_Click_1(object sender, EventArgs e)
         {
             try
@@ -204,7 +253,12 @@ namespace GymMembershipManagementSystem
                 return ms.ToArray();
             }
         }
-        private void buttonBrowse_Click_1(object sender, EventArgs e)
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void pictureBoxMember_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
@@ -215,10 +269,6 @@ namespace GymMembershipManagementSystem
             {
                 pictureBoxMember.Image = new Bitmap(openFileDialog.FileName);
             }
-        }
-        private void buttonClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

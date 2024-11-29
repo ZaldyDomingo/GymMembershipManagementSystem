@@ -48,7 +48,7 @@ namespace GymMembershipManagementSystem
             timerRecentMember.Tick += timerRecentMember_Tick;
             timerRecentMember.Start();
             LoadRecentlyAddedMembers();
-            dataGridViewRecentlyAdded.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12);
+            dataGridViewRecentlyAdded.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 10);
             dataGridViewRecentlyAdded.DefaultCellStyle.Font = new Font("Century Gothic", 10);
             dataGridViewRecentlyAdded.RowTemplate.Height = 28;
 
@@ -72,6 +72,8 @@ namespace GymMembershipManagementSystem
         {
             labelStudentCount.Text = GetMemberCount("StudentMember").ToString();
             labelNotStudentMemberCount.Text = GetMemberCount("RegularMember").ToString();
+            int totalMembers = GetMemberCount("StudentMember") + GetMemberCount("RegularMember");
+            labelTotalMembers.Text = totalMembers.ToString();
         }
         private int GetMemberCount(string tableName)
         {
@@ -206,36 +208,6 @@ namespace GymMembershipManagementSystem
                 detailsForm.ShowDialog();
             }
 
-        }
-        private byte[] GetMemberProfileImage(string firstName, string lastName)
-        {
-            byte[] imageBytes = null;
-            string query = "SELECT [ProfileImage] FROM [dbo].[StudentMember] WHERE [FirstName] = @firstName AND [LastName] = @lastName " +
-                           "UNION ALL " +
-                           "SELECT [ProfileImage] FROM [dbo].[RegularMember] WHERE [FirstName] = @firstName AND [LastName] = @lastName";
-            using (SqlCommand command = new SqlCommand(query, sqlConnection))
-            {
-                command.Parameters.AddWithValue("@firstName", firstName);
-                command.Parameters.AddWithValue("@lastName", lastName);
-                try
-                {
-                    sqlConnection.Open();
-                    var result = command.ExecuteScalar();
-                    if (result != DBNull.Value)
-                    {
-                        imageBytes = (byte[])result;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"An error occurred while fetching the profile image: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                finally
-                {
-                    sqlConnection.Close();
-                }
-            }
-            return imageBytes;
         }
         private void countRefreshTimer_Tick(object sender, EventArgs e)
         {
@@ -443,7 +415,7 @@ namespace GymMembershipManagementSystem
             Series studentSeries = new Series("Student Members")
             {
                 ChartType = SeriesChartType.Bar,
-                Color = Color.Blue
+                Color = Color.FromArgb(220, 224, 217)
             };
 
             Series regularSeries = new Series("Regular Members")
@@ -455,7 +427,8 @@ namespace GymMembershipManagementSystem
             Series walkInSeries = new Series("Walk-In Members")
             {
                 ChartType = SeriesChartType.Bar,
-                Color = Color.Orange
+                Color = Color.FromArgb(234, 215, 195)
+
             };
 
             // Add data to the series
@@ -508,7 +481,6 @@ namespace GymMembershipManagementSystem
 
             return totalFee;
         }
-
     }
 }
 

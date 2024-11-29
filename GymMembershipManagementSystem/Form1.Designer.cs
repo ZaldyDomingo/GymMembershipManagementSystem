@@ -46,6 +46,7 @@
             this.notificationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripTopNavigation = new System.Windows.Forms.MenuStrip();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.minMaxSizeFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.labelHeaderMenu = new System.Windows.Forms.Label();
             this.labelClock = new System.Windows.Forms.Label();
@@ -54,7 +55,6 @@
             this.calendarMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.labelDate = new System.Windows.Forms.Label();
-            this.minMaxSizeFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripNavigation.SuspendLayout();
             this.menuStripTopNavigation.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -65,9 +65,9 @@
             this.panelContainer.AutoScroll = true;
             this.panelContainer.BackColor = System.Drawing.Color.Transparent;
             this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContainer.Location = new System.Drawing.Point(228, 70);
+            this.panelContainer.Location = new System.Drawing.Point(230, 70);
             this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new System.Drawing.Size(1696, 928);
+            this.panelContainer.Size = new System.Drawing.Size(1694, 928);
             this.panelContainer.TabIndex = 1;
             // 
             // menuStripNavigation
@@ -85,7 +85,7 @@
             this.totalTransactionToolStripMenuItem});
             this.menuStripNavigation.Location = new System.Drawing.Point(0, 70);
             this.menuStripNavigation.Name = "menuStripNavigation";
-            this.menuStripNavigation.Size = new System.Drawing.Size(228, 928);
+            this.menuStripNavigation.Size = new System.Drawing.Size(230, 928);
             this.menuStripNavigation.TabIndex = 0;
             this.menuStripNavigation.Text = "menuStripRightNavigation";
             // 
@@ -249,6 +249,15 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(64, 66);
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
+            // minMaxSizeFormToolStripMenuItem
+            // 
+            this.minMaxSizeFormToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.minMaxSizeFormToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("minMaxSizeFormToolStripMenuItem.Image")));
+            this.minMaxSizeFormToolStripMenuItem.Name = "minMaxSizeFormToolStripMenuItem";
+            this.minMaxSizeFormToolStripMenuItem.Padding = new System.Windows.Forms.Padding(15);
+            this.minMaxSizeFormToolStripMenuItem.Size = new System.Drawing.Size(54, 66);
+            this.minMaxSizeFormToolStripMenuItem.Click += new System.EventHandler(this.minMaxSizeFormToolStripMenuItem_Click);
+            // 
             // userToolStripMenuItem1
             // 
             this.userToolStripMenuItem1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -262,13 +271,13 @@
             // 
             this.labelHeaderMenu.AutoSize = true;
             this.labelHeaderMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.labelHeaderMenu.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelHeaderMenu.Font = new System.Drawing.Font("Century Gothic", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelHeaderMenu.ForeColor = System.Drawing.Color.Black;
-            this.labelHeaderMenu.Location = new System.Drawing.Point(283, 18);
+            this.labelHeaderMenu.Location = new System.Drawing.Point(277, 19);
             this.labelHeaderMenu.Name = "labelHeaderMenu";
-            this.labelHeaderMenu.Size = new System.Drawing.Size(363, 47);
+            this.labelHeaderMenu.Size = new System.Drawing.Size(328, 44);
             this.labelHeaderMenu.TabIndex = 4;
-            this.labelHeaderMenu.Text = "C.H.C Dash Board";
+            this.labelHeaderMenu.Text = "C.H.C Dashboard";
             // 
             // labelClock
             // 
@@ -334,15 +343,6 @@
             this.labelDate.Size = new System.Drawing.Size(60, 19);
             this.labelDate.TabIndex = 7;
             this.labelDate.Text = "label2";
-            // 
-            // minMaxSizeFormToolStripMenuItem
-            // 
-            this.minMaxSizeFormToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.minMaxSizeFormToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("minMaxSizeFormToolStripMenuItem.Image")));
-            this.minMaxSizeFormToolStripMenuItem.Name = "minMaxSizeFormToolStripMenuItem";
-            this.minMaxSizeFormToolStripMenuItem.Padding = new System.Windows.Forms.Padding(15);
-            this.minMaxSizeFormToolStripMenuItem.Size = new System.Drawing.Size(54, 66);
-            this.minMaxSizeFormToolStripMenuItem.Click += new System.EventHandler(this.minMaxSizeFormToolStripMenuItem_Click);
             // 
             // MainPage
             // 

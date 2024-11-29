@@ -104,7 +104,7 @@
             this.dataGridViewRecentActivity.RowHeadersWidth = 51;
             this.dataGridViewRecentActivity.RowTemplate.Height = 80;
             this.dataGridViewRecentActivity.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewRecentActivity.Size = new System.Drawing.Size(1148, 377);
+            this.dataGridViewRecentActivity.Size = new System.Drawing.Size(1148, 797);
             this.dataGridViewRecentActivity.TabIndex = 33;
             // 
             // Notification
@@ -125,7 +125,7 @@
             // 
             this.buttonClear.BackColor = System.Drawing.SystemColors.Control;
             this.buttonClear.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonClear.Location = new System.Drawing.Point(240, 42);
+            this.buttonClear.Location = new System.Drawing.Point(240, 52);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(140, 53);
             this.buttonClear.TabIndex = 32;
@@ -137,7 +137,7 @@
             // 
             this.btnRefresh.BackColor = System.Drawing.SystemColors.Control;
             this.btnRefresh.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefresh.Location = new System.Drawing.Point(64, 42);
+            this.btnRefresh.Location = new System.Drawing.Point(64, 52);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(140, 53);
             this.btnRefresh.TabIndex = 31;
@@ -157,7 +157,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(550, 9);
+            this.label2.Location = new System.Drawing.Point(15, 10);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(256, 39);
             this.label2.TabIndex = 7;

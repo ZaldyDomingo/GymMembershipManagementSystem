@@ -38,7 +38,7 @@ namespace GymMembershipManagementSystem
         }
         private void MainPage_Load(object sender, EventArgs e)
         {
-            var headerLabel = new ToolStripLabel("")
+            var headerLabel = new ToolStripLabel()
             {
                 Font = new Font("Century Gothic", 9, FontStyle.Bold),
                 ForeColor = Color.Black,
@@ -89,7 +89,7 @@ namespace GymMembershipManagementSystem
         }
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UpdateHeaderAndShowForm("C.H.C Dash Board", new DashboardForm());
+            UpdateHeaderAndShowForm("C.H.C Dashboard", new DashboardForm());
         } 
         private void monthlyToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -138,7 +138,7 @@ namespace GymMembershipManagementSystem
         }
         private void backToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            labelHeaderMenu.Text = "C.H.C Dash Board";
+            labelHeaderMenu.Text = "C.H.C Dashboard";
             if (panelContainer.Controls.OfType<DashboardForm>().Any()) return;
             panelContainer.Controls.Clear();
 
@@ -230,7 +230,9 @@ namespace GymMembershipManagementSystem
             }
             else
             {
-                Application.Exit();
+                this.Hide();
+                LoginForm loginForm = new LoginForm();
+                loginForm.Show();
             }
         }
 

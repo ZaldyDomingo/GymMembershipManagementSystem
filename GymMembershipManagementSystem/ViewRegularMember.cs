@@ -146,7 +146,14 @@ namespace GymMembershipManagementSystem
                 MessageBox.Show($"An error occurred while filtering data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void dataGridViewRegular_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+
+        private void searchTimer_Tick(object sender, EventArgs e)
+        {
+            searchTimer.Stop();
+            FilterData();
+        }
+
+        private void dataGridViewRegular_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
@@ -167,12 +174,6 @@ namespace GymMembershipManagementSystem
             {
                 MessageBox.Show($"An error occurred while opening member details: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void searchTimer_Tick(object sender, EventArgs e)
-        {
-            searchTimer.Stop();
-            FilterData();
         }
     }
 }
