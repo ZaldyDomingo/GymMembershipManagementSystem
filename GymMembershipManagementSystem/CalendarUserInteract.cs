@@ -86,6 +86,11 @@ namespace GymMembershipManagementSystem
             }
         }
 
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void buttonPrevious_Click(object sender, EventArgs e)
         {
             try

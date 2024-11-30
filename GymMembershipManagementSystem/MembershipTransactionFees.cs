@@ -134,7 +134,7 @@ namespace GymMembershipManagementSystem
             chartMembershipFees.ChartAreas[0].AxisY.Title = "Total Membership Fee (Pesos)";
 
             // Set the maximum value of the Y-axis to 1 million
-            chartMembershipFees.ChartAreas[0].AxisY.Maximum = 1000000;
+            chartMembershipFees.ChartAreas[0].AxisY.Maximum = 500000;
 
             // Add a legend
             chartMembershipFees.Legends.Clear();
@@ -169,6 +169,19 @@ namespace GymMembershipManagementSystem
             return totalFee;
         }
 
+        private void button4Months_Click(object sender, EventArgs e)
+        {
+            chartMembershipFees.ChartAreas[0].AxisY.Maximum = 90000;
+        }
 
+        private void button7Months_Click(object sender, EventArgs e)
+        {
+            chartMembershipFees.ChartAreas[0].AxisY.Maximum = 150000;
+        }
+
+        private void button1year_Click(object sender, EventArgs e)
+        {
+            chartMembershipFees.ChartAreas[0].AxisY.Maximum = 500000;
+        }
     }
 }

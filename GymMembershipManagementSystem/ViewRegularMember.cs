@@ -41,7 +41,7 @@ namespace GymMembershipManagementSystem
             string connectionString = "Data Source=LAPTOP-9VQCFDCQ\\SQLEXPRESS01;Initial Catalog=gymMembership;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
             sqlConnection = new SqlConnection(connectionString);
         }
-        private void LoadRegularMembers()
+        public void LoadRegularMembers()
         {
             try
             {

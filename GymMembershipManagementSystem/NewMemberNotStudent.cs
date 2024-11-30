@@ -23,6 +23,11 @@ namespace GymMembershipManagementSystem
             MaskedFirstNameText();
             MaskedLastNameText();
             MaskedAddressText();
+            MaskedAgeText();
+            MaskedMobileNumber();
+            MaskedEmail();
+            MaskedGuardianFullName();
+            MaskedGuardianMobileNumber();
         }
         private void MaskedAddressText()
         {
@@ -54,7 +59,52 @@ namespace GymMembershipManagementSystem
             textBoxLastName.Enter += (sender, e) => MaskingMethod.Instance.RemovePlaceholder(textBoxLastName, "Last name");
             textBoxLastName.Leave += (sender, e) => MaskingMethod.Instance.AddPlaceholder(textBoxLastName, "Last name");
         }
-   
+
+        private void MaskedAgeText()
+        {
+            textBoxAge.ForeColor = Color.Gray;
+            // Use Singleton Pattern for placeholder management
+            MaskingMethod.Instance.AddPlaceholder(textBoxAge, "Age");
+            textBoxAge.KeyPress += MaskingMethod.Instance.ValidateNameInput;
+            textBoxAge.Enter += (sender, e) => MaskingMethod.Instance.RemovePlaceholder(textBoxAge, "Age");
+            textBoxAge.Leave += (sender, e) => MaskingMethod.Instance.AddPlaceholder(textBoxAge, "Age");
+        }
+        private void MaskedMobileNumber()
+        {
+            textBoxMobileNumber.ForeColor = Color.Gray;
+            // Use Singleton Pattern for placeholder management
+            MaskingMethod.Instance.AddPlaceholder(textBoxMobileNumber, "Mobile Number");
+            textBoxMobileNumber.KeyPress += MaskingMethod.Instance.ValidateNameInput;
+            textBoxMobileNumber.Enter += (sender, e) => MaskingMethod.Instance.RemovePlaceholder(textBoxMobileNumber, "Mobile Number");
+            textBoxMobileNumber.Leave += (sender, e) => MaskingMethod.Instance.AddPlaceholder(textBoxMobileNumber, "Mobile Number");
+        }
+        private void MaskedEmail()
+        {
+            textBoxEmail.ForeColor = Color.Gray;
+            // Use Singleton Pattern for placeholder management
+            MaskingMethod.Instance.AddPlaceholder(textBoxEmail, "Email");
+            textBoxEmail.KeyPress += MaskingMethod.Instance.ValidateNameInput;
+            textBoxEmail.Enter += (sender, e) => MaskingMethod.Instance.RemovePlaceholder(textBoxEmail, "Email");
+            textBoxEmail.Leave += (sender, e) => MaskingMethod.Instance.AddPlaceholder(textBoxEmail, "Email");
+        }
+        private void MaskedGuardianFullName()
+        {
+            textBoxGuardianFullName.ForeColor = Color.Gray;
+            // Use Singleton Pattern for placeholder management
+            MaskingMethod.Instance.AddPlaceholder(textBoxGuardianFullName, "Full Name");
+            textBoxGuardianFullName.KeyPress += MaskingMethod.Instance.ValidateNameInput;
+            textBoxGuardianFullName.Enter += (sender, e) => MaskingMethod.Instance.RemovePlaceholder(textBoxGuardianFullName, "Full Name");
+            textBoxGuardianFullName.Leave += (sender, e) => MaskingMethod.Instance.AddPlaceholder(textBoxGuardianFullName, "Full Name");
+        }
+        private void MaskedGuardianMobileNumber()
+        {
+            textBoxGuardianNumber.ForeColor = Color.Gray;
+            // Use Singleton Pattern for placeholder management
+            MaskingMethod.Instance.AddPlaceholder(textBoxGuardianNumber, "Mobile Number");
+            textBoxGuardianNumber.KeyPress += MaskingMethod.Instance.ValidateNameInput;
+            textBoxGuardianNumber.Enter += (sender, e) => MaskingMethod.Instance.RemovePlaceholder(textBoxGuardianNumber, "Mobile Number");
+            textBoxGuardianNumber.Leave += (sender, e) => MaskingMethod.Instance.AddPlaceholder(textBoxGuardianNumber, "Mobile Number");
+        }
         private void InitializeDatabaseConnection()
         {
             // Set up the connection string for your SQL Server database
@@ -62,7 +112,50 @@ namespace GymMembershipManagementSystem
             sqlConnection = new SqlConnection(connectionString);
         }
 
-        private void buttonRegister_Click(object sender, EventArgs e)
+
+        private string GetSavePath(string defaultFileName)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "PDF Files|*.pdf";
+                saveFileDialog.Title = "Save Invoice As";
+                saveFileDialog.FileName = defaultFileName;
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    return saveFileDialog.FileName;
+                }
+                else
+                {
+                    throw new Exception("Save operation was canceled.");
+                }
+            }
+        }
+        private void ClearFormFields()
+        {
+            textBoxFirstName.Clear();
+            textBoxLastName.Clear();
+            textBoxEmail.Clear();
+            textBoxAddress.Clear();
+            textBoxMobileNumber.Clear();
+            textBoxAge.Clear();
+            textBoxGuardianFullName.Clear();
+            textBoxGuardianNumber.Clear();
+            pictureBoxMember.Image = null;
+            dateTimePickerJoinedDate.Value = DateTime.Now; // Reset the DateTimePicker to current date
+        }
+
+        private byte[] ConvertImageToByteArray(Image image)
+        {
+            if (image == null) return null;
+
+            using (var ms = new MemoryStream())
+            {
+                image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                return ms.ToArray();
+            }
+        }
+        private void buttonRegister_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -160,49 +253,13 @@ namespace GymMembershipManagementSystem
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private string GetSavePath(string defaultFileName)
-        {
-            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
-            {
-                saveFileDialog.Filter = "PDF Files|*.pdf";
-                saveFileDialog.Title = "Save Invoice As";
-                saveFileDialog.FileName = defaultFileName;
 
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    return saveFileDialog.FileName;
-                }
-                else
-                {
-                    throw new Exception("Save operation was canceled.");
-                }
-            }
-        }
-        private void ClearFormFields()
+        private void buttonBack_Click_1(object sender, EventArgs e)
         {
-            textBoxFirstName.Clear();
-            textBoxLastName.Clear();
-            textBoxEmail.Clear();
-            textBoxAddress.Clear();
-            textBoxMobileNumber.Clear();
-            textBoxAge.Clear();
-            textBoxGuardianFullName.Clear();
-            textBoxGuardianNumber.Clear();
-            pictureBoxMember.Image = null;
-            dateTimePickerJoinedDate.Value = DateTime.Now; // Reset the DateTimePicker to current date
+            this.Close();
         }
 
-        private byte[] ConvertImageToByteArray(Image image)
-        {
-            if (image == null) return null;
-
-            using (var ms = new MemoryStream())
-            {
-                image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                return ms.ToArray();
-            }
-        }
-        private void buttonBrowse_Click_1(object sender, EventArgs e)
+        private void pictureBoxMember_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
@@ -213,10 +270,6 @@ namespace GymMembershipManagementSystem
             {
                 pictureBoxMember.Image = new Bitmap(openFileDialog.FileName);
             }
-        }
-        private void buttonBack_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

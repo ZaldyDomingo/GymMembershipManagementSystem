@@ -14,7 +14,6 @@ namespace GymMembershipManagementSystem
     public partial class ViewStudentMember : Form
     {
         private SqlConnection sqlConnection;
-
         public ViewStudentMember()
         {
             InitializeComponent();
@@ -48,7 +47,7 @@ namespace GymMembershipManagementSystem
             string connectionString = "Data Source=LAPTOP-9VQCFDCQ\\SQLEXPRESS01;Initial Catalog=gymMembership;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
             sqlConnection = new SqlConnection(connectionString);
         }
-        private void LoadStudents()
+        public void LoadStudents()
         {
             try
             {
@@ -64,35 +63,35 @@ namespace GymMembershipManagementSystem
                 foreach (DataRow row in dataTable.Rows)
                 {
                     DateTime membershipStartDate = Convert.ToDateTime(row["MembershipStartDate"]);
-                    DateTime expirationDate = membershipStartDate.AddDays(31); 
+                    DateTime expirationDate = membershipStartDate.AddDays(31);
                     int remainingDays = (expirationDate - DateTime.Now).Days;
 
                     if (remainingDays <= 0)
                     {
-                        row.Delete(); 
+                        row.Delete();
                     }
                     else
                     {
-                        row["RemainingDays"] = remainingDays; 
+                        row["RemainingDays"] = remainingDays;
                     }
                 }
 
                 dataTable.AcceptChanges();
 
-                
+
                 dataGridViewStudent.DataSource = dataTable;
 
-                dataGridViewStudent.Columns["StudentId"].Visible = false; 
-                dataGridViewStudent.Columns["Age"].Visible = false; 
-                dataGridViewStudent.Columns["ProfileImage"].Visible = false; 
-                dataGridViewStudent.Columns["DateOfBirth"].Visible = false; 
-                dataGridViewStudent.Columns["Address"].Visible = false; 
+                dataGridViewStudent.Columns["StudentId"].Visible = false;
+                dataGridViewStudent.Columns["Age"].Visible = false;
+                dataGridViewStudent.Columns["ProfileImage"].Visible = false;
+                dataGridViewStudent.Columns["DateOfBirth"].Visible = false;
+                dataGridViewStudent.Columns["Address"].Visible = false;
                 dataGridViewStudent.Columns["Gender"].Visible = false;
                 dataGridViewStudent.Columns["DateJoined"].Visible = false;
                 dataGridViewStudent.Columns["EmergencyContactName"].Visible = false;
                 dataGridViewStudent.Columns["MembershipFee"].Visible = false;
-                dataGridViewStudent.Columns["Email"].Visible = false; 
-                dataGridViewStudent.Columns["MembershipEndDate"].Visible = false; 
+                dataGridViewStudent.Columns["Email"].Visible = false;
+                dataGridViewStudent.Columns["MembershipEndDate"].Visible = false;
 
             }
             catch (Exception ex)
@@ -100,6 +99,8 @@ namespace GymMembershipManagementSystem
                 MessageBox.Show($"An error occurred while loading student data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
 
         private void dataGridViewStudent_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {

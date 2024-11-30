@@ -93,6 +93,38 @@ namespace GymMembershipManagementSystem
         }
 
         // Method to load walk-in members who registered in the past 12 hours
+        //private void LoadOldWalkInMembers()
+        //{
+        //    try
+        //    {
+        //        using (SqlConnection connection = new SqlConnection(connectionString))
+        //        {
+        //            // Get the date and time for 12 hours ago
+        //            DateTime last12HoursDate = DateTime.Now.AddHours(-12);
+
+        //            string query = @"
+        //                SELECT [MemberID], [FirstName], [LastName], [Address], [PhoneNumber], [RegistrationDate], [ExpirationDate], [MembershipFee]
+        //                FROM [gymMembership].[dbo].[WalkInMember]
+        //                WHERE [RegistrationDate] >= @Last12HoursDate
+        //                ORDER BY [RegistrationDate] DESC";
+
+        //            SqlCommand command = new SqlCommand(query, connection);
+        //            command.Parameters.AddWithValue("@Last12HoursDate", last12HoursDate);
+
+        //            SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+        //            DataTable dataTable = new DataTable();
+        //            dataAdapter.Fill(dataTable);
+
+        //            // Bind data to dataGridViewOldWalkedin
+        //            dataGridViewOldWalkedin.DataSource = dataTable;
+        //            HideSensitiveColumns(dataGridViewOldWalkedin);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show($"Error loading past 12 hours walk-in members: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
         private void LoadOldWalkInMembers()
         {
             try
@@ -103,10 +135,10 @@ namespace GymMembershipManagementSystem
                     DateTime last12HoursDate = DateTime.Now.AddHours(-12);
 
                     string query = @"
-                        SELECT [MemberID], [FirstName], [LastName], [Address], [PhoneNumber], [RegistrationDate], [ExpirationDate], [MembershipFee]
-                        FROM [gymMembership].[dbo].[WalkInMember]
-                        WHERE [RegistrationDate] >= @Last12HoursDate
-                        ORDER BY [RegistrationDate] DESC";
+                            SELECT [MemberID], [FirstName], [LastName], [Address], [PhoneNumber], [RegistrationDate], [ExpirationDate], [MembershipFee]
+                            FROM [gymMembership].[dbo].[WalkInMember]
+                            WHERE [RegistrationDate] >= @Last12HoursDate
+                            ORDER BY [RegistrationDate] DESC";
 
                     SqlCommand command = new SqlCommand(query, connection);
                     command.Parameters.AddWithValue("@Last12HoursDate", last12HoursDate);

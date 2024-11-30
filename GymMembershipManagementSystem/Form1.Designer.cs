@@ -55,6 +55,7 @@
             this.calendarMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.labelDate = new System.Windows.Forms.Label();
+            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripNavigation.SuspendLayout();
             this.menuStripTopNavigation.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -194,7 +195,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 981);
+            this.label1.Location = new System.Drawing.Point(4, 979);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 18);
             this.label1.TabIndex = 3;
@@ -232,6 +233,7 @@
             this.exitToolStripMenuItem,
             this.minMaxSizeFormToolStripMenuItem,
             this.userToolStripMenuItem1,
+            this.refreshToolStripMenuItem,
             this.notificationToolStripMenuItem,
             this.backToolStripMenuItem});
             this.menuStripTopNavigation.Location = new System.Drawing.Point(0, 0);
@@ -344,6 +346,15 @@
             this.labelDate.TabIndex = 7;
             this.labelDate.Text = "label2";
             // 
+            // refreshToolStripMenuItem
+            // 
+            this.refreshToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.refreshToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("refreshToolStripMenuItem.Image")));
+            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            this.refreshToolStripMenuItem.Padding = new System.Windows.Forms.Padding(15);
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(54, 66);
+            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
+            // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -403,6 +414,7 @@
         private System.Windows.Forms.ToolStripMenuItem totalTransactionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem walkedinMemberToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem minMaxSizeFormToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
     }
 }
 

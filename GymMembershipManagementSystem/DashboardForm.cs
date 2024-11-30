@@ -213,7 +213,7 @@ namespace GymMembershipManagementSystem
         {
             DisplayMemberCounts();
             LoadMemberJoinChart();
-            LoadMembershipFeeChart();
+            
         }
         private void buttonViewMember_Click(object sender, EventArgs e)
         {
@@ -360,14 +360,11 @@ namespace GymMembershipManagementSystem
             chartDetails.Series.Add(regularSeries);
             chartDetails.Series.Add(studentSeries);
 
-            // Configure chart axes
             chartDetails.ChartAreas[0].AxisX.Title = "Month";
             chartDetails.ChartAreas[0].AxisY.Title = "Number of Members";
 
-            // Set Y-Axis Maximum value to 200
-            chartDetails.ChartAreas[0].AxisY.Maximum = 200;
+            chartDetails.ChartAreas[0].AxisY.Maximum = 1000;
 
-            // Add a legend
             chartDetails.Legends.Clear();
             chartDetails.Legends.Add(new Legend() { Docking = Docking.Top, Alignment = StringAlignment.Center });
         }
@@ -401,7 +398,6 @@ namespace GymMembershipManagementSystem
         }
         private void LoadMembershipFeeChart()
         {
-            // SQL queries to calculate sum of MembershipFee for each member type
             string studentMemberQuery = "SELECT SUM(MembershipFee) AS TotalMembershipFee FROM [gymMembership].[dbo].[StudentMember]";
             string regularMemberQuery = "SELECT SUM(MembershipFee) AS TotalMembershipFee FROM [gymMembership].[dbo].[RegularMember]";
             string walkInMemberQuery = "SELECT SUM(MembershipFee) AS TotalMembershipFee FROM [gymMembership].[dbo].[WalkInMember]";
@@ -415,28 +411,26 @@ namespace GymMembershipManagementSystem
             Series studentSeries = new Series("Student Members")
             {
                 ChartType = SeriesChartType.Bar,
-                Color = Color.FromArgb(220, 224, 217)
+                Color = Color.Silver
             };
 
             Series regularSeries = new Series("Regular Members")
             {
                 ChartType = SeriesChartType.Bar,
-                Color = Color.Green
+                Color = Color.Khaki
             };
 
             Series walkInSeries = new Series("Walk-In Members")
             {
                 ChartType = SeriesChartType.Bar,
-                Color = Color.FromArgb(234, 215, 195)
+                Color = Color.Orange
 
             };
 
-            // Add data to the series
             studentSeries.Points.AddXY("Student Members", studentFeeTotal);
             regularSeries.Points.AddXY("Regular Members", regularFeeTotal);
             walkInSeries.Points.AddXY("Walk-In Members", walkInFeeTotal);
 
-            // Clear existing series and add new ones
             chartMembershipFees.Series.Clear();
             chartMembershipFees.Series.Add(studentSeries);
             chartMembershipFees.Series.Add(regularSeries);
@@ -446,8 +440,8 @@ namespace GymMembershipManagementSystem
             chartMembershipFees.ChartAreas[0].AxisX.Title = "Member Type";
             chartMembershipFees.ChartAreas[0].AxisY.Title = "Total Membership Fee (Pesos)";
 
-            // Set the maximum value of the Y-axis to 1 million
-            chartMembershipFees.ChartAreas[0].AxisY.Maximum = 1000000;
+            // Set the maximum value of the Y-axis to 500000
+            chartMembershipFees.ChartAreas[0].AxisY.Maximum = 500000;
 
             // Add a legend
             chartMembershipFees.Legends.Clear();
@@ -480,6 +474,21 @@ namespace GymMembershipManagementSystem
             }
 
             return totalFee;
+        }
+
+        private void button4Months_Click(object sender, EventArgs e)
+        {
+            chartMembershipFees.ChartAreas[0].AxisY.Maximum = 90000;
+        }
+
+        private void button7Months_Click(object sender, EventArgs e)
+        {
+            chartMembershipFees.ChartAreas[0].AxisY.Maximum = 150000;
+        }
+
+        private void button1year_Click(object sender, EventArgs e)
+        {
+            chartMembershipFees.ChartAreas[0].AxisY.Maximum = 500000;
         }
     }
 }

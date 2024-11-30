@@ -26,6 +26,7 @@ namespace GymMembershipManagementSystem
             clockTimer.Tick += clockTimer_Tick; // Event handler for Tick event
             clockTimer.Start(); // Start the timer
             UpdateDate();
+            
         }
         private void clockTimer_Tick(object sender, EventArgs e)
         {
@@ -90,7 +91,7 @@ namespace GymMembershipManagementSystem
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UpdateHeaderAndShowForm("C.H.C Dashboard", new DashboardForm());
-        } 
+        }
         private void monthlyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (newMemberForm == null || newMemberForm.IsDisposed)
@@ -272,9 +273,8 @@ namespace GymMembershipManagementSystem
             // Check if the form is currently maximized
             if (this.WindowState == FormWindowState.Maximized)
             {
-                // Reduce the form size (to a specific smaller size, e.g., 800x600)
                 this.WindowState = FormWindowState.Normal;
-                this.Size = new Size(800, 600);  // Set the form size to a smaller size
+                this.Size = new Size(800, 600);  
             }
             else
             {
@@ -282,5 +282,22 @@ namespace GymMembershipManagementSystem
                 this.WindowState = FormWindowState.Maximized;
             }
         }
+
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form is ViewStudentMember viewStudentForm)
+                {
+                    viewStudentForm.LoadStudents(); // Refresh the students
+                }
+                else if (form is ViewRegularMember viewRegularForm)
+                {
+                    viewRegularForm.LoadRegularMembers(); // Refresh the regular members
+                }
+            }
+        }
+
+
     }
 }

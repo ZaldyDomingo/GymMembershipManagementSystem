@@ -74,7 +74,7 @@
             this.labelClock.BackColor = System.Drawing.Color.White;
             this.labelClock.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelClock.ForeColor = System.Drawing.Color.Black;
-            this.labelClock.Location = new System.Drawing.Point(1485, 291);
+            this.labelClock.Location = new System.Drawing.Point(1536, 319);
             this.labelClock.Name = "labelClock";
             this.labelClock.Size = new System.Drawing.Size(96, 34);
             this.labelClock.TabIndex = 17;
@@ -97,7 +97,7 @@
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(1079, 954);
+            this.pictureBox2.Size = new System.Drawing.Size(1140, 954);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 14;
             this.pictureBox2.TabStop = false;
@@ -115,7 +115,7 @@
             this.panel1.Controls.Add(this.textBoxUserName);
             this.panel1.Controls.Add(this.textBoxPassword);
             this.panel1.Controls.Add(this.panel4);
-            this.panel1.Location = new System.Drawing.Point(1376, 339);
+            this.panel1.Location = new System.Drawing.Point(1427, 367);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(388, 405);
             this.panel1.TabIndex = 13;
