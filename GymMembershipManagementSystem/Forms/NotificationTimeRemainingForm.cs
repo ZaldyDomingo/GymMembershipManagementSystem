@@ -36,11 +36,6 @@ namespace GymMembershipManagementSystem
             sqlConnection = new SqlConnection(connectionString);
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-            LoadRecentActivities();
-        }
-
         private void LoadRecentActivities()
         {
             try
@@ -109,9 +104,6 @@ namespace GymMembershipManagementSystem
             }
         }
 
-        private void buttonClear_Click(object sender, EventArgs e)
-        {
-            dataGridViewRecentActivity.Rows.Clear();
-        }
+
     }
 }

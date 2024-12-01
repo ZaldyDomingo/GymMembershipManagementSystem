@@ -146,28 +146,34 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CalendarUserInteract.cs">
+    <Compile Include="Forms\AdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CalendarUserInteract.Designer.cs">
+    <Compile Include="Forms\AdminForm.Designer.cs">
+      <DependentUpon>AdminForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CalendarUserInteract.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CalendarUserInteract.Designer.cs">
       <DependentUpon>CalendarUserInteract.cs</DependentUpon>
     </Compile>
-    <Compile Include="CheckInListForm.cs">
+    <Compile Include="Forms\CheckInListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CheckInListForm.Designer.cs">
+    <Compile Include="Forms\CheckInListForm.Designer.cs">
       <DependentUpon>CheckInListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DashboardForm.cs">
+    <Compile Include="Forms\DashboardForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DashboardForm.Designer.cs">
+    <Compile Include="Forms\DashboardForm.Designer.cs">
       <DependentUpon>DashboardForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="gymMembershipDataSet.Designer.cs">
@@ -185,42 +191,42 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>gymMembershipDataSet2.xsd</DependentUpon>
     </Compile>
-    <Compile Include="InvoiceGenerator.cs" />
+    <Compile Include="Classes\InvoiceGenerator.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MaskingMethod.cs" />
-    <Compile Include="MemberDetailsForm.cs">
+    <Compile Include="Classes\MaskingMethod.cs" />
+    <Compile Include="Forms\MemberDetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MemberDetailsForm.Designer.cs">
+    <Compile Include="Forms\MemberDetailsForm.Designer.cs">
       <DependentUpon>MemberDetailsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MembershipTransactionFees.cs">
+    <Compile Include="Forms\MembershipTransactionFees.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MembershipTransactionFees.Designer.cs">
+    <Compile Include="Forms\MembershipTransactionFees.Designer.cs">
       <DependentUpon>MembershipTransactionFees.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewMemberForm.cs">
+    <Compile Include="Forms\NewMemberForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewMemberForm.Designer.cs">
+    <Compile Include="Forms\NewMemberForm.Designer.cs">
       <DependentUpon>NewMemberForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewMemberNotStudent.cs">
+    <Compile Include="Forms\NewMemberNotStudent.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewMemberNotStudent.Designer.cs">
+    <Compile Include="Forms\NewMemberNotStudent.Designer.cs">
       <DependentUpon>NewMemberNotStudent.cs</DependentUpon>
     </Compile>
-    <Compile Include="NotificationTimeRemainingForm.cs">
+    <Compile Include="Forms\NotificationTimeRemainingForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NotificationTimeRemainingForm.Designer.cs">
+    <Compile Include="Forms\NotificationTimeRemainingForm.Designer.cs">
       <DependentUpon>NotificationTimeRemainingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="OvalButton.cs">
@@ -234,16 +240,16 @@
     <Compile Include="roundedPictureBox.Designer.cs">
       <DependentUpon>roundedPictureBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="UpdateMember.cs">
+    <Compile Include="Forms\UpdateMember.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UpdateMember.Designer.cs">
+    <Compile Include="Forms\UpdateMember.Designer.cs">
       <DependentUpon>UpdateMember.cs</DependentUpon>
     </Compile>
-    <Compile Include="UpdateMemberForm.cs">
+    <Compile Include="Forms\UpdateMemberForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UpdateMemberForm.Designer.cs">
+    <Compile Include="Forms\UpdateMemberForm.Designer.cs">
       <DependentUpon>UpdateMemberForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControl1Blank.cs">
@@ -258,58 +264,58 @@
     <Compile Include="UserControlDays.Designer.cs">
       <DependentUpon>UserControlDays.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewRegularMember.cs">
+    <Compile Include="Forms\ViewRegularMember.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ViewRegularMember.Designer.cs">
+    <Compile Include="Forms\ViewRegularMember.Designer.cs">
       <DependentUpon>ViewRegularMember.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewStudentMember.cs">
+    <Compile Include="Forms\ViewStudentMember.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ViewStudentMember.Designer.cs">
+    <Compile Include="Forms\ViewStudentMember.Designer.cs">
       <DependentUpon>ViewStudentMember.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewWalkedInMembers.cs">
+    <Compile Include="Forms\ViewWalkedInMembers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ViewWalkedInMembers.Designer.cs">
+    <Compile Include="Forms\ViewWalkedInMembers.Designer.cs">
       <DependentUpon>ViewWalkedInMembers.cs</DependentUpon>
     </Compile>
-    <Compile Include="WalkInMember.cs">
+    <Compile Include="Forms\WalkInMember.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WalkInMember.Designer.cs">
+    <Compile Include="Forms\WalkInMember.Designer.cs">
       <DependentUpon>WalkInMember.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="CalendarUserInteract.resx">
+    <EmbeddedResource Include="Forms\CalendarUserInteract.resx">
       <DependentUpon>CalendarUserInteract.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CheckInListForm.resx">
+    <EmbeddedResource Include="Forms\CheckInListForm.resx">
       <DependentUpon>CheckInListForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DashboardForm.resx">
+    <EmbeddedResource Include="Forms\DashboardForm.resx">
       <DependentUpon>DashboardForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MemberDetailsForm.resx">
+    <EmbeddedResource Include="Forms\MemberDetailsForm.resx">
       <DependentUpon>MemberDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MembershipTransactionFees.resx">
+    <EmbeddedResource Include="Forms\MembershipTransactionFees.resx">
       <DependentUpon>MembershipTransactionFees.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewMemberForm.resx">
+    <EmbeddedResource Include="Forms\NewMemberForm.resx">
       <DependentUpon>NewMemberForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewMemberNotStudent.resx">
+    <EmbeddedResource Include="Forms\NewMemberNotStudent.resx">
       <DependentUpon>NewMemberNotStudent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NotificationTimeRemainingForm.resx">
+    <EmbeddedResource Include="Forms\NotificationTimeRemainingForm.resx">
       <DependentUpon>NotificationTimeRemainingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -321,10 +327,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UpdateMember.resx">
+    <EmbeddedResource Include="Forms\UpdateMember.resx">
       <DependentUpon>UpdateMember.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UpdateMemberForm.resx">
+    <EmbeddedResource Include="Forms\UpdateMemberForm.resx">
       <DependentUpon>UpdateMemberForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl1Blank.resx">
@@ -333,16 +339,16 @@
     <EmbeddedResource Include="UserControlDays.resx">
       <DependentUpon>UserControlDays.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ViewRegularMember.resx">
+    <EmbeddedResource Include="Forms\ViewRegularMember.resx">
       <DependentUpon>ViewRegularMember.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ViewStudentMember.resx">
+    <EmbeddedResource Include="Forms\ViewStudentMember.resx">
       <DependentUpon>ViewStudentMember.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ViewWalkedInMembers.resx">
+    <EmbeddedResource Include="Forms\ViewWalkedInMembers.resx">
       <DependentUpon>ViewWalkedInMembers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WalkInMember.resx">
+    <EmbeddedResource Include="Forms\WalkInMember.resx">
       <DependentUpon>WalkInMember.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="gymMembershipDataSet.xsc">
@@ -392,10 +398,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Classes\" />
-    <Folder Include="Forms\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="ILLink\ILLink.Descriptors.LibraryBuild.xml" />
   </ItemGroup>
