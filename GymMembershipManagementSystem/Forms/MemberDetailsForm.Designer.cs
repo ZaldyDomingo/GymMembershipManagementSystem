@@ -59,18 +59,16 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel15 = new System.Windows.Forms.Panel();
             this.panel19 = new System.Windows.Forms.Panel();
-            this.panel14 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.roundedPictureBox1 = new GymMembershipManagementSystem.roundedPictureBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.roundedPictureBox2 = new GymMembershipManagementSystem.roundedPictureBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.roundedPictureBox1 = new GymMembershipManagementSystem.roundedPictureBox();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.buttonBack = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel19.SuspendLayout();
@@ -319,7 +317,7 @@
             this.buttonCheckInStudent.Name = "buttonCheckInStudent";
             this.buttonCheckInStudent.Size = new System.Drawing.Size(124, 37);
             this.buttonCheckInStudent.TabIndex = 30;
-            this.buttonCheckInStudent.Text = "Check-in Student";
+            this.buttonCheckInStudent.Text = "Check-in";
             this.buttonCheckInStudent.UseVisualStyleBackColor = false;
             this.buttonCheckInStudent.Click += new System.EventHandler(this.buttonCheckInStudent_Click);
             // 
@@ -385,6 +383,27 @@
             this.panel19.Size = new System.Drawing.Size(548, 83);
             this.panel19.TabIndex = 80;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label9.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(185, 27);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(237, 27);
+            this.label9.TabIndex = 87;
+            this.label9.Text = "C.H.C Fitness Center";
+            // 
+            // roundedPictureBox2
+            // 
+            this.roundedPictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("roundedPictureBox2.Image")));
+            this.roundedPictureBox2.Location = new System.Drawing.Point(7, 5);
+            this.roundedPictureBox2.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.roundedPictureBox2.Name = "roundedPictureBox2";
+            this.roundedPictureBox2.Size = new System.Drawing.Size(80, 74);
+            this.roundedPictureBox2.TabIndex = 86;
+            // 
             // panel14
             // 
             this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(108)))), ((int)(((byte)(97)))));
@@ -393,14 +412,6 @@
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(738, 27);
             this.panel14.TabIndex = 81;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Maroon;
-            this.panel1.Location = new System.Drawing.Point(53, 41);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(548, 74);
-            this.panel1.TabIndex = 81;
             // 
             // panel2
             // 
@@ -412,13 +423,26 @@
             this.panel2.Size = new System.Drawing.Size(550, 83);
             this.panel2.TabIndex = 82;
             // 
-            // panel3
+            // label10
             // 
-            this.panel3.BackColor = System.Drawing.Color.Maroon;
-            this.panel3.Location = new System.Drawing.Point(140, 661);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(550, 74);
-            this.panel3.TabIndex = 83;
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label10.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(155, 27);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(237, 27);
+            this.label10.TabIndex = 88;
+            this.label10.Text = "C.H.C Fitness Center";
+            // 
+            // roundedPictureBox1
+            // 
+            this.roundedPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("roundedPictureBox1.Image")));
+            this.roundedPictureBox1.Location = new System.Drawing.Point(465, 4);
+            this.roundedPictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.roundedPictureBox1.Name = "roundedPictureBox1";
+            this.roundedPictureBox1.Size = new System.Drawing.Size(80, 74);
+            this.roundedPictureBox1.TabIndex = 85;
             // 
             // panel4
             // 
@@ -430,36 +454,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(738, 41);
             this.panel4.TabIndex = 84;
-            // 
-            // roundedPictureBox1
-            // 
-            this.roundedPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("roundedPictureBox1.Image")));
-            this.roundedPictureBox1.Location = new System.Drawing.Point(465, 4);
-            this.roundedPictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.roundedPictureBox1.Name = "roundedPictureBox1";
-            this.roundedPictureBox1.Size = new System.Drawing.Size(80, 74);
-            this.roundedPictureBox1.TabIndex = 85;
-            // 
-            // roundedPictureBox2
-            // 
-            this.roundedPictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("roundedPictureBox2.Image")));
-            this.roundedPictureBox2.Location = new System.Drawing.Point(7, 5);
-            this.roundedPictureBox2.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.roundedPictureBox2.Name = "roundedPictureBox2";
-            this.roundedPictureBox2.Size = new System.Drawing.Size(80, 74);
-            this.roundedPictureBox2.TabIndex = 86;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(108)))), ((int)(((byte)(97)))));
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(344, 9);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(209, 23);
-            this.label8.TabIndex = 85;
-            this.label8.Text = "Member Information";
             // 
             // panel6
             // 
@@ -480,29 +474,17 @@
             this.buttonBack.UseVisualStyleBackColor = false;
             this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
-            // label9
+            // label8
             // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label9.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(185, 27);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(237, 27);
-            this.label9.TabIndex = 87;
-            this.label9.Text = "C.H.C Fitness Center";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label10.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(155, 27);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(237, 27);
-            this.label10.TabIndex = 88;
-            this.label10.Text = "C.H.C Fitness Center";
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(108)))), ((int)(((byte)(97)))));
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(240, 15);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(209, 23);
+            this.label8.TabIndex = 85;
+            this.label8.Text = "Member Information";
             // 
             // panel7
             // 
@@ -529,7 +511,6 @@
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel19);
             this.Controls.Add(this.panel15);
             this.Controls.Add(this.panel5);
@@ -560,7 +541,6 @@
             this.Controls.Add(this.labelLname);
             this.Controls.Add(this.labelFName);
             this.Controls.Add(this.labelFirstName);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel14);
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -614,11 +594,9 @@
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.Panel panel19;
         private System.Windows.Forms.Panel panel14;
-        private System.Windows.Forms.Panel panel1;
         private roundedPictureBox roundedPictureBox2;
         private System.Windows.Forms.Panel panel2;
         private roundedPictureBox roundedPictureBox1;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel6;

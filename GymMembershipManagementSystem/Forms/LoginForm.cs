@@ -19,32 +19,29 @@ namespace GymMembershipManagementSystem
             MaskedUserNameText();
             MaskedUserPasswordText();
             checkBoxPassword.CheckedChanged += checkBoxPassword_CheckedChanged;
-        }
-        private void buttonExit_Click_1(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Do you really want to exit?", "Exit",
-            MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-            {
-
-            }
-            else
-            {
-                Application.Exit();  
-            }
+            clockTimer = new Timer();
+            clockTimer.Interval = 1000; // 1000 ms = 1 second
+            clockTimer.Tick += clockTimer_Tick; // Event handler for Tick event
+            clockTimer.Start(); // Start the timer
         }
         private void MaskedUserNameText()
         {
             textBoxUserName.ForeColor = Color.Gray;
-            SetPlaceholder(textBoxUserName, "Username");
-            textBoxUserName.KeyPress += MaskingMethods.ValidateNameInput;
+            // Use Singleton to manage placeholder behavior
+            MaskingMethod.Instance.AddPlaceholder(textBoxUserName, "Username");
+            textBoxUserName.KeyPress += MaskingMethod.Instance.ValidateNameInput;
+
+            textBoxUserName.Enter += (sender, e) => MaskingMethod.Instance.RemovePlaceholder(textBoxUserName, "Username");
+            textBoxUserName.Leave += (sender, e) => MaskingMethod.Instance.AddPlaceholder(textBoxUserName, "Username");
         }
+
         public void MaskedUserPasswordText()
         {
             textBoxPassword.ForeColor = Color.Gray;
             textBoxPassword.UseSystemPasswordChar = false; // Initially not masked
             textBoxPassword.Text = "Password"; // Set placeholder text initially
 
-            // Attach events to handle placeholder behavior
+            // Use Singleton to handle placeholder logic
             textBoxPassword.Enter += (sender, e) =>
             {
                 if (textBoxPassword.Text == "Password")
@@ -59,19 +56,11 @@ namespace GymMembershipManagementSystem
             {
                 if (string.IsNullOrWhiteSpace(textBoxPassword.Text))
                 {
-                    textBoxPassword.UseSystemPasswordChar = false; // Unmask when empty
-                    textBoxPassword.Text = "Password"; // Restore placeholder
+                    textBoxPassword.UseSystemPasswordChar = false;
+                    textBoxPassword.Text = "Password";
                     textBoxPassword.ForeColor = Color.Gray;
                 }
             };
-
-        }
-        private void SetPlaceholder(TextBox textBox, string placeholder)
-        {
-            textBox.Text = placeholder;
-            textBox.ForeColor = Color.Gray;
-            textBox.Enter += (sender, e) => MaskingMethods.RemovePlaceholder(textBox, placeholder);
-            textBox.Leave += (sender, e) => MaskingMethods.AddPlaceholder(textBox, placeholder);
         }
 
         private void checkBoxPassword_CheckedChanged(object sender, EventArgs e)
@@ -83,25 +72,63 @@ namespace GymMembershipManagementSystem
         }
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection("Data Source=LAPTOP-9VQCFDCQ\\SQLEXPRESS01;Initial Catalog=gymMembership;Integrated Security=True;Encrypt=True;TrustServerCertificate=True");
-            conn.Open();
-            String querry = "SELECT COUNT(*) FROM LoginForm WHERE username=@username AND password=@password";
-            SqlCommand cmd = new SqlCommand(querry, conn);
-            cmd.Parameters.AddWithValue("@username", textBoxUserName.Text);
-            cmd.Parameters.AddWithValue("@password", textBoxPassword.Text);
-            int count = (int)cmd.ExecuteScalar();
-            conn.Close();
-            if (count > 0)
+            // Connection string to the SQL Server database
+            string connectionString = "Data Source=LAPTOP-9VQCFDCQ\\SQLEXPRESS01;Initial Catalog=gymMembership;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
+
+            // Use a `using` block to ensure the connection is properly closed and disposed of
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                MessageBox.Show("Login Success", "Hello User!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Hide();
-                MainPage mainPage = new MainPage();
-                mainPage.Show();
+                try
+                {
+                    conn.Open();
+                    // Query to check if the username and password match an entry in the database
+                    string query = "SELECT COUNT(*) FROM LoginForm WHERE Username = @username AND Password = @password";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        // Add parameters to prevent SQL injection
+                        cmd.Parameters.AddWithValue("@username", textBoxUserName.Text.Trim());
+                        cmd.Parameters.AddWithValue("@password", textBoxPassword.Text.Trim()); 
+
+                        // Execute the query and get the result
+                        int count = (int)cmd.ExecuteScalar();
+
+                        if (count > 0)
+                        {
+                            MessageBox.Show("Login Successful", "Welcome!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Hide();
+                            MainPage mainPage = new MainPage();
+                            mainPage.Show();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Invalid Username or Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Handle any errors that occur during the login process
+                    MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Do you really want to exit?", "Exit",
+            MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+
             }
             else
             {
-                MessageBox.Show("Error in Login", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Application.Exit();
             }
+        }
+
+        private void clockTimer_Tick(object sender, EventArgs e)
+        {
+            labelClock.Text = DateTime.Now.ToString("hh:mm:ss tt");
         }
     }
 }
