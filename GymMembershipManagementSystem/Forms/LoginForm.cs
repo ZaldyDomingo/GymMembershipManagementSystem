@@ -17,7 +17,7 @@ namespace GymMembershipManagementSystem
         {
             InitializeComponent();
             MaskedUserNameText();
-            MaskedUserPasswordText();
+            MaskedUserPasswordText();   
             checkBoxPassword.CheckedChanged += checkBoxPassword_CheckedChanged;
             clockTimer = new Timer();
             clockTimer.Interval = 1000; // 1000 ms = 1 second
@@ -82,20 +82,25 @@ namespace GymMembershipManagementSystem
                 {
                     conn.Open();
                     // Query to check if the username and password match an entry in the database
-                    string query = "SELECT COUNT(*) FROM LoginForm WHERE Username = @username AND Password = @password";
+                    string query = "SELECT Username FROM LoginForm WHERE Username = @username AND Password = @password";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
                         // Add parameters to prevent SQL injection
                         cmd.Parameters.AddWithValue("@username", textBoxUserName.Text.Trim());
-                        cmd.Parameters.AddWithValue("@password", textBoxPassword.Text.Trim()); 
+                        cmd.Parameters.AddWithValue("@password", textBoxPassword.Text.Trim());
 
                         // Execute the query and get the result
-                        int count = (int)cmd.ExecuteScalar();
+                        var result = cmd.ExecuteScalar();
 
-                        if (count > 0)
+                        if (result != null) // If a match is found
                         {
-                            MessageBox.Show("Login Successful", "Welcome!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            string loggedInUser = result.ToString(); // Retrieve the username
+                            MessageBox.Show($"Login Successful! Welcome, {loggedInUser}!", "Welcome", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            // Store the logged-in username for use throughout the application
+                            CurrentUser.Username = loggedInUser;
+
                             this.Hide();
                             MainPage mainPage = new MainPage();
                             mainPage.Show();

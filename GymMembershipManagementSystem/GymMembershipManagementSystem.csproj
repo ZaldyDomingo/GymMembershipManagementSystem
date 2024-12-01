@@ -146,6 +146,7 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\CurrentUser.cs" />
     <Compile Include="Forms\AdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -288,6 +289,9 @@
     <Compile Include="Forms\WalkInMember.Designer.cs">
       <DependentUpon>WalkInMember.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\AdminForm.resx">
+      <DependentUpon>AdminForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CalendarUserInteract.resx">
       <DependentUpon>CalendarUserInteract.cs</DependentUpon>
     </EmbeddedResource>
