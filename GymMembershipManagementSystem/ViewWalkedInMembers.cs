@@ -33,6 +33,7 @@ namespace GymMembershipManagementSystem
             dataGridViewOldWalkedin.DefaultCellStyle.Font = new Font("Century Gothic", 10);
             dataGridViewOldWalkedin.RowTemplate.Height = 28;
             dataGridViewOldWalkedin.ColumnHeadersHeight = 28;
+            dataGridViewOldWalkedin.SelectionChanged += dataGridViewOldWalkedin_SelectionChanged;
 
         }
         private void InitializeDatabaseConnection()
@@ -53,9 +54,7 @@ namespace GymMembershipManagementSystem
 
         private void buttonRefresh_Click(object sender, EventArgs e)
         {
-            LoadNewWalkInMember();
-            LoadOldWalkInMembers();
-            UpdateTotalWalkInMemberCount();
+
         }
 
         private void ViewWalkedInMembers_Load(object sender, EventArgs e)
@@ -64,7 +63,7 @@ namespace GymMembershipManagementSystem
             LoadOldWalkInMembers();
             UpdateTotalWalkInMemberCount();
         }
-        private void LoadNewWalkInMember()
+        public void LoadNewWalkInMember()
         {
             try
             {
@@ -92,40 +91,7 @@ namespace GymMembershipManagementSystem
             }
         }
 
-        // Method to load walk-in members who registered in the past 12 hours
-        //private void LoadOldWalkInMembers()
-        //{
-        //    try
-        //    {
-        //        using (SqlConnection connection = new SqlConnection(connectionString))
-        //        {
-        //            // Get the date and time for 12 hours ago
-        //            DateTime last12HoursDate = DateTime.Now.AddHours(-12);
-
-        //            string query = @"
-        //                SELECT [MemberID], [FirstName], [LastName], [Address], [PhoneNumber], [RegistrationDate], [ExpirationDate], [MembershipFee]
-        //                FROM [gymMembership].[dbo].[WalkInMember]
-        //                WHERE [RegistrationDate] >= @Last12HoursDate
-        //                ORDER BY [RegistrationDate] DESC";
-
-        //            SqlCommand command = new SqlCommand(query, connection);
-        //            command.Parameters.AddWithValue("@Last12HoursDate", last12HoursDate);
-
-        //            SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
-        //            DataTable dataTable = new DataTable();
-        //            dataAdapter.Fill(dataTable);
-
-        //            // Bind data to dataGridViewOldWalkedin
-        //            dataGridViewOldWalkedin.DataSource = dataTable;
-        //            HideSensitiveColumns(dataGridViewOldWalkedin);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show($"Error loading past 12 hours walk-in members: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
-        private void LoadOldWalkInMembers()
+        public void LoadOldWalkInMembers()
         {
             try
             {
@@ -165,7 +131,7 @@ namespace GymMembershipManagementSystem
             dataGridView.Columns["ExpirationDate"].Visible = false;
             dataGridView.Columns["MembershipFee"].Visible = false;
         }
-        private void UpdateTotalWalkInMemberCount()
+        public void UpdateTotalWalkInMemberCount()
         {
             try
             {
@@ -245,6 +211,11 @@ namespace GymMembershipManagementSystem
             {
                 MessageBox.Show($"An error occurred while deleting the member: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void dataGridViewOldWalkedin_SelectionChanged(object sender, EventArgs e)
+        {
+            buttonDelete.Visible = dataGridViewOldWalkedin.SelectedRows.Count > 0;
         }
     }
 }

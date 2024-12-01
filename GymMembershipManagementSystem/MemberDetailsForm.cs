@@ -19,8 +19,6 @@ namespace GymMembershipManagementSystem
         public MemberDetailsForm(string firstName, string lastName)
         {
             InitializeComponent();
-
-
             PopulateMemberDetails(firstName, lastName);
         }
         private string GetMembershipType(int memberId)
@@ -28,8 +26,8 @@ namespace GymMembershipManagementSystem
             using (SqlConnection sqlConnection = new SqlConnection("Data Source=LAPTOP-9VQCFDCQ\\SQLEXPRESS01;Initial Catalog=gymMembership;Integrated Security=True;Encrypt=True;TrustServerCertificate=True"))
             {
                 string query = @"
-            SELECT 
-                CASE 
+                SELECT 
+                    CASE 
                     WHEN EXISTS (SELECT 1 FROM StudentMember WHERE StudentId = @MemberId) THEN 'Student'
                     WHEN EXISTS (SELECT 1 FROM RegularMember WHERE RegularMemberId = @MemberId) THEN 'Regular'
                     ELSE 'Unknown'
@@ -564,6 +562,10 @@ namespace GymMembershipManagementSystem
                     MessageBox.Show($"An error occurred while deleting the member: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

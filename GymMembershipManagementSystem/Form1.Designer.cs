@@ -48,6 +48,7 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.minMaxSizeFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.labelHeaderMenu = new System.Windows.Forms.Label();
             this.labelClock = new System.Windows.Forms.Label();
             this.clockTimer = new System.Windows.Forms.Timer(this.components);
@@ -55,7 +56,7 @@
             this.calendarMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.labelDate = new System.Windows.Forms.Label();
-            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateMemberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripNavigation.SuspendLayout();
             this.menuStripTopNavigation.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -66,9 +67,9 @@
             this.panelContainer.AutoScroll = true;
             this.panelContainer.BackColor = System.Drawing.Color.Transparent;
             this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContainer.Location = new System.Drawing.Point(230, 70);
+            this.panelContainer.Location = new System.Drawing.Point(228, 70);
             this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new System.Drawing.Size(1694, 928);
+            this.panelContainer.Size = new System.Drawing.Size(1696, 928);
             this.panelContainer.TabIndex = 1;
             // 
             // menuStripNavigation
@@ -83,10 +84,11 @@
             this.viewMemberToolStripMenuItem,
             this.regularMembersToolStripMenuItem,
             this.walkedinMemberToolStripMenuItem,
+            this.updateMemberToolStripMenuItem,
             this.totalTransactionToolStripMenuItem});
             this.menuStripNavigation.Location = new System.Drawing.Point(0, 70);
             this.menuStripNavigation.Name = "menuStripNavigation";
-            this.menuStripNavigation.Size = new System.Drawing.Size(230, 928);
+            this.menuStripNavigation.Size = new System.Drawing.Size(228, 928);
             this.menuStripNavigation.TabIndex = 0;
             this.menuStripNavigation.Text = "menuStripRightNavigation";
             // 
@@ -269,6 +271,15 @@
             this.userToolStripMenuItem1.Padding = new System.Windows.Forms.Padding(15);
             this.userToolStripMenuItem1.Size = new System.Drawing.Size(54, 66);
             // 
+            // refreshToolStripMenuItem
+            // 
+            this.refreshToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.refreshToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("refreshToolStripMenuItem.Image")));
+            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            this.refreshToolStripMenuItem.Padding = new System.Windows.Forms.Padding(15);
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(54, 66);
+            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
+            // 
             // labelHeaderMenu
             // 
             this.labelHeaderMenu.AutoSize = true;
@@ -346,14 +357,15 @@
             this.labelDate.TabIndex = 7;
             this.labelDate.Text = "label2";
             // 
-            // refreshToolStripMenuItem
+            // updateMemberToolStripMenuItem
             // 
-            this.refreshToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.refreshToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("refreshToolStripMenuItem.Image")));
-            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            this.refreshToolStripMenuItem.Padding = new System.Windows.Forms.Padding(15);
-            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(54, 66);
-            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
+            this.updateMemberToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("updateMemberToolStripMenuItem.Image")));
+            this.updateMemberToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.updateMemberToolStripMenuItem.Name = "updateMemberToolStripMenuItem";
+            this.updateMemberToolStripMenuItem.Padding = new System.Windows.Forms.Padding(15);
+            this.updateMemberToolStripMenuItem.Size = new System.Drawing.Size(215, 55);
+            this.updateMemberToolStripMenuItem.Text = "  Update Member";
+            this.updateMemberToolStripMenuItem.Click += new System.EventHandler(this.updateMemberToolStripMenuItem_Click);
             // 
             // MainPage
             // 
@@ -415,6 +427,7 @@
         private System.Windows.Forms.ToolStripMenuItem walkedinMemberToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem minMaxSizeFormToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem updateMemberToolStripMenuItem;
     }
 }
 

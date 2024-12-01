@@ -293,11 +293,31 @@ namespace GymMembershipManagementSystem
                 }
                 else if (form is ViewRegularMember viewRegularForm)
                 {
-                    viewRegularForm.LoadRegularMembers(); // Refresh the regular members
+                    viewRegularForm.LoadRegularMembers(); 
+                }
+                else if (form is ViewWalkedInMembers viewWalkinForm)
+                {
+                    viewWalkinForm.LoadNewWalkInMember();
+                    viewWalkinForm.LoadOldWalkInMembers();
+                    viewWalkinForm.UpdateTotalWalkInMemberCount();
                 }
             }
         }
 
+        private void updateMemberToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (panelContainer.Controls.OfType<UpdateMemberForm>().Any()) return;
+            panelContainer.Controls.Clear();
 
+            UpdateMemberForm updateMemberForm = new UpdateMemberForm
+            {
+                TopLevel = false,
+                FormBorderStyle = FormBorderStyle.None,
+                Dock = DockStyle.Fill
+            };
+
+            panelContainer.Controls.Add(updateMemberForm);
+            updateMemberForm.Show();
+        }
     }
 }

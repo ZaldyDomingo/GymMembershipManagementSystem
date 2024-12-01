@@ -44,6 +44,9 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.searchTimer = new System.Windows.Forms.Timer(this.components);
+            this.buttonCancel = new System.Windows.Forms.Button();
+            this.buttonCheck = new System.Windows.Forms.Button();
+            this.buttonMultiDelete = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRegular)).BeginInit();
             this.panel2.SuspendLayout();
@@ -54,6 +57,9 @@
             // 
             this.panel1.AutoScroll = true;
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.buttonCancel);
+            this.panel1.Controls.Add(this.buttonCheck);
+            this.panel1.Controls.Add(this.buttonMultiDelete);
             this.panel1.Controls.Add(this.dataGridViewRegular);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.panel2);
@@ -98,7 +104,7 @@
             this.dataGridViewRegular.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewRegular.EnableHeadersVisualStyles = false;
             this.dataGridViewRegular.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridViewRegular.Location = new System.Drawing.Point(19, 126);
+            this.dataGridViewRegular.Location = new System.Drawing.Point(21, 128);
             this.dataGridViewRegular.Margin = new System.Windows.Forms.Padding(10);
             this.dataGridViewRegular.MultiSelect = false;
             this.dataGridViewRegular.Name = "dataGridViewRegular";
@@ -117,6 +123,7 @@
             this.dataGridViewRegular.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewRegular.Size = new System.Drawing.Size(1291, 614);
             this.dataGridViewRegular.TabIndex = 16;
+            this.dataGridViewRegular.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRegular_CellContentClick);
             this.dataGridViewRegular.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRegular_CellDoubleClick_1);
             // 
             // label3
@@ -163,7 +170,7 @@
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(2, 30);
+            this.pictureBox1.Location = new System.Drawing.Point(2, 25);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(30, 28);
             this.pictureBox1.TabIndex = 1;
@@ -190,6 +197,39 @@
             // searchTimer
             // 
             this.searchTimer.Tick += new System.EventHandler(this.searchTimer_Tick);
+            // 
+            // buttonCancel
+            // 
+            this.buttonCancel.BackColor = System.Drawing.Color.White;
+            this.buttonCancel.Image = ((System.Drawing.Image)(resources.GetObject("buttonCancel.Image")));
+            this.buttonCancel.Location = new System.Drawing.Point(1186, 56);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(60, 62);
+            this.buttonCancel.TabIndex = 20;
+            this.buttonCancel.UseVisualStyleBackColor = false;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            // 
+            // buttonCheck
+            // 
+            this.buttonCheck.BackColor = System.Drawing.Color.White;
+            this.buttonCheck.Image = ((System.Drawing.Image)(resources.GetObject("buttonCheck.Image")));
+            this.buttonCheck.Location = new System.Drawing.Point(1252, 56);
+            this.buttonCheck.Name = "buttonCheck";
+            this.buttonCheck.Size = new System.Drawing.Size(60, 62);
+            this.buttonCheck.TabIndex = 19;
+            this.buttonCheck.UseVisualStyleBackColor = false;
+            this.buttonCheck.Click += new System.EventHandler(this.buttonCheck_Click);
+            // 
+            // buttonMultiDelete
+            // 
+            this.buttonMultiDelete.BackColor = System.Drawing.Color.White;
+            this.buttonMultiDelete.Image = ((System.Drawing.Image)(resources.GetObject("buttonMultiDelete.Image")));
+            this.buttonMultiDelete.Location = new System.Drawing.Point(1252, 56);
+            this.buttonMultiDelete.Name = "buttonMultiDelete";
+            this.buttonMultiDelete.Size = new System.Drawing.Size(60, 62);
+            this.buttonMultiDelete.TabIndex = 18;
+            this.buttonMultiDelete.UseVisualStyleBackColor = false;
+            this.buttonMultiDelete.Click += new System.EventHandler(this.buttonMultiDelete_Click);
             // 
             // ViewRegularMember
             // 
@@ -224,5 +264,8 @@
         private System.Windows.Forms.Timer searchTimer;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dataGridViewRegular;
+        private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.Button buttonCheck;
+        private System.Windows.Forms.Button buttonMultiDelete;
     }
 }

@@ -234,6 +234,18 @@
     <Compile Include="roundedPictureBox.Designer.cs">
       <DependentUpon>roundedPictureBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="UpdateMember.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateMember.Designer.cs">
+      <DependentUpon>UpdateMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateMemberForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateMemberForm.Designer.cs">
+      <DependentUpon>UpdateMemberForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl1Blank.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -309,6 +321,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UpdateMember.resx">
+      <DependentUpon>UpdateMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateMemberForm.resx">
+      <DependentUpon>UpdateMemberForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControl1Blank.resx">
       <DependentUpon>UserControl1Blank.cs</DependentUpon>
     </EmbeddedResource>
