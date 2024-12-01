@@ -97,7 +97,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewCheckIns.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewCheckIns.EnableHeadersVisualStyles = false;
-            this.dataGridViewCheckIns.Location = new System.Drawing.Point(29, 104);
+            this.dataGridViewCheckIns.Location = new System.Drawing.Point(40, 72);
             this.dataGridViewCheckIns.Margin = new System.Windows.Forms.Padding(10);
             this.dataGridViewCheckIns.MultiSelect = false;
             this.dataGridViewCheckIns.Name = "dataGridViewCheckIns";
@@ -106,7 +106,7 @@
             this.dataGridViewCheckIns.RowHeadersWidth = 51;
             this.dataGridViewCheckIns.RowTemplate.Height = 80;
             this.dataGridViewCheckIns.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewCheckIns.Size = new System.Drawing.Size(615, 547);
+            this.dataGridViewCheckIns.Size = new System.Drawing.Size(595, 609);
             this.dataGridViewCheckIns.TabIndex = 43;
             // 
             // label2
@@ -162,7 +162,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(675, 721);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);

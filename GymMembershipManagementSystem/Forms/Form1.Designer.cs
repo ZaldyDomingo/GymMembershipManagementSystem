@@ -40,6 +40,7 @@
             this.viewMemberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.regularMembersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.walkedinMemberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateMemberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.totalTransactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.backToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,7 +57,6 @@
             this.calendarMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.labelDate = new System.Windows.Forms.Label();
-            this.updateMemberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripNavigation.SuspendLayout();
             this.menuStripTopNavigation.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -178,6 +178,16 @@
             this.walkedinMemberToolStripMenuItem.Text = "  View Walked-in";
             this.walkedinMemberToolStripMenuItem.Click += new System.EventHandler(this.walkedinMemberToolStripMenuItem_Click);
             // 
+            // updateMemberToolStripMenuItem
+            // 
+            this.updateMemberToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("updateMemberToolStripMenuItem.Image")));
+            this.updateMemberToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.updateMemberToolStripMenuItem.Name = "updateMemberToolStripMenuItem";
+            this.updateMemberToolStripMenuItem.Padding = new System.Windows.Forms.Padding(15);
+            this.updateMemberToolStripMenuItem.Size = new System.Drawing.Size(215, 55);
+            this.updateMemberToolStripMenuItem.Text = "  Update Member";
+            this.updateMemberToolStripMenuItem.Click += new System.EventHandler(this.updateMemberToolStripMenuItem_Click);
+            // 
             // totalTransactionToolStripMenuItem
             // 
             this.totalTransactionToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("totalTransactionToolStripMenuItem.Image")));
@@ -270,6 +280,7 @@
             this.userToolStripMenuItem1.Name = "userToolStripMenuItem1";
             this.userToolStripMenuItem1.Padding = new System.Windows.Forms.Padding(15);
             this.userToolStripMenuItem1.Size = new System.Drawing.Size(54, 66);
+            this.userToolStripMenuItem1.Click += new System.EventHandler(this.userToolStripMenuItem1_Click);
             // 
             // refreshToolStripMenuItem
             // 
@@ -356,16 +367,6 @@
             this.labelDate.Size = new System.Drawing.Size(60, 19);
             this.labelDate.TabIndex = 7;
             this.labelDate.Text = "label2";
-            // 
-            // updateMemberToolStripMenuItem
-            // 
-            this.updateMemberToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("updateMemberToolStripMenuItem.Image")));
-            this.updateMemberToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.updateMemberToolStripMenuItem.Name = "updateMemberToolStripMenuItem";
-            this.updateMemberToolStripMenuItem.Padding = new System.Windows.Forms.Padding(15);
-            this.updateMemberToolStripMenuItem.Size = new System.Drawing.Size(215, 55);
-            this.updateMemberToolStripMenuItem.Text = "  Update Member";
-            this.updateMemberToolStripMenuItem.Click += new System.EventHandler(this.updateMemberToolStripMenuItem_Click);
             // 
             // MainPage
             // 

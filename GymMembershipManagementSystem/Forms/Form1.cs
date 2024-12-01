@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GymMembershipManagementSystem.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -318,6 +319,11 @@ namespace GymMembershipManagementSystem
 
             panelContainer.Controls.Add(updateMemberForm);
             updateMemberForm.Show();
+        }
+
+        private void userToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show($"Currently logged in as: {CurrentUser.Username}","Info",MessageBoxButtons.OK);
         }
     }
 }
