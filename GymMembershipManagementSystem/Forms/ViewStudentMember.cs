@@ -276,7 +276,6 @@ namespace GymMembershipManagementSystem
             {
                 List<int> selectedIds = new List<int>();
 
-                // Check if "Select" column exists before accessing it
                 if (dataGridViewStudent.Columns.Contains("Select"))
                 {
                     foreach (DataGridViewRow row in dataGridViewStudent.Rows)
