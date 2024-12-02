@@ -320,7 +320,7 @@ namespace GymMembershipManagementSystem
         {
             ToggleMultiDeleteMode(false);
         }
-
+        //Content Clicked
         private void dataGridViewStudent_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dataGridViewStudent.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn && e.RowIndex >= 0)
