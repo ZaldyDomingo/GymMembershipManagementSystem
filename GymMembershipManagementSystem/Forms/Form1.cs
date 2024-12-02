@@ -306,6 +306,13 @@ namespace GymMembershipManagementSystem
                 {
                     update.LoadMemberData();
                 }
+                else if(form is DashboardForm dashboard)
+                {
+                    dashboard.LoadMemberJoinChart();
+                    dashboard.LoadMembershipFeeChart();
+                    dashboard.LoadRecentlyAddedMembers();
+                    dashboard.LoadAllMembers();
+                }
             }
         }
 

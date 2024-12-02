@@ -62,7 +62,7 @@ namespace GymMembershipManagementSystem
             SearchMember(searchTerm);
         }
 
-        private void DisplayMemberCounts()
+        public void DisplayMemberCounts()
         {
             labelStudentCount.Text = GetMemberCount("StudentMember").ToString();
             labelNotStudentMemberCount.Text = GetMemberCount("RegularMember").ToString();
@@ -107,7 +107,7 @@ namespace GymMembershipManagementSystem
             string connectionString = "Data Source=LAPTOP-9VQCFDCQ\\SQLEXPRESS01;Initial Catalog=gymMembership;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
             sqlConnection = new SqlConnection(connectionString);
         }
-        private void LoadAllMembers()
+        public void LoadAllMembers()
         {
             DataTable dataTable = new DataTable();
             string query = "SELECT [FirstName], [LastName], [MobileNumber], [EmergencyContactPhone] FROM [dbo].[StudentMember] " +
@@ -235,7 +235,7 @@ namespace GymMembershipManagementSystem
             panelContainer.Controls.Add(viewRegularMember);
             viewRegularMember.Show();
         }
-        private void LoadRecentlyAddedMembers()
+        public void LoadRecentlyAddedMembers()
         {
             DataTable dataTable = new DataTable();
             string query = "SELECT [FirstName], [LastName], [ProfileImage] FROM [dbo].[StudentMember] " +
@@ -305,7 +305,7 @@ namespace GymMembershipManagementSystem
             }
         }
 
-        private void LoadMemberJoinChart()
+        public void LoadMemberJoinChart()
         {
             // SQL queries for Regular and Student Members
             string regularMemberQuery = @"
@@ -388,7 +388,7 @@ namespace GymMembershipManagementSystem
             }
             return data;
         }
-        private void LoadMembershipFeeChart()
+        public void LoadMembershipFeeChart()
         {
             string studentMemberQuery = "SELECT SUM(MembershipFee) AS TotalMembershipFee FROM [gymMembership].[dbo].[StudentMember]";
             string regularMemberQuery = "SELECT SUM(MembershipFee) AS TotalMembershipFee FROM [gymMembership].[dbo].[RegularMember]";

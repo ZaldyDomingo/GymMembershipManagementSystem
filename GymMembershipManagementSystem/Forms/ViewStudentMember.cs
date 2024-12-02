@@ -187,7 +187,54 @@ namespace GymMembershipManagementSystem
         {
             searchTimer.Stop();
             FilterData();
+        }
+        private CheckBox headerCheckBox; // Declare a CheckBox for the header
+        private bool isHeaderCheckBoxHandled = false;
 
+        private void AddHeaderCheckBox()
+        {
+            if (headerCheckBox == null)
+            {
+                headerCheckBox = new CheckBox
+                {
+                    Size = new Size(15, 15), // Size of the checkbox
+                    BackColor = Color.Transparent
+                };
+
+                // Add CheckedChanged event for the header checkbox
+                headerCheckBox.CheckedChanged += HeaderCheckBox_CheckedChanged;
+
+                // Ensure header checkbox is added dynamically when column headers are painted
+                dataGridViewStudent.CellPainting += DataGridViewStudent_CellPainting;
+            }
+        }
+
+        private void DataGridViewStudent_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (!isHeaderCheckBoxHandled && e.RowIndex == -1 && e.ColumnIndex == 0) // Check header row
+            {
+                // Position the checkbox inside the header cell
+                var cellRectangle = dataGridViewStudent.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
+                headerCheckBox.Location = new Point(cellRectangle.X + (cellRectangle.Width - headerCheckBox.Width) / 2, cellRectangle.Y + (cellRectangle.Height - headerCheckBox.Height) / 2);
+
+                // Add the checkbox to the DataGridView controls
+                dataGridViewStudent.Controls.Add(headerCheckBox);
+
+                isHeaderCheckBoxHandled = true;
+            }
+        }
+        private void HeaderCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            bool isChecked = headerCheckBox.Checked;
+
+            foreach (DataGridViewRow row in dataGridViewStudent.Rows)
+            {
+                DataGridViewCheckBoxCell checkBoxCell = row.Cells["Select"] as DataGridViewCheckBoxCell;
+                if (checkBoxCell != null)
+                {
+                    checkBoxCell.Value = isChecked; // Check or uncheck all checkboxes
+                }
+            }
         }
         private void ToggleMultiDeleteMode(bool isMultiDeleteMode)
         {
@@ -197,17 +244,21 @@ namespace GymMembershipManagementSystem
 
             if (isMultiDeleteMode)
             {
+                // Add "Select" checkbox column if not already present
                 if (!dataGridViewStudent.Columns.Contains("Select"))
                 {
                     DataGridViewCheckBoxColumn checkBoxColumn = new DataGridViewCheckBoxColumn
                     {
                         Name = "Select",
-                        HeaderText = "",
+                        HeaderText = "", // Leave header text blank; we add a checkbox instead
                         Width = 30,
                         ReadOnly = false
                     };
                     dataGridViewStudent.Columns.Insert(0, checkBoxColumn);
                 }
+
+                // Add the header checkbox dynamically
+                AddHeaderCheckBox();
 
                 // Allow only the checkbox column to be editable
                 dataGridViewStudent.ReadOnly = false;
@@ -221,14 +272,24 @@ namespace GymMembershipManagementSystem
             }
             else
             {
+                // Remove "Select" column if present
                 if (dataGridViewStudent.Columns.Contains("Select"))
                 {
                     dataGridViewStudent.Columns.Remove("Select");
                 }
 
-                dataGridViewStudent.ReadOnly = true; // Revert to read-only
+                // Hide the header checkbox
+                if (headerCheckBox != null)
+                {
+                    headerCheckBox.Visible = false;
+                    headerCheckBox.Checked = false;
+                    isHeaderCheckBoxHandled = false;
+                }
+
+                dataGridViewStudent.ReadOnly = true; // Revert to read-only mode
             }
         }
+
 
 
         private void DeleteSelectedMembers(List<int> studentIds)

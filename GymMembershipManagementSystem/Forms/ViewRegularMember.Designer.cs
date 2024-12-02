@@ -29,12 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewRegularMember));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewRegularMember));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonCancel = new System.Windows.Forms.Button();
+            this.buttonCheck = new System.Windows.Forms.Button();
+            this.buttonMultiDelete = new System.Windows.Forms.Button();
             this.dataGridViewRegular = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -44,9 +47,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.searchTimer = new System.Windows.Forms.Timer(this.components);
-            this.buttonCancel = new System.Windows.Forms.Button();
-            this.buttonCheck = new System.Windows.Forms.Button();
-            this.buttonMultiDelete = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRegular)).BeginInit();
             this.panel2.SuspendLayout();
@@ -70,6 +70,39 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1428, 1055);
             this.panel1.TabIndex = 0;
+            // 
+            // buttonCancel
+            // 
+            this.buttonCancel.BackColor = System.Drawing.Color.White;
+            this.buttonCancel.Image = ((System.Drawing.Image)(resources.GetObject("buttonCancel.Image")));
+            this.buttonCancel.Location = new System.Drawing.Point(1186, 56);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(60, 62);
+            this.buttonCancel.TabIndex = 20;
+            this.buttonCancel.UseVisualStyleBackColor = false;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            // 
+            // buttonCheck
+            // 
+            this.buttonCheck.BackColor = System.Drawing.Color.White;
+            this.buttonCheck.Image = ((System.Drawing.Image)(resources.GetObject("buttonCheck.Image")));
+            this.buttonCheck.Location = new System.Drawing.Point(1252, 56);
+            this.buttonCheck.Name = "buttonCheck";
+            this.buttonCheck.Size = new System.Drawing.Size(60, 62);
+            this.buttonCheck.TabIndex = 19;
+            this.buttonCheck.UseVisualStyleBackColor = false;
+            this.buttonCheck.Click += new System.EventHandler(this.buttonCheck_Click);
+            // 
+            // buttonMultiDelete
+            // 
+            this.buttonMultiDelete.BackColor = System.Drawing.Color.White;
+            this.buttonMultiDelete.Image = ((System.Drawing.Image)(resources.GetObject("buttonMultiDelete.Image")));
+            this.buttonMultiDelete.Location = new System.Drawing.Point(1252, 56);
+            this.buttonMultiDelete.Name = "buttonMultiDelete";
+            this.buttonMultiDelete.Size = new System.Drawing.Size(60, 62);
+            this.buttonMultiDelete.TabIndex = 18;
+            this.buttonMultiDelete.UseVisualStyleBackColor = false;
+            this.buttonMultiDelete.Click += new System.EventHandler(this.buttonMultiDelete_Click);
             // 
             // dataGridViewRegular
             // 
@@ -197,39 +230,6 @@
             // searchTimer
             // 
             this.searchTimer.Tick += new System.EventHandler(this.searchTimer_Tick);
-            // 
-            // buttonCancel
-            // 
-            this.buttonCancel.BackColor = System.Drawing.Color.White;
-            this.buttonCancel.Image = ((System.Drawing.Image)(resources.GetObject("buttonCancel.Image")));
-            this.buttonCancel.Location = new System.Drawing.Point(1186, 56);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(60, 62);
-            this.buttonCancel.TabIndex = 20;
-            this.buttonCancel.UseVisualStyleBackColor = false;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
-            // 
-            // buttonCheck
-            // 
-            this.buttonCheck.BackColor = System.Drawing.Color.White;
-            this.buttonCheck.Image = ((System.Drawing.Image)(resources.GetObject("buttonCheck.Image")));
-            this.buttonCheck.Location = new System.Drawing.Point(1252, 56);
-            this.buttonCheck.Name = "buttonCheck";
-            this.buttonCheck.Size = new System.Drawing.Size(60, 62);
-            this.buttonCheck.TabIndex = 19;
-            this.buttonCheck.UseVisualStyleBackColor = false;
-            this.buttonCheck.Click += new System.EventHandler(this.buttonCheck_Click);
-            // 
-            // buttonMultiDelete
-            // 
-            this.buttonMultiDelete.BackColor = System.Drawing.Color.White;
-            this.buttonMultiDelete.Image = ((System.Drawing.Image)(resources.GetObject("buttonMultiDelete.Image")));
-            this.buttonMultiDelete.Location = new System.Drawing.Point(1252, 56);
-            this.buttonMultiDelete.Name = "buttonMultiDelete";
-            this.buttonMultiDelete.Size = new System.Drawing.Size(60, 62);
-            this.buttonMultiDelete.TabIndex = 18;
-            this.buttonMultiDelete.UseVisualStyleBackColor = false;
-            this.buttonMultiDelete.Click += new System.EventHandler(this.buttonMultiDelete_Click);
             // 
             // ViewRegularMember
             // 
