@@ -97,32 +97,29 @@ namespace GymMembershipManagementSystem
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    // Get the date and time for 12 hours ago
-                    DateTime last12HoursDate = DateTime.Now.AddHours(-12);
-
+                    // Modify the query to retrieve all walk-in members
                     string query = @"
-                            SELECT [MemberID], [FirstName], [LastName], [Address], [PhoneNumber], [RegistrationDate], [ExpirationDate], [MembershipFee]
-                            FROM [gymMembership].[dbo].[WalkInMember]
-                            WHERE [RegistrationDate] >= @Last12HoursDate
-                            ORDER BY [RegistrationDate] DESC";
+                SELECT [MemberID], [FirstName], [LastName], [Address], [PhoneNumber], [RegistrationDate], [ExpirationDate], [MembershipFee]
+                FROM [gymMembership].[dbo].[WalkInMember]
+                ORDER BY [RegistrationDate] DESC";
 
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@Last12HoursDate", last12HoursDate);
-
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter(query, connection);
                     DataTable dataTable = new DataTable();
                     dataAdapter.Fill(dataTable);
 
-                    // Bind data to dataGridViewOldWalkedin
+                    // Bind the data to dataGridViewOldWalkedin
                     dataGridViewOldWalkedin.DataSource = dataTable;
+
+                    // Hide sensitive columns as needed
                     HideSensitiveColumns(dataGridViewOldWalkedin);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error loading past 12 hours walk-in members: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error loading walk-in members: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void HideSensitiveColumns(DataGridView dataGridView)
         {
             dataGridView.Columns["MemberID"].Visible = false;

@@ -36,7 +36,7 @@ namespace GymMembershipManagementSystem
             string connectionString = "Data Source=LAPTOP-9VQCFDCQ\\SQLEXPRESS01;Initial Catalog=gymMembership;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
             sqlConnection = new SqlConnection(connectionString);
         }
-        private void LoadMemberData()
+        public void LoadMemberData()
         {
             string query = @"
                 SELECT RegularMemberId AS MemberId, FirstName, LastName, 'Regular' AS MemberType FROM RegularMember

@@ -24,14 +24,6 @@ namespace GymMembershipManagementSystem
             this.memberType = memberType;
             InitializeDatabaseConnection();
             LoadMemberDetails();
-            MaskedFirstNameText();
-            MaskedLastNameText();
-            MaskedAddressText();
-            MaskedAgeText();
-            MaskedMobileNumber();
-            MaskedEmail();
-            MaskedGuardianFullName();
-            MaskedGuardianMobileNumber();
             string firstname = textBoxFirstName.Text;
             string lastname = textBoxLastName.Text;
             string dateofbirth = dateTimePickerDOB.Value.ToString("yyyy-MM-dd");
@@ -114,81 +106,6 @@ namespace GymMembershipManagementSystem
             }
         }
 
-        private void MaskedAddressText()
-        {
-            textBoxAddress.Text = "Address";
-            textBoxAddress.ForeColor = Color.Gray;
-            // Use Singleton Pattern for placeholder management
-            MaskingMethod.Instance.AddPlaceholder(textBoxAddress, "Address");
-            textBoxAddress.KeyPress += MaskingMethod.Instance.ValidateNameInput;
-            textBoxAddress.Enter += (sender, e) => MaskingMethod.Instance.RemovePlaceholder(textBoxAddress, "Address");
-            textBoxAddress.Leave += (sender, e) => MaskingMethod.Instance.AddPlaceholder(textBoxAddress, "Address");
-        }
-
-        private void MaskedFirstNameText()
-        {
-            textBoxFirstName.ForeColor = Color.Gray;
-            // Use Singleton Pattern for placeholder management
-            MaskingMethod.Instance.AddPlaceholder(textBoxFirstName, "First name");
-            textBoxFirstName.KeyPress += MaskingMethod.Instance.ValidateNameInput;
-            textBoxFirstName.Enter += (sender, e) => MaskingMethod.Instance.RemovePlaceholder(textBoxFirstName, "First name");
-            textBoxFirstName.Leave += (sender, e) => MaskingMethod.Instance.AddPlaceholder(textBoxFirstName, "First name");
-        }
-
-        private void MaskedLastNameText()
-        {
-            textBoxLastName.ForeColor = Color.Gray;
-            // Use Singleton Pattern for placeholder management
-            MaskingMethod.Instance.AddPlaceholder(textBoxLastName, "Last name");
-            textBoxLastName.KeyPress += MaskingMethod.Instance.ValidateNameInput;
-            textBoxLastName.Enter += (sender, e) => MaskingMethod.Instance.RemovePlaceholder(textBoxLastName, "Last name");
-            textBoxLastName.Leave += (sender, e) => MaskingMethod.Instance.AddPlaceholder(textBoxLastName, "Last name");
-        }
-        private void MaskedAgeText()
-        {
-            textBoxAge.ForeColor = Color.Gray;
-            // Use Singleton Pattern for placeholder management
-            MaskingMethod.Instance.AddPlaceholder(textBoxAge, "Age");
-            textBoxAge.KeyPress += MaskingMethod.Instance.ValidateNameInput;
-            textBoxAge.Enter += (sender, e) => MaskingMethod.Instance.RemovePlaceholder(textBoxAge, "Age");
-            textBoxAge.Leave += (sender, e) => MaskingMethod.Instance.AddPlaceholder(textBoxAge, "Age");
-        }
-        private void MaskedMobileNumber()
-        {
-            textBoxMobileNumber.ForeColor = Color.Gray;
-            // Use Singleton Pattern for placeholder management
-            MaskingMethod.Instance.AddPlaceholder(textBoxMobileNumber, "Mobile Number");
-            textBoxMobileNumber.KeyPress += MaskingMethod.Instance.ValidateNameInput;
-            textBoxMobileNumber.Enter += (sender, e) => MaskingMethod.Instance.RemovePlaceholder(textBoxMobileNumber, "Mobile Number");
-            textBoxMobileNumber.Leave += (sender, e) => MaskingMethod.Instance.AddPlaceholder(textBoxMobileNumber, "Mobile Number");
-        }
-        private void MaskedEmail()
-        {
-            textBoxEmail.ForeColor = Color.Gray;
-            // Use Singleton Pattern for placeholder management
-            MaskingMethod.Instance.AddPlaceholder(textBoxEmail, "Email");
-            textBoxEmail.KeyPress += MaskingMethod.Instance.ValidateNameInput;
-            textBoxEmail.Enter += (sender, e) => MaskingMethod.Instance.RemovePlaceholder(textBoxEmail, "Email");
-            textBoxEmail.Leave += (sender, e) => MaskingMethod.Instance.AddPlaceholder(textBoxEmail, "Email");
-        }
-        private void MaskedGuardianFullName()
-        {
-            textBoxGuardianFullName.ForeColor = Color.Gray;
-            // Use Singleton Pattern for placeholder management
-            MaskingMethod.Instance.AddPlaceholder(textBoxGuardianFullName, "Full Name");
-            textBoxGuardianFullName.KeyPress += MaskingMethod.Instance.ValidateNameInput;
-            textBoxGuardianFullName.Enter += (sender, e) => MaskingMethod.Instance.RemovePlaceholder(textBoxGuardianFullName, "Full Name");
-            textBoxGuardianFullName.Leave += (sender, e) => MaskingMethod.Instance.AddPlaceholder(textBoxGuardianFullName, "Full Name");
-        }
-        private void MaskedGuardianMobileNumber()
-        {
-            textBoxGuardianNumber.ForeColor = Color.Gray;
-            // Use Singleton Pattern for placeholder management
-            MaskingMethod.Instance.AddPlaceholder(textBoxGuardianNumber, "Mobile Number");
-            textBoxGuardianNumber.KeyPress += MaskingMethod.Instance.ValidateNameInput;
-            textBoxGuardianNumber.Enter += (sender, e) => MaskingMethod.Instance.RemovePlaceholder(textBoxGuardianNumber, "Mobile Number");
-            textBoxGuardianNumber.Leave += (sender, e) => MaskingMethod.Instance.AddPlaceholder(textBoxGuardianNumber, "Mobile Number");
-        }
 
 
         private void pictureBoxMember_Click(object sender, EventArgs e)
@@ -203,24 +120,76 @@ namespace GymMembershipManagementSystem
                 pictureBoxMember.Image = new Bitmap(openFileDialog.FileName);
             }
         }
+        private bool AreTextBoxesEmpty()
+        {
+            // Check if any of the textboxes are empty
+            if (string.IsNullOrWhiteSpace(textBoxFirstName.Text) ||
+                string.IsNullOrWhiteSpace(textBoxLastName.Text) ||
+                string.IsNullOrWhiteSpace(textBoxAge.Text) ||
+                string.IsNullOrWhiteSpace(textBoxAddress.Text) ||
+                string.IsNullOrWhiteSpace(textBoxMobileNumber.Text) ||
+                string.IsNullOrWhiteSpace(textBoxEmail.Text) ||
+                string.IsNullOrWhiteSpace(textBoxGuardianFullName.Text) ||
+                string.IsNullOrWhiteSpace(textBoxGuardianNumber.Text))
+            {
+                MessageBox.Show("You cannot leave the text boxes blank.");
+                return true; // Text boxes are empty
+            }
+            return false; // All text boxes are filled
+        }
+
+        private bool IsDataUnchanged()
+        {
+            string query = memberType == "Regular" ?
+                "SELECT FirstName, LastName, DateOfBirth, Age, Gender, Address, MobileNumber, Email, EmergencyContactName, EmergencyContactPhone FROM RegularMember WHERE RegularMemberId = @MemberId" :
+                "SELECT FirstName, LastName, DateOfBirth, Age, Gender, Address, MobileNumber, Email, EmergencyContactName, EmergencyContactPhone FROM StudentMember WHERE StudentId = @MemberId";
+
+            using (SqlCommand command = new SqlCommand(query, sqlConnection))
+            {
+                command.Parameters.AddWithValue("@MemberId", memberId);
+                sqlConnection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    bool isSame =
+                        reader["FirstName"].ToString() == textBoxFirstName.Text &&
+                        reader["LastName"].ToString() == textBoxLastName.Text &&
+                        Convert.ToDateTime(reader["DateOfBirth"]).ToString("yyyy-MM-dd") == dateTimePickerDOB.Value.ToString("yyyy-MM-dd") &&
+                        reader["Age"].ToString() == textBoxAge.Text &&
+                        reader["Gender"].ToString() == (radioButtonMale.Checked ? "Male" : "Female") &&
+                        reader["Address"].ToString() == textBoxAddress.Text &&
+                        reader["MobileNumber"].ToString() == textBoxMobileNumber.Text &&
+                        reader["Email"].ToString() == textBoxEmail.Text &&
+                        reader["EmergencyContactName"].ToString() == textBoxGuardianFullName.Text &&
+                        reader["EmergencyContactPhone"].ToString() == textBoxGuardianNumber.Text;
+
+                    sqlConnection.Close();
+                    return isSame;
+                }
+
+                sqlConnection.Close();
+                return false;
+            }
+        }
 
         private void buttonUpdateStudent_Click(object sender, EventArgs e)
         {
-            string firstName = textBoxFirstName.Text;
-            string lastName = textBoxLastName.Text;
-            string dateOfBirth = dateTimePickerDOB.Value.ToString("yyyy-MM-dd");
-            int age = int.Parse(textBoxAge.Text);
-            string gender = radioButtonMale.Checked ? "Male" : "Female";
-            string address = textBoxAddress.Text;
-            string mobileNumber = textBoxMobileNumber.Text;
-            string email = textBoxEmail.Text;
-            string guardianName = textBoxGuardianFullName.Text;
-            string guardianNumber = textBoxGuardianNumber.Text;
+            if (AreTextBoxesEmpty())
+            {
+                return; // Exit if any text box is empty
+            }
 
-            // SQL query for updating Student Member
+            if (IsDataUnchanged())
+            {
+                MessageBox.Show("You cannot input the same value.");
+                return;
+            }
+
+            // Proceed with the update logic
             string updateQuery = @"
-        UPDATE StudentMember 
-        SET FirstName = @FirstName,
+            UPDATE StudentMember 
+            SET FirstName = @FirstName,
             LastName = @LastName,
             DateOfBirth = @DateOfBirth,
             Age = @Age,
@@ -230,61 +199,26 @@ namespace GymMembershipManagementSystem
             Email = @Email,
             EmergencyContactName = @GuardianName,
             EmergencyContactPhone = @GuardianNumber
-        WHERE StudentId = @MemberId";
+            WHERE StudentId = @MemberId";
 
-            SqlCommand command = new SqlCommand(updateQuery, sqlConnection);
-            command.Parameters.AddWithValue("@FirstName", firstName);
-            command.Parameters.AddWithValue("@LastName", lastName);
-            command.Parameters.AddWithValue("@DateOfBirth", dateOfBirth);
-            command.Parameters.AddWithValue("@Age", age);
-            command.Parameters.AddWithValue("@Gender", gender);
-            command.Parameters.AddWithValue("@Address", address);
-            command.Parameters.AddWithValue("@MobileNumber", mobileNumber);
-            command.Parameters.AddWithValue("@Email", email);
-            command.Parameters.AddWithValue("@GuardianName", guardianName);
-            command.Parameters.AddWithValue("@GuardianNumber", guardianNumber);
-            command.Parameters.AddWithValue("@MemberId", memberId);
-
-            try
-            {
-                sqlConnection.Open();
-                int rowsAffected = command.ExecuteNonQuery();
-                if (rowsAffected > 0)
-                {
-                    MessageBox.Show("Student member details updated successfully.");
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Error: Student member details not updated.");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred: " + ex.Message);
-            }
-            finally
-            {
-                sqlConnection.Close();
-            }
+            UpdateMemberDetails(updateQuery);
         }
 
         private void buttonUpdateRegular_Click(object sender, EventArgs e)
         {
-            string firstName = textBoxFirstName.Text;
-            string lastName = textBoxLastName.Text;
-            string dateOfBirth = dateTimePickerDOB.Value.ToString("yyyy-MM-dd");
-            int age = int.Parse(textBoxAge.Text);
-            string gender = radioButtonMale.Checked ? "Male" : "Female";
-            string address = textBoxAddress.Text;
-            string mobileNumber = textBoxMobileNumber.Text;
-            string email = textBoxEmail.Text;
-            string guardianName = textBoxGuardianFullName.Text;
-            string guardianNumber = textBoxGuardianNumber.Text;
+            if (AreTextBoxesEmpty())
+            {
+                return; // Exit if any text box is empty
+            }
 
-            // SQL query for updating Regular Member
+            if (IsDataUnchanged())
+            {
+                MessageBox.Show("You cannot input the same value.");
+                return;
+            }
+            // Proceed with the update logic
             string updateQuery = @"
-        UPDATE RegularMember 
+            UPDATE RegularMember 
             SET FirstName = @FirstName,
             LastName = @LastName,
             DateOfBirth = @DateOfBirth,
@@ -297,17 +231,21 @@ namespace GymMembershipManagementSystem
             EmergencyContactPhone = @GuardianNumber
             WHERE RegularMemberId = @MemberId";
 
+            UpdateMemberDetails(updateQuery);
+        }
+        private void UpdateMemberDetails(string updateQuery)
+        {
             SqlCommand command = new SqlCommand(updateQuery, sqlConnection);
-            command.Parameters.AddWithValue("@FirstName", firstName);
-            command.Parameters.AddWithValue("@LastName", lastName);
-            command.Parameters.AddWithValue("@DateOfBirth", dateOfBirth);
-            command.Parameters.AddWithValue("@Age", age);
-            command.Parameters.AddWithValue("@Gender", gender);
-            command.Parameters.AddWithValue("@Address", address);
-            command.Parameters.AddWithValue("@MobileNumber", mobileNumber);
-            command.Parameters.AddWithValue("@Email", email);
-            command.Parameters.AddWithValue("@GuardianName", guardianName);
-            command.Parameters.AddWithValue("@GuardianNumber", guardianNumber);
+            command.Parameters.AddWithValue("@FirstName", textBoxFirstName.Text);
+            command.Parameters.AddWithValue("@LastName", textBoxLastName.Text);
+            command.Parameters.AddWithValue("@DateOfBirth", dateTimePickerDOB.Value.ToString("yyyy-MM-dd"));
+            command.Parameters.AddWithValue("@Age", int.Parse(textBoxAge.Text));
+            command.Parameters.AddWithValue("@Gender", radioButtonMale.Checked ? "Male" : "Female");
+            command.Parameters.AddWithValue("@Address", textBoxAddress.Text);
+            command.Parameters.AddWithValue("@MobileNumber", textBoxMobileNumber.Text);
+            command.Parameters.AddWithValue("@Email", textBoxEmail.Text);
+            command.Parameters.AddWithValue("@GuardianName", textBoxGuardianFullName.Text);
+            command.Parameters.AddWithValue("@GuardianNumber", textBoxGuardianNumber.Text);
             command.Parameters.AddWithValue("@MemberId", memberId);
 
             try

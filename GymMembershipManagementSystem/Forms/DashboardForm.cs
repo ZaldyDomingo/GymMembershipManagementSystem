@@ -31,18 +31,14 @@ namespace GymMembershipManagementSystem
             searchWorker = new BackgroundWorker();
             searchWorker.DoWork += searchWorker_DoWork;
             searchWorker.RunWorkerCompleted += searchWorker_RunWorkerCompleted;
-
             dataGridViewResult.Visible = false;
-
             timer = new Timer();
             timer.Interval = 1000;
             timer.Tick += timer_Tick;
-
             countRefreshTimer = new Timer();
             countRefreshTimer.Interval = 5000;
             countRefreshTimer.Tick += countRefreshTimer_Tick;
             countRefreshTimer.Start();
-
             timerRecentMember = new Timer();
             timerRecentMember.Interval = 5000;
             timerRecentMember.Tick += timerRecentMember_Tick;
@@ -51,9 +47,7 @@ namespace GymMembershipManagementSystem
             dataGridViewRecentlyAdded.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 10);
             dataGridViewRecentlyAdded.DefaultCellStyle.Font = new Font("Century Gothic", 10);
             dataGridViewRecentlyAdded.RowTemplate.Height = 28;
-
             dataGridViewRecentlyAdded.ColumnHeadersHeight = 28;
-
             dataGridViewRecentlyAdded.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
         }
  
@@ -212,8 +206,6 @@ namespace GymMembershipManagementSystem
         private void countRefreshTimer_Tick(object sender, EventArgs e)
         {
             DisplayMemberCounts();
-            LoadMemberJoinChart();
-            
         }
         private void buttonViewMember_Click(object sender, EventArgs e)
         {
@@ -489,6 +481,21 @@ namespace GymMembershipManagementSystem
         private void button1year_Click(object sender, EventArgs e)
         {
             chartMembershipFees.ChartAreas[0].AxisY.Maximum = 500000;
+        }
+
+        private void buttonMember1Year_Click(object sender, EventArgs e)
+        {
+            chartDetails.ChartAreas[0].AxisY.Maximum = 1000;
+        }
+
+        private void buttonMember7Months_Click(object sender, EventArgs e)
+        {
+            chartDetails.ChartAreas[0].AxisY.Maximum = 400;
+        }
+
+        private void buttonMember4Months_Click(object sender, EventArgs e)
+        {
+            chartDetails.ChartAreas[0].AxisY.Maximum = 200;
         }
     }
 }

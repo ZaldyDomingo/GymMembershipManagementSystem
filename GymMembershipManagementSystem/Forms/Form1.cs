@@ -302,6 +302,10 @@ namespace GymMembershipManagementSystem
                     viewWalkinForm.LoadOldWalkInMembers();
                     viewWalkinForm.UpdateTotalWalkInMemberCount();
                 }
+                else if(form is UpdateMemberForm update)
+                {
+                    update.LoadMemberData();
+                }
             }
         }
 
