@@ -65,7 +65,7 @@
             this.panelContainer.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panelContainer.Location = new System.Drawing.Point(0, 0);
             this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new System.Drawing.Size(1942, 954);
+            this.panelContainer.Size = new System.Drawing.Size(1924, 954);
             this.panelContainer.TabIndex = 1;
             // 
             // labelClock
@@ -93,6 +93,7 @@
             // 
             // pictureBox2
             // 
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
@@ -230,7 +231,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1942, 954);
+            this.ClientSize = new System.Drawing.Size(1924, 954);
             this.Controls.Add(this.panelContainer);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
