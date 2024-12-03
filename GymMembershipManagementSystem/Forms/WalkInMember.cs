@@ -14,7 +14,6 @@ namespace GymMembershipManagementSystem
     public partial class WalkInMember : Form
     {
         private SqlConnection sqlConnection;
-
         public WalkInMember()
         {
             InitializeComponent();
