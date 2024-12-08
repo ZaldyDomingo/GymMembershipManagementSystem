@@ -33,8 +33,8 @@ namespace GymMembershipManagementSystem
         }
         public void UpdateDate(DateTime newDate)
         {
-            this.selectedDate = newDate; // Update the selected date
-            LoadCheckIns(); // Refresh the check-in data
+            this.selectedDate = newDate; 
+            LoadCheckIns(); 
         }
 
         private void InitializeDatabaseConnection()
@@ -50,7 +50,6 @@ namespace GymMembershipManagementSystem
 
                 // SQL Query to fetch both regular and student members' check-ins for the selected date
                 string query = @"
-                    -- Fetch Regular Member Check-ins
                     SELECT 
                         'Regular Member: ' + rm.FirstName + ' ' + rm.LastName AS MemberName, 
                         rmc.CheckInDate
@@ -60,7 +59,6 @@ namespace GymMembershipManagementSystem
 
                     UNION ALL
 
-                    -- Fetch Student Member Check-ins
                     SELECT 
                         'Student Member: ' + sm.FirstName + ' ' + sm.LastName AS MemberName, 
                         smc.CheckInDate

@@ -73,35 +73,28 @@ namespace GymMembershipManagementSystem
         }
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            // Connection string to the SQL Server database
             string connectionString = "Data Source=LAPTOP-9VQCFDCQ\\SQLEXPRESS01;Initial Catalog=gymMembership;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
-
-            // Use a `using` block to ensure the connection is properly closed and disposed of
+  
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 try
                 {
                     conn.Open();
-                    // Query to check if the username and password match an entry in the database
                     string query = "SELECT Username FROM LoginForm WHERE Username = @username AND Password = @password";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        // Add parameters to prevent SQL injection
                         cmd.Parameters.AddWithValue("@username", textBoxUserName.Text.Trim());
                         cmd.Parameters.AddWithValue("@password", textBoxPassword.Text.Trim());
 
-                        // Execute the query and get the result
                         var result = cmd.ExecuteScalar();
 
-                        if (result != null) // If a match is found
+                        if (result != null)
                         {
-                            string loggedInUser = result.ToString(); // Retrieve the username
+                            string loggedInUser = result.ToString();
                             MessageBox.Show($"Login Successful! Welcome, {loggedInUser}!", "Welcome", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                            // Store the logged-in username for use throughout the application
                             CurrentUser.Username = loggedInUser;
-
                             this.Hide();
                             MainPage mainPage = new MainPage();
                             mainPage.Show();
@@ -114,7 +107,6 @@ namespace GymMembershipManagementSystem
                 }
                 catch (Exception ex)
                 {
-                    // Handle any errors that occur during the login process
                     MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

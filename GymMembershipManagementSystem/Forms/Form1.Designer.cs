@@ -57,6 +57,8 @@
             this.calendarMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.labelDate = new System.Windows.Forms.Label();
+            this.spaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.archiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripNavigation.SuspendLayout();
             this.menuStripTopNavigation.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -247,7 +249,8 @@
             this.userToolStripMenuItem1,
             this.refreshToolStripMenuItem,
             this.notificationToolStripMenuItem,
-            this.backToolStripMenuItem});
+            this.backToolStripMenuItem,
+            this.archiveToolStripMenuItem});
             this.menuStripTopNavigation.Location = new System.Drawing.Point(0, 0);
             this.menuStripTopNavigation.Name = "menuStripTopNavigation";
             this.menuStripTopNavigation.Size = new System.Drawing.Size(1924, 70);
@@ -327,7 +330,8 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.calendarMenuToolStripMenuItem,
-            this.logOutToolStripMenuItem1});
+            this.logOutToolStripMenuItem1,
+            this.spaceToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 998);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(15);
@@ -367,6 +371,23 @@
             this.labelDate.Size = new System.Drawing.Size(60, 19);
             this.labelDate.TabIndex = 7;
             this.labelDate.Text = "label2";
+            // 
+            // spaceToolStripMenuItem
+            // 
+            this.spaceToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.spaceToolStripMenuItem.Name = "spaceToolStripMenuItem";
+            this.spaceToolStripMenuItem.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
+            this.spaceToolStripMenuItem.Size = new System.Drawing.Size(98, 27);
+            this.spaceToolStripMenuItem.Text = "refresh";
+            // 
+            // archiveToolStripMenuItem
+            // 
+            this.archiveToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.archiveToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("archiveToolStripMenuItem.Image")));
+            this.archiveToolStripMenuItem.Name = "archiveToolStripMenuItem";
+            this.archiveToolStripMenuItem.Padding = new System.Windows.Forms.Padding(20);
+            this.archiveToolStripMenuItem.Size = new System.Drawing.Size(64, 66);
+            this.archiveToolStripMenuItem.Click += new System.EventHandler(this.archiveToolStripMenuItem_Click);
             // 
             // MainPage
             // 
@@ -429,6 +450,8 @@
         private System.Windows.Forms.ToolStripMenuItem minMaxSizeFormToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem updateMemberToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem spaceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem archiveToolStripMenuItem;
     }
 }
 

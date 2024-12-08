@@ -46,6 +46,26 @@ namespace GymMembershipManagementSystem
                 searchTimer.Stop();
                 searchTimer.Start();  // This ensures a delay before applying the filter
             };
+            if (dataGridViewStudent.Columns.Contains("FirstName"))
+                dataGridViewStudent.Columns["FirstName"].HeaderText = "First Name";
+
+            if (dataGridViewStudent.Columns.Contains("LastName"))
+                dataGridViewStudent.Columns["LastName"].HeaderText = "Last Name";
+
+            if (dataGridViewStudent.Columns.Contains("MobileNumber"))
+                dataGridViewStudent.Columns["MobileNumber"].HeaderText = "Phone Number";
+
+            if (dataGridViewStudent.Columns.Contains("RemainingDays"))
+                dataGridViewStudent.Columns["RemainingDays"].HeaderText = "Days Left";
+
+            if (dataGridViewStudent.Columns.Contains("EmergencyContactPhone"))
+                dataGridViewStudent.Columns["EmergencyContactPhone"].HeaderText = "Emergency No";
+
+            if (dataGridViewStudent.Columns.Contains("MembershipStartDate"))
+                dataGridViewStudent.Columns["MembershipStartDate"].HeaderText = "Date Started";
+
+            if (dataGridViewStudent.Columns.Contains("StudentId"))
+                dataGridViewStudent.Columns["StudentId"].HeaderText = "Student Id";
         }
         private void InitializeSearchTimer()
         {
@@ -92,7 +112,7 @@ namespace GymMembershipManagementSystem
 
                 dataGridViewStudent.DataSource = dataTable;
 
-                dataGridViewStudent.Columns["StudentId"].Visible = false;
+
                 dataGridViewStudent.Columns["Age"].Visible = false;
                 dataGridViewStudent.Columns["ProfileImage"].Visible = false;
                 dataGridViewStudent.Columns["DateOfBirth"].Visible = false;
@@ -175,7 +195,6 @@ namespace GymMembershipManagementSystem
                 dataGridViewStudent.DataSource = filteredDataTable;
 
                 // Optionally hide unwanted columns
-                dataGridViewStudent.Columns["MembershipStartDate"].Visible = false;
                 dataGridViewStudent.Columns["ProfileImage"].Visible = false;
             }
             catch (Exception ex)
@@ -289,10 +308,7 @@ namespace GymMembershipManagementSystem
                 dataGridViewStudent.ReadOnly = true; // Revert to read-only mode
             }
         }
-
-
-
-        private void DeleteSelectedMembers(List<int> studentIds)
+        private void ArchiveSelectedStudents(List<int> studentIds)
         {
             try
             {
@@ -302,33 +318,46 @@ namespace GymMembershipManagementSystem
 
                     foreach (int id in studentIds)
                     {
-                        // First delete the corresponding check-in records
-                        string deleteCheckInQuery = "DELETE FROM [dbo].[StudentMemberCheckIn] WHERE StudentId = @StudentId";
-                        using (SqlCommand checkInCommand = new SqlCommand(deleteCheckInQuery, connection))
+                        // Archive student data
+                        string insertArchivedQuery = @"
+                    INSERT INTO ArchivedStudentMember
+                    (StudentId, FirstName, LastName, DateOfBirth, Age, Gender, Address, MobileNumber, Email, 
+                    EmergencyContactName, EmergencyContactPhone, DateJoined, ProfileImage, MembershipStartDate, 
+                    MembershipFee, MembershipEndDate, ArchiveDate)
+                    SELECT StudentId, FirstName, LastName, DateOfBirth, Age, Gender, Address, MobileNumber, Email, 
+                           EmergencyContactName, EmergencyContactPhone, DateJoined, ProfileImage, MembershipStartDate, 
+                           MembershipFee, MembershipEndDate, GETDATE()
+                    FROM StudentMember
+                    WHERE StudentId = @StudentId";
+
+                        using (SqlCommand insertCommand = new SqlCommand(insertArchivedQuery, connection))
                         {
-                            checkInCommand.Parameters.AddWithValue("@StudentId", id);
-                            checkInCommand.ExecuteNonQuery();
+                            insertCommand.Parameters.AddWithValue("@StudentId", id);
+                            insertCommand.ExecuteNonQuery();
                         }
 
-                        // Then delete the student member record
-                        string deleteStudentQuery = "DELETE FROM [dbo].[StudentMember] WHERE StudentId = @StudentId";
-                        using (SqlCommand studentCommand = new SqlCommand(deleteStudentQuery, connection))
+                        // Remove the student from the original table
+                        string deleteStudentQuery = "DELETE FROM StudentMember WHERE StudentId = @StudentId";
+                        using (SqlCommand deleteCommand = new SqlCommand(deleteStudentQuery, connection))
                         {
-                            studentCommand.Parameters.AddWithValue("@StudentId", id);
-                            studentCommand.ExecuteNonQuery();
+                            deleteCommand.Parameters.AddWithValue("@StudentId", id);
+                            deleteCommand.ExecuteNonQuery();
+                        }
+
+                        // Optionally remove check-in data related to the student (if not needed after archiving)
+                        string deleteCheckInQuery = "DELETE FROM StudentMemberCheckIn WHERE StudentId = @StudentId";
+                        using (SqlCommand deleteCheckInCommand = new SqlCommand(deleteCheckInQuery, connection))
+                        {
+                            deleteCheckInCommand.Parameters.AddWithValue("@StudentId", id);
+                            deleteCheckInCommand.ExecuteNonQuery();
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred while deleting members from the database: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"An error occurred while archiving students: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void buttonMultiDelete_Click(object sender, EventArgs e)
-        {
-            ToggleMultiDeleteMode(true);
         }
 
         private void buttonCheck_Click(object sender, EventArgs e)
@@ -336,8 +365,6 @@ namespace GymMembershipManagementSystem
             try
             {
                 List<int> selectedIds = new List<int>();
-
-                // Check if "Select" column exists before accessing it
                 if (dataGridViewStudent.Columns.Contains("Select"))
                 {
                     foreach (DataGridViewRow row in dataGridViewStudent.Rows)
@@ -357,25 +384,30 @@ namespace GymMembershipManagementSystem
                 }
 
                 DialogResult result = MessageBox.Show(
-                    "Are you sure you want to delete the selected members?",
-                    "Confirm Deletion",
+                    "Are you sure you want to archive the selected students?",
+                    "Confirm Archive",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning
                 );
 
                 if (result == DialogResult.Yes)
                 {
-                    DeleteSelectedMembers(selectedIds);
-                    MessageBox.Show("Selected members have been deleted.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadStudents(); 
-                    ToggleMultiDeleteMode(false); 
+                    ArchiveSelectedStudents(selectedIds);
+                    MessageBox.Show("Selected students have been archived.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadStudents();
+                    ToggleMultiDeleteMode(false);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred while deleting members: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"An error occurred while archiving students: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void buttonMultiDelete_Click(object sender, EventArgs e)
+        {
+            ToggleMultiDeleteMode(true);
+        }
+
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {

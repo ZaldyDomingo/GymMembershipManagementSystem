@@ -336,5 +336,21 @@ namespace GymMembershipManagementSystem
         {
             MessageBox.Show($"Currently logged in as: {CurrentUser.Username}","Info",MessageBoxButtons.OK);
         }
+
+        private void archiveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (panelContainer.Controls.OfType<ArchiveForm>().Any()) return;
+            panelContainer.Controls.Clear();
+
+            ArchiveForm archiveForm = new ArchiveForm
+            {
+                TopLevel = false,
+                FormBorderStyle = FormBorderStyle.None,
+                Dock = DockStyle.Fill
+            };
+
+            panelContainer.Controls.Add(archiveForm);
+            archiveForm.Show();
+        }
     }
 }

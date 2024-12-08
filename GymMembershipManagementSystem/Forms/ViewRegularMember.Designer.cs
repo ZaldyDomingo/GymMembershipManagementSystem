@@ -47,6 +47,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.searchTimer = new System.Windows.Forms.Timer(this.components);
+            this.timerLoad = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRegular)).BeginInit();
             this.panel2.SuspendLayout();
@@ -231,6 +232,10 @@
             // 
             this.searchTimer.Tick += new System.EventHandler(this.searchTimer_Tick);
             // 
+            // timerLoad
+            // 
+            this.timerLoad.Tick += new System.EventHandler(this.timerLoad_Tick);
+            // 
             // ViewRegularMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -267,5 +272,6 @@
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonCheck;
         private System.Windows.Forms.Button buttonMultiDelete;
+        private System.Windows.Forms.Timer timerLoad;
     }
 }

@@ -23,12 +23,12 @@ namespace GymMembershipManagementSystem
             InitializeSearchTimer();
             LoadRegularMembers();
             FilterData();
+            InitializeLoadMemberTimer();
             SetupDataGridView();
             buttonCheck.Visible = false;
             buttonCancel.Visible = false;
             buttonMultiDelete.Visible = true;
 
-            // Hook up button click events
             buttonMultiDelete.Click += buttonMultiDelete_Click;
             buttonCheck.Click += buttonCheck_Click;
             buttonCancel.Click += buttonCancel_Click;
@@ -48,6 +48,26 @@ namespace GymMembershipManagementSystem
                 searchTimer.Stop();
                 searchTimer.Start();  // This ensures a delay before applying the filter
             };
+            if (dataGridViewRegular.Columns.Contains("FirstName"))
+                dataGridViewRegular.Columns["FirstName"].HeaderText = "First Name";
+
+            if (dataGridViewRegular.Columns.Contains("LastName"))
+                dataGridViewRegular.Columns["LastName"].HeaderText = "Last Name";
+
+            if (dataGridViewRegular.Columns.Contains("MobileNumber"))
+                dataGridViewRegular.Columns["MobileNumber"].HeaderText = "Phone Number";
+
+            if (dataGridViewRegular.Columns.Contains("RemainingDays"))
+                dataGridViewRegular.Columns["RemainingDays"].HeaderText = "Days Left";
+
+            if (dataGridViewRegular.Columns.Contains("EmergencyContactPhone"))
+                dataGridViewRegular.Columns["EmergencyContactPhone"].HeaderText = "Emergency No";
+
+            if (dataGridViewRegular.Columns.Contains("MembershipStartDate"))
+                dataGridViewRegular.Columns["MembershipStartDate"].HeaderText = "Date Started";
+
+            if (dataGridViewRegular.Columns.Contains("RegularMemberId"))
+                dataGridViewRegular.Columns["RegularMemberId"].HeaderText = "Member Id";
         }
         private void InitializeDatabaseConnection()
         {
@@ -87,7 +107,7 @@ namespace GymMembershipManagementSystem
                 dataTable.AcceptChanges();
                 dataGridViewRegular.DataSource = dataTable;
 
-                dataGridViewRegular.Columns["RegularMemberId"].Visible = false;
+
                 dataGridViewRegular.Columns["Age"].Visible = false;
                 dataGridViewRegular.Columns["DateOfBirth"].Visible = false;
                 dataGridViewRegular.Columns["ProfileImage"].Visible = false;
@@ -151,7 +171,6 @@ namespace GymMembershipManagementSystem
                 dataGridViewRegular.DataSource = filteredDataTable;
 
                 // Optionally hide unwanted columns
-                dataGridViewRegular.Columns["MembershipStartDate"].Visible = false;
                 dataGridViewRegular.Columns["ProfileImage"].Visible = false;
             }
             catch (Exception ex)
@@ -289,8 +308,7 @@ namespace GymMembershipManagementSystem
                 dataGridViewRegular.ReadOnly = true; // Revert to read-only mode
             }
         }
-
-        private void DeleteSelectedMembers(List<int> studentIds)
+        private void ArchiveSelectedMembers(List<int> memberIds)
         {
             try
             {
@@ -298,43 +316,51 @@ namespace GymMembershipManagementSystem
                 {
                     connection.Open();
 
-                    foreach (int id in studentIds)
+                    foreach (int id in memberIds)
                     {
-                        // First delete the corresponding check-in records
-                        string deleteCheckInQuery = "DELETE FROM [dbo].[RegularMemberCheckIn] WHERE RegularMemberId = @RegularMemberId";
-                        using (SqlCommand checkInCommand = new SqlCommand(deleteCheckInQuery, connection))
+                        string insertArchivedQuery = @"
+                        INSERT INTO ArchivedMembers
+                        (RegularMemberId, FirstName, LastName, DateOfBirth, Age, Gender, Address, MobileNumber, Email, 
+                        EmergencyContactName, EmergencyContactPhone, DateJoined, ProfileImage, MembershipStartDate, 
+                        MembershipFee, MembershipEndDate)
+                        SELECT RegularMemberId, FirstName, LastName, DateOfBirth, Age, Gender, Address, MobileNumber, Email, 
+                           EmergencyContactName, EmergencyContactPhone, DateJoined, ProfileImage, MembershipStartDate, 
+                           MembershipFee, MembershipEndDate
+                        FROM RegularMember
+                        WHERE RegularMemberId = @RegularMemberId";
+
+                        using (SqlCommand insertCommand = new SqlCommand(insertArchivedQuery, connection))
                         {
-                            checkInCommand.Parameters.AddWithValue("@RegularMemberId", id);
-                            checkInCommand.ExecuteNonQuery();
+                            insertCommand.Parameters.AddWithValue("@RegularMemberId", id);
+                            insertCommand.ExecuteNonQuery();
                         }
 
-                        // Then delete the student member record
-                        string deleteStudentQuery = "DELETE FROM [dbo].[RegularMember] WHERE RegularMemberId = @RegularMemberId";
-                        using (SqlCommand studentCommand = new SqlCommand(deleteStudentQuery, connection))
+                        string deleteMemberQuery = "DELETE FROM RegularMember WHERE RegularMemberId = @RegularMemberId";
+                        using (SqlCommand deleteCommand = new SqlCommand(deleteMemberQuery, connection))
                         {
-                            studentCommand.Parameters.AddWithValue("@RegularMemberId", id);
-                            studentCommand.ExecuteNonQuery();
+                            deleteCommand.Parameters.AddWithValue("@RegularMemberId", id);
+                            deleteCommand.ExecuteNonQuery();
+                        }
+
+                        string deleteCheckInQuery = "DELETE FROM RegularMemberCheckIn WHERE RegularMemberId = @RegularMemberId";
+                        using (SqlCommand deleteCheckInCommand = new SqlCommand(deleteCheckInQuery, connection))
+                        {
+                            deleteCheckInCommand.Parameters.AddWithValue("@RegularMemberId", id);
+                            deleteCheckInCommand.ExecuteNonQuery();
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred while deleting members from the database: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"An error occurred while archiving members: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void buttonMultiDelete_Click(object sender, EventArgs e)
-        {
-            ToggleMultiDeleteMode(true);
-        }
-
         private void buttonCheck_Click(object sender, EventArgs e)
         {
             try
             {
                 List<int> selectedIds = new List<int>();
-
-                // Check if "Select" column exists before accessing it
                 if (dataGridViewRegular.Columns.Contains("Select"))
                 {
                     foreach (DataGridViewRow row in dataGridViewRegular.Rows)
@@ -342,8 +368,8 @@ namespace GymMembershipManagementSystem
                         // Check if the checkbox in the "Select" column is checked
                         if (Convert.ToBoolean(row.Cells["Select"].Value) == true)
                         {
-                            int studentId = Convert.ToInt32(row.Cells["RegularMemberId"].Value);
-                            selectedIds.Add(studentId);
+                            int memberId = Convert.ToInt32(row.Cells["RegularMemberId"].Value);
+                            selectedIds.Add(memberId);
                         }
                     }
                 }
@@ -354,26 +380,29 @@ namespace GymMembershipManagementSystem
                 }
 
                 DialogResult result = MessageBox.Show(
-                    "Are you sure you want to delete the selected members?",
-                    "Confirm Deletion",
+                    "Are you sure you want to archive the selected members?",
+                    "Confirm Archive",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning
                 );
 
                 if (result == DialogResult.Yes)
                 {
-                    DeleteSelectedMembers(selectedIds);
-                    MessageBox.Show("Selected members have been deleted.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadRegularMembers();
+                    ArchiveSelectedMembers(selectedIds);
+                    MessageBox.Show("Selected members have been archived.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadRegularMembers();  
                     ToggleMultiDeleteMode(false);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred while deleting members: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"An error occurred while archiving members: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        private void buttonMultiDelete_Click(object sender, EventArgs e)
+        {
+            ToggleMultiDeleteMode(true);
+        }
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             ToggleMultiDeleteMode(false);
@@ -386,5 +415,17 @@ namespace GymMembershipManagementSystem
                 dataGridViewRegular.CommitEdit(DataGridViewDataErrorContexts.Commit);
             }
         }
+
+            private void timerLoad_Tick(object sender, EventArgs e)
+            {
+                LoadRegularMembers();
+                timerLoad.Stop();
+            }
+            private void InitializeLoadMemberTimer()
+            {
+                timerLoad.Interval = 500;
+                timerLoad.Tick += timerLoad_Tick;
+                timerLoad.Start();
+            }
     }
 }

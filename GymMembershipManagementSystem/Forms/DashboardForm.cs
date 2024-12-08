@@ -49,6 +49,11 @@ namespace GymMembershipManagementSystem
             dataGridViewRecentlyAdded.RowTemplate.Height = 28;
             dataGridViewRecentlyAdded.ColumnHeadersHeight = 28;
             dataGridViewRecentlyAdded.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
+            if (dataGridViewRecentlyAdded.Columns.Contains("FirstName"))
+                dataGridViewRecentlyAdded.Columns["FirstName"].HeaderText = "First Name";
+            if (dataGridViewRecentlyAdded.Columns.Contains("LastName"))
+                dataGridViewRecentlyAdded.Columns["LastName"].HeaderText = "Last Name";
+            dataGridViewRecentlyAdded.Columns["ProfileImage"].Visible = false;
         }
  
         private void searchWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -132,11 +137,13 @@ namespace GymMembershipManagementSystem
                     sqlConnection.Close();
                 }
             }
+
             dataGridViewResult.DataSource = dataTable;
             if (dataGridViewResult.Columns.Contains("ProfileImage"))
             {
                 dataGridViewResult.Columns.Remove("ProfileImage");
             }
+           
         }
         private void SearchMember(string searchTerm)
         {
